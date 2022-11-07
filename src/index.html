@@ -8,19 +8,16 @@
     <script src="assets/js/api.js"></script>
 </head>
 <body>
-<div id="app">
-    <h1>{{ message }}</h1>
-</div>
+<h1 id="app">{{ message }}</h1>
 <script>
-  const { createApp } = Vue
-
-  createApp({
-    data() {
-      return {
-        message: 'Mars client side with Vue!'
+    const { createApp } = Vue
+    createApp({
+      data() {
+        return {
+          message: 'Mars client side with Vue!'
+        }
       }
-    }
-  }).mount('#app')
+    }).mount('#app')
 </script>
 </body>
 </html>
