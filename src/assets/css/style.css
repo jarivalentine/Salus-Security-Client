@@ -11,19 +11,16 @@ header{
 
 /*aside*/
 aside{
-    float:left;
     margin-left:2em;
     background-color: lightgray;
-    border-radius:5em;
-    width:auto;
+    border-radius:2em;
+    width:10em;
     padding:1em;
+    text-align:center;
 }
 figure{
     padding-top:3em;
     padding-bottom:3em;
-}
-figcaption{
-    text-align:center;
 }
 
 a:link{
@@ -33,3 +30,11 @@ a:hover{
     color:red;
 }
 
+/*section*/
+section{
+    float:right;
+    margin-right:2em;
+    width: 75%;
+    height: 40em;
+    background-color: black;
+}
