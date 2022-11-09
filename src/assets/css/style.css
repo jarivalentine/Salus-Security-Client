@@ -1,0 +1,35 @@
+/*header*/
+header{
+    padding:2em;
+}
+#profile{
+    float:left;
+}
+#setting{
+    float:right;
+}
+
+/*aside*/
+aside{
+    float:left;
+    margin-left:2em;
+    background-color: lightgray;
+    border-radius:5em;
+    width:auto;
+    padding:1em;
+}
+figure{
+    padding-top:3em;
+    padding-bottom:3em;
+}
+figcaption{
+    text-align:center;
+}
+
+a:link{
+    color:black;
+}
+a:hover{
+    color:red;
+}
+
