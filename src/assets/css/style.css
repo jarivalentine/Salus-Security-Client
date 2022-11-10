@@ -36,5 +36,7 @@ section{
     margin-right:2em;
     width: 75%;
     height: 40em;
-    background-color: black;
+    border: 0.3125em dashed black;
+    border-radius:2em;
+    text-align:center;
 }
