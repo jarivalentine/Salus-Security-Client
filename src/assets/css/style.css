@@ -33,16 +33,3 @@ a:link{
 a:hover{
     color:red;
 }
-
-/*section*/
-section{
-    float:right;
-    /*margin-right:2em;
-    margin-left:10em;*/
-    width: 80%;
-    height: 36rem;
-    border: 0.3125em dashed black;
-    border-radius:2em;
-    text-align:center;
-
-}
