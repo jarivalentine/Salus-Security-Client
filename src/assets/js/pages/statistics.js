@@ -1,11 +1,11 @@
 const { createApp } = Vue
-import headerComponent from './components/header.js';
-import navComponent from './components/nav.js';
+import headerComponent from '../components/header.js';
+import navComponent from '../components/nav.js';
 
 createApp({
     data() {
         return {
-            message: 'Home page'
+            message: 'Charts page'
         };
     },
     components: {
