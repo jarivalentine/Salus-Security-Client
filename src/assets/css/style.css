@@ -1,0 +1,48 @@
+/*body*/
+body{
+    margin:1em;
+}
+/*header*/
+header{
+    padding:2em;
+}
+#profile{
+    float:left;
+}
+#setting{
+    float:right;
+}
+
+/*aside*/
+aside{
+    /*margin-left:2em;*/
+    background-color: lightgray;
+    border-radius:2em;
+    width:10em;
+    padding:1em;
+    text-align:center;
+}
+figure{
+    padding-top:3em;
+    padding-bottom:3em;
+}
+
+a:link{
+    color:black;
+}
+a:hover{
+    color:red;
+}
+
+/*section*/
+section{
+    float:right;
+    /*margin-right:2em;
+    margin-left:10em;*/
+    width: 80%;
+    height: 36em;
+    border: 0.3125em dashed black;
+    border-radius:2em;
+    text-align:center;
+
+}
