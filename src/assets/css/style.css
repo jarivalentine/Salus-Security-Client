@@ -1,3 +1,7 @@
+/*body*/
+body{
+    margin:1em;
+}
 /*header*/
 header{
     padding:2em;
@@ -11,7 +15,7 @@ header{
 
 /*aside*/
 aside{
-    margin-left:2em;
+    /*margin-left:2em;*/
     background-color: lightgray;
     border-radius:2em;
     width:10em;
@@ -33,10 +37,12 @@ a:hover{
 /*section*/
 section{
     float:right;
-    margin-right:2em;
-    width: 75%;
-    height: 40em;
+    /*margin-right:2em;
+    margin-left:10em;*/
+    width: 80%;
+    height: 36em;
     border: 0.3125em dashed black;
     border-radius:2em;
     text-align:center;
+
 }
