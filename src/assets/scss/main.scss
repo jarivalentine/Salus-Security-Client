@@ -1,1 +1,15 @@
 @use 'constraints';
+
+main {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 0rem 3rem 3rem 3rem;
+    box-sizing: border-box;
+    height: 100%;
+
+    > div {
+        width: calc(78vw - 3.75rem); // minus padding left and half of gap
+        background-color: constraints.$component-color;
+    }
+}

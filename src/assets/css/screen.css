@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
 header {
   width: 100vw;
-  height: 10rem;
+  height: 8.5rem;
   display: flex;
-  padding: 3rem;
+  padding: 3rem 3rem 1.5rem 3rem;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -20,13 +20,55 @@ header a {
   background-image: url("../img/svg-wrench.svg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 2.5rem;
-  height: 4rem;
-  width: 4rem;
+  background-size: 3rem;
+  height: 4.25rem;
+  width: 4.25rem;
+}
+
+nav {
+  width: calc(22vw - 3.75rem);
+  height: 100%;
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+}
+nav ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
+nav ul a {
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: black;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0rem 3rem 3rem 3rem;
+  box-sizing: border-box;
+  height: 100%;
+}
+main > div {
+  width: calc(78vw - 3.75rem);
+  background-color: #F9F9F9;
+}
+
+html {
+  height: 100%;
 }
 
 body {
   background-color: #E7E7E7;
+  height: 100%;
+}
+
+#app {
+  height: calc(100% - 8.5rem);
 }
 
 .tag {

@@ -2,9 +2,9 @@
 
 header {
     width: 100vw;
-    height: 10rem;
+    height: 8.5rem;
     display: flex;
-    padding: 3rem;
+    padding: 3rem 3rem 1.5rem 3rem;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -22,8 +22,8 @@ header {
         background-image: url('../img/svg-wrench.svg');
         background-position: center;
         background-repeat: no-repeat;
-        background-size: 2.5rem;	
-        height: 4rem;
-        width: 4rem;
+        background-size: 3rem;	
+        height: 4.25rem;
+        width: 4.25rem;
     }
 }
