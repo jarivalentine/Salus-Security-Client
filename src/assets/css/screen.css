@@ -36,7 +36,7 @@ header a {
 nav {
   width: calc(22vw - 3.75rem);
   height: 100%;
-  background-color: #F9F9F9;
+  background-color: #F5F5F5;
   border-radius: 1.5rem;
 }
 nav ul {
@@ -82,10 +82,38 @@ main {
 }
 main > div {
   width: calc(78vw - 9.75rem);
-  background-color: #F9F9F9;
+  background-color: #F5F5F5;
   border-radius: 1.5rem;
   padding: 3rem;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+main .home > div {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+main .home button {
+  height: 13rem;
+  width: 28rem;
+  border: none;
+  background-color: #F0E25D;
+  background-image: url("../img/svg-flag.svg");
+  background-position: 3rem center;
+  background-repeat: no-repeat;
+  background-size: 5rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  padding-left: 11rem;
+  border-radius: 1.5rem;
+  text-align: left;
+}
+main .home article h2 {
+  font-size: 1.5rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+}
+main .home article > div {
+  background-color: #F5F5F5;
 }
 
 html {
