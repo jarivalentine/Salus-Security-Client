@@ -13,38 +13,40 @@
 <body>
 <div id="app">
     <header-component></header-component>
-    <nav-component></nav-component>
-    <main>{{ message }}
-        <article>
-            <h2>Incidents you flagged</h2>
-            <input id="flagged" name="flagged" type="text">
-            <ul>
-                <template>
-                    <li>
-                        <h3>Type</h3>
-                        <em class="label">Label 1</em>
-                        <em class="label">Label 2</em>
-                        <p>10/10/2022</p>
-                        <p>09:31</p>
-                    </li>
-                </template>
-            </ul>
-        </article>
-        <article>
-            <h2>Incidents you helped</h2>
-            <input id="helped" name="helped" type="text">
-            <ul>
-                <template>
-                    <li>
-                        <h3>Type</h3>
-                        <em class="label">Label 1</em>
-                        <em class="label">Label 2</em>
-                        <p>10/10/2022</p>
-                        <p>09:31</p>
-                    </li>
-                </template>
-            </ul>
-        </article>
+    <main>
+        <nav-component></nav-component>
+        <div>
+            <article>
+                <h2>Incidents you flagged</h2>
+                <input id="flagged" name="flagged" type="text">
+                <ul>
+                    <template>
+                        <li>
+                            <h3>Type</h3>
+                            <em class="label">Label 1</em>
+                            <em class="label">Label 2</em>
+                            <p>10/10/2022</p>
+                            <p>09:31</p>
+                        </li>
+                    </template>
+                </ul>
+            </article>
+            <article>
+                <h2>Incidents you helped</h2>
+                <input id="helped" name="helped" type="text">
+                <ul>
+                    <template>
+                        <li>
+                            <h3>Type</h3>
+                            <em class="label">Label 1</em>
+                            <em class="label">Label 2</em>
+                            <p>10/10/2022</p>
+                            <p>09:31</p>
+                        </li>
+                    </template>
+                </ul>
+            </article>
+        </div>
     </main>
 </div>
 </body>

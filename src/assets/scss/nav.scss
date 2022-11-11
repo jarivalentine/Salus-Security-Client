@@ -18,6 +18,29 @@ nav {
             font-size: 1.25rem;
             text-decoration: none;
             color: black;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: 3rem;
+            display: inline-block;
+            height: 1.5rem;
+            width: 10rem;
+            padding-top: 3.5rem;
+        }
+
+        .home {
+            background-image: url('../img/svg-home.svg');
+        }
+
+        .map {
+            background-image: url('../img/svg-map-pinpoint.svg');
+        }
+
+        .statistics {
+            background-image: url('../img/svg-statistics.svg');
+        }
+
+        .doorlock {
+            background-image: url('../img/svg-door.svg');
         }
     }
 }
