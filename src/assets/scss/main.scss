@@ -9,7 +9,10 @@ main {
     height: 100%;
 
     > div {
-        width: calc(78vw - 3.75rem); // minus padding left and half of gap
+        width: calc(78vw - 9.75rem); // minus padding right, padding and half of gap
         background-color: constraints.$component-color;
+        border-radius: 1.5rem;
+        padding: 3rem;
+        font-family: constraints.$default-font;
     }
 }

@@ -9,6 +9,15 @@ header {
     display: flex;
     justify-content: space-between;
 
+    > div {
+        background-image: url('../img/default.png');
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 4rem;
+        padding-left: 5rem;
+        margin-left: 1.5rem;
+    }
+
     p {
         font-family: constraints.$header-font;
         font-size: 2rem;

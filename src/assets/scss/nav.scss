@@ -1,7 +1,7 @@
 @use 'constraints';
 
 nav {
-    width: calc(22vw - 3.75rem); // minus padding right and half of gap
+    width: calc(22vw - 3.75rem); // minus padding left and half of gap
     height: 100%;
     background-color: constraints.$component-color;
     border-radius: 1.5rem;
