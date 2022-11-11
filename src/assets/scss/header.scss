@@ -1,2 +1,29 @@
-@use 'contraints'
+@use 'constraints';
 
+header {
+    width: 100vw;
+    height: 10rem;
+    display: flex;
+    padding: 3rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+        font-family: constraints.$header-font;
+        font-size: 2rem;
+
+        &:first-child {
+            margin-bottom: 0.25rem;
+        }
+    }
+
+    a {
+        background-image: url('../img/svg-wrench.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 2.5rem;	
+        height: 4rem;
+        width: 4rem;
+    }
+}

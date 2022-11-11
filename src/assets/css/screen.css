@@ -1,1 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
+header {
+  width: 100vw;
+  height: 10rem;
+  display: flex;
+  padding: 3rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+header p {
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+}
+header p:first-child {
+  margin-bottom: 0.25rem;
+}
+header a {
+  background-image: url("../img/svg-wrench.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 2.5rem;
+  height: 4rem;
+  width: 4rem;
+}
 
+body {
+  background-color: #E7E7E7;
+}
+
+.tag {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+}
+
+/*# sourceMappingURL=screen.css.map */

@@ -1,3 +1,12 @@
 @use 'header';
 @use 'nav';
 @use 'main';
+@use 'constraints';
+
+body {
+    background-color: #E7E7E7;
+}
+
+.tag {
+    @include constraints.tag;
+}
