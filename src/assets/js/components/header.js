@@ -2,7 +2,7 @@ export default {
     data() {
         return {
             firstname: 'Jarne Van Parys',
-            tag: 'Neemt mannen in poep'
+            tag: 'Gardian Angel'
         }
     },
     template: `
