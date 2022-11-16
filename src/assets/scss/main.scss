@@ -9,10 +9,11 @@ main {
     height: 100%;
 
     > div {
-        width: calc(78vw - 9.75rem); // minus padding right, padding and half of gap
+        width: calc(78vw - 3.75rem); // minus padding right, padding and half of gap
         background-color: constraints.$component-color;
         border-radius: 1.5rem;
         padding: 3rem;
+        box-sizing: border-box;
         font-family: constraints.$default-font;
     }
 
@@ -25,7 +26,7 @@ main {
 
         button {
             height: 13rem;
-            width: 28rem;
+            width: 26rem;
             border: none;
             background-color: constraints.$yellow;
             background-image: url('../img/svg-flag.svg');
@@ -35,19 +36,64 @@ main {
             font-family: constraints.$header-font;
             font-size: 3rem;
             font-weight: bold;
-            padding-left: 11rem;
+            padding-left: 10rem;
             border-radius: 1.5rem;
             text-align: left;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
         article {
+            height: 13rem;
+            width: calc(100% - 26rem - 1.5rem);
+
             h2 {
                 font-size: 1.5rem;
                 font-family: constraints.$header-font;
+                margin-bottom: 1.5rem;
             }
 
             > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
                 background-color: constraints.$component-color;
+                border-radius: 1.5rem;
+                padding: 1.5rem;
+                height: calc(100% - 3rem); // minus font height and margin bottom
+                box-sizing: border-box;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+                label {
+                    font-size: 1.4rem;
+                }
+
+                input[type="checkbox"] {
+                    accent-color: constraints.$yellow;
+                }
+
+                input[id="notify"], label[for="gestures"] {
+                    margin-right: 1rem;
+                }
+
+                input[type="range"] {
+                    width: 15.5rem;
+                    accent-color: constraints.$yellow;
+                }
+
+                select {
+                    width: 9rem;
+                    background-color: constraints.$yellow;
+                    border: none;
+                    height: 1.5rem;
+                    border-radius: 0.25rem;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
             }
         }
     }

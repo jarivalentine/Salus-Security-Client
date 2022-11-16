@@ -36,7 +36,7 @@ header a {
 nav {
   width: calc(22vw - 3.75rem);
   height: 100%;
-  background-color: #F5F5F5;
+  background-color: #F9F9F9;
   border-radius: 1.5rem;
 }
 nav ul {
@@ -81,10 +81,11 @@ main {
   height: 100%;
 }
 main > div {
-  width: calc(78vw - 9.75rem);
-  background-color: #F5F5F5;
+  width: calc(78vw - 3.75rem);
+  background-color: #F9F9F9;
   border-radius: 1.5rem;
   padding: 3rem;
+  box-sizing: border-box;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 main .home > div {
@@ -94,7 +95,7 @@ main .home > div {
 }
 main .home button {
   height: 13rem;
-  width: 28rem;
+  width: 26rem;
   border: none;
   background-color: #F0E25D;
   background-image: url("../img/svg-flag.svg");
@@ -104,16 +105,55 @@ main .home button {
   font-family: "Lexend", Arial, Helvetica, sans-serif;
   font-size: 3rem;
   font-weight: bold;
-  padding-left: 11rem;
+  padding-left: 10rem;
   border-radius: 1.5rem;
   text-align: left;
+}
+main .home button:hover {
+  cursor: pointer;
+}
+main .home article {
+  height: 13rem;
+  width: calc(100% - 26rem - 1.5rem);
 }
 main .home article h2 {
   font-size: 1.5rem;
   font-family: "Lexend", Arial, Helvetica, sans-serif;
+  margin-bottom: 1.5rem;
 }
 main .home article > div {
-  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  height: calc(100% - 3rem);
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+main .home article > div label {
+  font-size: 1.4rem;
+}
+main .home article > div input[type=checkbox] {
+  accent-color: #F0E25D;
+}
+main .home article > div input[id=notify], main .home article > div label[for=gestures] {
+  margin-right: 1rem;
+}
+main .home article > div input[type=range] {
+  width: 15.5rem;
+  accent-color: #F0E25D;
+}
+main .home article > div select {
+  width: 9rem;
+  background-color: #F0E25D;
+  border: none;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+}
+main .home article > div select:focus {
+  outline: none;
 }
 
 html {

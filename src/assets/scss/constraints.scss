@@ -4,7 +4,7 @@
 $default-font: 'Roboto', Arial, Helvetica, sans-serif;
 $header-font: 'Lexend', Arial, Helvetica, sans-serif;
 
-$component-color: #F5F5F5;
+$component-color: #F9F9F9;
 $gray: #898989;
 $yellow: #F0E25D;
 $blue: #5B37DB;
@@ -17,8 +17,4 @@ $blue: #5B37DB;
     padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
     width: fit-content;
-}
-
-@mixin button {
-
 }

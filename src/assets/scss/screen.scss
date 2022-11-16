@@ -3,6 +3,10 @@
 @use 'main';
 @use 'constraints';
 
+[v-cloak] {
+    display: none;
+}
+
 html {
     height: 100%;
 }
