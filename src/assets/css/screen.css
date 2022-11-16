@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
+header {
+  width: 100vw;
+  height: 8.5rem;
+  display: flex;
+  padding: 3rem 3rem 1.5rem 3rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+header > div {
+  background-image: url("../img/default.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 4rem;
+  padding-left: 5rem;
+  margin-left: 1.5rem;
+}
+header p {
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+}
+header p:first-child {
+  margin-bottom: 0.25rem;
+}
+header a {
+  background-image: url("../img/svg-wrench.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 3rem;
+  height: 4.25rem;
+  width: 4.25rem;
+}
+
+nav {
+  width: calc(22vw - 3.75rem);
+  height: 100%;
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+}
+nav ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
+nav ul a {
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  text-decoration: none;
+  color: black;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 3rem;
+  display: inline-block;
+  height: 1.5rem;
+  width: 10rem;
+  padding-top: 3.5rem;
+}
+nav ul .home {
+  background-image: url("../img/svg-home.svg");
+}
+nav ul .map {
+  background-image: url("../img/svg-map-pinpoint.svg");
+}
+nav ul .statistics {
+  background-image: url("../img/svg-statistics.svg");
+}
+nav ul .doorlock {
+  background-image: url("../img/svg-door.svg");
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0rem 3rem 3rem 3rem;
+  box-sizing: border-box;
+  height: 100%;
+}
+main > div {
+  width: calc(78vw - 3.75rem);
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 3rem;
+  box-sizing: border-box;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+main .home > div {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+main .home button {
+  height: 13rem;
+  width: 26rem;
+  border: none;
+  background-color: #F0E25D;
+  background-image: url("../img/svg-flag.svg");
+  background-position: 3rem center;
+  background-repeat: no-repeat;
+  background-size: 5rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  padding-left: 10rem;
+  border-radius: 1.5rem;
+  text-align: left;
+}
+main .home button:hover {
+  cursor: pointer;
+}
+main .home div article {
+  height: 13rem;
+  width: calc(100% - 26rem - 1.5rem);
+}
+main .home div article h2 {
+  font-size: 1.5rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  margin-bottom: 1.5rem;
+}
+main .home div article > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  height: calc(100% - 3rem);
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+main .home div article > div label {
+  font-size: 1.4rem;
+}
+main .home div article > div input[type=checkbox] {
+  accent-color: #F0E25D;
+}
+main .home div article > div input[id=notify], main .home div article > div label[for=gestures] {
+  margin-right: 1rem;
+}
+main .home div article > div input[type=range] {
+  width: 15.5rem;
+  accent-color: #F0E25D;
+}
+main .home div article > div select {
+  width: 9rem;
+  background-color: #F0E25D;
+  border: none;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+}
+main .home div article > div select:focus {
+  outline: none;
+}
+main .home > article {
+  height: calc(100% - 14.5rem);
+}
+main .home > article h2 {
+  font-size: 1.5rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  margin-bottom: 1.5rem;
+}
+main .home > article ul {
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  height: calc(100% - 3rem);
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  overflow: scroll;
+}
+main .home > article ul li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.0625rem solid black;
+  padding: 0.75rem 0;
+  margin-bottom: 0.25rem;
+}
+main .home > article ul li:last-child {
+  border-bottom: none;
+}
+main .home > article ul li h3, main .home > article ul li p {
+  display: inline;
+}
+main .home > article ul li h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+main .home > article ul li em {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin-right: 0.5rem;
+}
+main .home > article ul li p {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  padding-left: 1.65rem;
+  color: #898989;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+}
+main .home > article ul li p:first-of-type {
+  background-image: url("../img/svg-cronometer.svg");
+}
+main .home > article ul li p:last-of-type {
+  background-image: url("../img/svg-compass.svg");
+}
+main .home > article ul li a {
+  background-color: #F0E25D;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #E7E7E7;
+  height: 100%;
+}
+
+#app {
+  height: calc(100% - 8.5rem);
+}
+
+.tag {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+}
+
+/*# sourceMappingURL=screen.css.map */

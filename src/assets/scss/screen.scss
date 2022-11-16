@@ -1,0 +1,25 @@
+@use 'header';
+@use 'nav';
+@use 'main';
+@use 'constraints';
+
+[v-cloak] {
+    display: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #E7E7E7;
+    height: 100%;
+}
+
+#app {
+    height: calc(100% - 8.5rem); // minus header height
+}
+
+.tag {
+    @include constraints.tag;
+}

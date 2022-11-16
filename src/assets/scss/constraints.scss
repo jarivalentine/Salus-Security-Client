@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+
+$default-font: 'Roboto', Arial, Helvetica, sans-serif;
+$header-font: 'Lexend', Arial, Helvetica, sans-serif;
+
+$component-color: #F9F9F9;
+$gray: #898989;
+$yellow: #F0E25D;
+$blue: #5B37DB;
+
+@mixin tag {
+    font-family: $default-font;
+    font-size: 1.2rem;
+    color: white;
+    background-color: $blue;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    width: fit-content;
+}
+
+@mixin label {
+    font-family: $default-font;
+    font-size: 0.85rem;
+    color: white;
+    background-color: $blue;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    width: fit-content;
+}
+
+@mixin button {
+    background-color: $yellow;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: black;
+}
