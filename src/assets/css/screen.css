@@ -251,3 +251,22 @@ body {
 }
 
 /*# sourceMappingURL=screen.css.map */
+/* SubscriptionLock scss*/
+main .blur {
+  filter: blur(15px);
+  background-color:#E7E7E7;
+
+}
+main .lock {
+  background-color: #898989;
+  background-image: url(../img/svg-block-lock.svg);
+  background-position: 3rem center;
+  background-repeat: no-repeat;
+  background-size: 5rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  padding-left: 10rem;
+  border-radius: 1.5rem;
+  text-align: left;
+}

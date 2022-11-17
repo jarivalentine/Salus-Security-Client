@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>subscriptionLock</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/screen.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./assets/js/pages/subscriptionLock.js" type="module"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/api.js"></script>
+</head>
+<body>
+<div id="app">
+    <header-component></header-component>
+    <main>
+        <nav-component></nav-component>
+        <div style="border: 5px dashed black ;">
+            <div class="home">
+                <div>
+                    <button>Flag<br>Incident</button>
+                    <article>
+                        <h2>Incident settings</h2>
+                        <div>
+                            <div>
+                                <input id="notify" name="notify" type="checkbox" checked>
+                                <label for="notify">Notify people in range</label>
+                            </div>
+                            <div>
+                                <datalist id="list">
+                                    <option value="0" label="10m"></option>
+                                    <option value="100" label="1000m"></option>
+                                </datalist>
+                                <input id="range" name="range" type="range" list="list">
+                            </div>
+                            <div>
+                                <label for="gestures">Gestures</label>
+                                <select id="gestures"></select>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <article>
+                    <h2>Notifications</h2>
+                    <ul>
+                        <!-- <template> -->
+                            <li>
+                                <div>
+                                    <h3>Type</h3>
+                                    <em class="label">Label 1</em>
+                                    <em class="label">Label 2</em>
+                                </div>
+                                <div>
+                                    <p>30s ago</p>
+                                    <p>1000m away</p>
+                                    <a href="./route.html">View Route</a>
+                                </div>
+                            </li>
+                        <!-- </template> -->
+                        <li>
+                            <div>
+                                <h3>Type</h3>
+                                <em class="label">Label 1</em>
+                                <em class="label">Label 2</em>
+                            </div>
+                            <div>
+                                <p>30s ago</p>
+                                <p>1000m away</p>
+                                <a href="./route.html">View Route</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>Type</h3>
+                                <em class="label">Label 1</em>
+                                <em class="label">Label 2</em>
+                            </div>
+                            <div>
+                                <p>30s ago</p>
+                                <p>1000m away</p>
+                                <a href="./route.html">View Route</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>Type</h3>
+                                <em class="label">Label 1</em>
+                                <em class="label">Label 2</em>
+                            </div>
+                            <div>
+                                <p>30s ago</p>
+                                <p>1000m away</p>
+                                <a href="./route.html">View Route</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>Type</h3>
+                                <em class="label">Label 1</em>
+                                <em class="label">Label 2</em>
+                            </div>
+                            <div>
+                                <p>30s ago</p>
+                                <p>1000m away</p>
+                                <a href="./route.html">View Route</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>Type</h3>
+                                <em class="label">Label 1</em>
+                                <em class="label">Label 2</em>
+                            </div>
+                            <div>
+                                <p>30s ago</p>
+                                <p>1000m away</p>
+                                <a href="./route.html">View Route</a>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+            <subscription-component></subscription-component>
+        </div>
+    </main>
+</div>
+</body>
+</html>
