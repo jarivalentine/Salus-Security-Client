@@ -1,0 +1,10 @@
+{
+    "theme_color" : "#e7e7e7",
+    "background_color" : "#e7e7e7",
+    "display" : "standalone",
+    "scope" : "/",
+    "start_url" : "/mars-11/",
+    "name" : "Salus Security",
+    "short_name" : "Salus",
+    "description" : ""
+}
