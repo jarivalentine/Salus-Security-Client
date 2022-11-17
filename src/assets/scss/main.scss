@@ -1,4 +1,6 @@
 @use 'constraints';
+@use 'pages/home';
+@use 'pages/history';
 
 main {
     display: flex;
@@ -17,153 +19,9 @@ main {
         font-family: constraints.$default-font;
     }
 
-    .home {
-        > div {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        button {
-            height: 13rem;
-            width: 26rem;
-            border: none;
-            background-color: constraints.$yellow;
-            background-image: url('../img/svg-flag.svg');
-            background-position: 3rem center;
-            background-repeat: no-repeat;
-            background-size: 5rem;
-            font-family: constraints.$header-font;
-            font-size: 3rem;
-            font-weight: bold;
-            padding-left: 10rem;
-            border-radius: 1.5rem;
-            text-align: left;
-
-            &:hover {
-                cursor: pointer;
-            }
-        }
-
-        div article {
-            height: 13rem;
-            width: calc(100% - 26rem - 1.5rem);
-
-            h2 {
-                font-size: 1.5rem;
-                font-family: constraints.$header-font;
-                margin-bottom: 1.5rem;
-            }
-
-            > div {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                background-color: constraints.$component-color;
-                border-radius: 1.5rem;
-                padding: 1.5rem;
-                height: calc(100% - 3rem); // minus font height and margin bottom
-                box-sizing: border-box;
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-
-                label {
-                    font-size: 1.4rem;
-                }
-
-                input[type="checkbox"] {
-                    accent-color: constraints.$yellow;
-                }
-
-                input[id="notify"], label[for="gestures"] {
-                    margin-right: 1rem;
-                }
-
-                input[type="range"] {
-                    width: 15.5rem;
-                    accent-color: constraints.$yellow;
-                }
-
-                select {
-                    width: 9rem;
-                    background-color: constraints.$yellow;
-                    border: none;
-                    height: 1.5rem;
-                    border-radius: 0.25rem;
-
-                    &:focus {
-                        outline: none;
-                    }
-                }
-            }
-        }
-
-        > article {
-            height: calc(100% - 14.5rem); // minus height of buttons and margin bottom
-
-            h2 {
-                font-size: 1.5rem;
-                font-family: constraints.$header-font;
-                margin-bottom: 1.5rem;
-            }
-
-            ul {
-                background-color: constraints.$component-color;
-                border-radius: 1.5rem;
-                padding: 1.5rem;
-                height: calc(100% - 3rem); // minus font height and margin bottom
-                box-sizing: border-box;
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;    
-                overflow: scroll;
-
-                li {
-                    display: flex;
-                    justify-content: space-between;
-                    border-bottom: 0.0625rem solid black;
-                    padding: 0.75rem 0;
-                    margin-bottom: 0.25rem;
-
-                    &:last-child {
-                        border-bottom: none;
-                    }
-
-                    h3, p {
-                        display: inline;
-                    }
-
-                    h3 {
-                        font-size: 1.3rem;
-                        font-weight: bold;
-                        margin-right: 1rem;
-                    }
-
-                    em {
-                        @include constraints.label;
-                        margin-right: 0.5rem;
-                    }
-
-                    p {
-                        font-size: 1.2rem;
-                        margin-right: 1rem;
-                        padding-left: 1.65rem;
-                        background-position: left center;
-                        background-repeat: no-repeat;
-                        background-size: 1.2rem;	
-                        opacity: 0.5;
-
-                        &:first-of-type {
-                            background-image: url('../img/svg-cronometer.svg');
-                        }
-
-                        &:last-of-type {
-                            background-image: url('../img/svg-compass.svg');
-                        }
-                    }
-
-                    a {
-                        @include constraints.button;
-                    }
-                }
-            }
-        }
+    h2 {
+        font-size: 1.5rem;
+        font-family: constraints.$header-font;
+        margin-bottom: 1.5rem;
     }
 }

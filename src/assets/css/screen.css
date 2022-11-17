@@ -107,6 +107,196 @@ nav ul .doorlock {
   background-image: url("../img/svg-door.svg");
 }
 
+.home > div {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.home button {
+  height: 13rem;
+  width: 26rem;
+  border: none;
+  background-color: #F0E25D;
+  background-image: url("../img/svg-flag.svg");
+  background-position: 3rem center;
+  background-repeat: no-repeat;
+  background-size: 5rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  padding-left: 10rem;
+  border-radius: 1.5rem;
+  text-align: left;
+}
+.home button:hover {
+  cursor: pointer;
+}
+.home div article {
+  height: 13rem;
+  width: calc(100% - 26rem - 1.5rem);
+}
+.home div article h2 {
+  font-size: 1.5rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  margin-bottom: 1.5rem;
+}
+.home div article > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 3rem);
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.home div article > div label {
+  font-size: 1.4rem;
+}
+.home div article > div input[type=checkbox] {
+  accent-color: #F0E25D;
+}
+.home div article > div input[id=notify], .home div article > div label[for=gestures] {
+  margin-right: 1rem;
+}
+.home div article > div input[type=range] {
+  width: 100%;
+  accent-color: #F0E25D;
+}
+.home div article > div select {
+  width: 9rem;
+  background-color: #F0E25D;
+  border: none;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+}
+.home div article > div select:focus {
+  outline: none;
+}
+.home > article {
+  height: calc(100% - 14.5rem);
+}
+.home > article ul {
+  height: calc(100% - 3rem);
+  overflow: scroll;
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.home > article ul li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.0625rem solid black;
+  padding: 0.75rem 0;
+  margin-bottom: 0.25rem;
+}
+.home > article ul li:last-child {
+  border-bottom: none;
+}
+.home > article ul li h3, .home > article ul li p {
+  display: inline;
+}
+.home > article ul li h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.home > article ul li em {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin-right: 0.5rem;
+}
+.home > article ul li p {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  padding-left: 1.65rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+  opacity: 0.5;
+}
+.home > article ul li p:first-of-type {
+  background-image: url("../img/svg-cronometer.svg");
+}
+.home > article ul li p:last-of-type {
+  background-image: url("../img/svg-compass.svg");
+}
+.home > article ul li a {
+  background-color: #F0E25D;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.history article {
+  height: calc(50% - 0.75rem);
+}
+.history article:first-of-type {
+  margin-bottom: 1.5rem;
+}
+.history article h2 {
+  display: inline-block;
+}
+.history article input {
+  margin-left: auto;
+  margin-right: 0;
+}
+.history article ul {
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  overflow: scroll;
+  height: calc(100% - 3rem);
+}
+.history article ul li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.0625rem solid black;
+  padding: 0.75rem 0;
+  margin-bottom: 0.25rem;
+}
+.history article ul li:last-child {
+  border-bottom: none;
+}
+.history article ul li h3, .history article ul li p {
+  display: inline;
+}
+.history article ul li h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.history article ul li em {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin-right: 0.5rem;
+}
+.history article ul li p {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  padding-left: 1.65rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+  opacity: 0.5;
+}
+
 main {
   display: flex;
   justify-content: space-between;
@@ -123,139 +313,10 @@ main > div {
   box-sizing: border-box;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
-main .home > div {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-main .home button {
-  height: 13rem;
-  width: 26rem;
-  border: none;
-  background-color: #F0E25D;
-  background-image: url("../img/svg-flag.svg");
-  background-position: 3rem center;
-  background-repeat: no-repeat;
-  background-size: 5rem;
-  font-family: "Lexend", Arial, Helvetica, sans-serif;
-  font-size: 3rem;
-  font-weight: bold;
-  padding-left: 10rem;
-  border-radius: 1.5rem;
-  text-align: left;
-}
-main .home button:hover {
-  cursor: pointer;
-}
-main .home div article {
-  height: 13rem;
-  width: calc(100% - 26rem - 1.5rem);
-}
-main .home div article h2 {
+main h2 {
   font-size: 1.5rem;
   font-family: "Lexend", Arial, Helvetica, sans-serif;
   margin-bottom: 1.5rem;
-}
-main .home div article > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #F9F9F9;
-  border-radius: 1.5rem;
-  padding: 1.5rem;
-  height: calc(100% - 3rem);
-  box-sizing: border-box;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
-main .home div article > div label {
-  font-size: 1.4rem;
-}
-main .home div article > div input[type=checkbox] {
-  accent-color: #F0E25D;
-}
-main .home div article > div input[id=notify], main .home div article > div label[for=gestures] {
-  margin-right: 1rem;
-}
-main .home div article > div input[type=range] {
-  width: 15.5rem;
-  accent-color: #F0E25D;
-}
-main .home div article > div select {
-  width: 9rem;
-  background-color: #F0E25D;
-  border: none;
-  height: 1.5rem;
-  border-radius: 0.25rem;
-}
-main .home div article > div select:focus {
-  outline: none;
-}
-main .home > article {
-  height: calc(100% - 14.5rem);
-}
-main .home > article h2 {
-  font-size: 1.5rem;
-  font-family: "Lexend", Arial, Helvetica, sans-serif;
-  margin-bottom: 1.5rem;
-}
-main .home > article ul {
-  background-color: #F9F9F9;
-  border-radius: 1.5rem;
-  padding: 1.5rem;
-  height: calc(100% - 3rem);
-  box-sizing: border-box;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  overflow: scroll;
-}
-main .home > article ul li {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 0.0625rem solid black;
-  padding: 0.75rem 0;
-  margin-bottom: 0.25rem;
-}
-main .home > article ul li:last-child {
-  border-bottom: none;
-}
-main .home > article ul li h3, main .home > article ul li p {
-  display: inline;
-}
-main .home > article ul li h3 {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-right: 1rem;
-}
-main .home > article ul li em {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-size: 0.85rem;
-  color: white;
-  background-color: #5B37DB;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  width: fit-content;
-  margin-right: 0.5rem;
-}
-main .home > article ul li p {
-  font-size: 1.2rem;
-  margin-right: 1rem;
-  padding-left: 1.65rem;
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 1.2rem;
-  opacity: 0.5;
-}
-main .home > article ul li p:first-of-type {
-  background-image: url("../img/svg-cronometer.svg");
-}
-main .home > article ul li p:last-of-type {
-  background-image: url("../img/svg-compass.svg");
-}
-main .home > article ul li a {
-  background-color: #F0E25D;
-  padding: 0.4rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  color: black;
 }
 
 [v-cloak] {
