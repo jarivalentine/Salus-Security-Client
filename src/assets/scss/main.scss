@@ -145,10 +145,10 @@ main {
                         font-size: 1.2rem;
                         margin-right: 1rem;
                         padding-left: 1.65rem;
-                        color: constraints.$gray;
                         background-position: left center;
                         background-repeat: no-repeat;
                         background-size: 1.2rem;	
+                        opacity: 0.5;
 
                         &:first-of-type {
                             background-image: url('../img/svg-cronometer.svg');

@@ -25,6 +25,11 @@ nav {
             height: 1.5rem;
             width: 10rem;
             padding-top: 3.5rem;
+            opacity: 0.5;
+        }
+
+        .active {
+            opacity: 1;
         }
 
         .home {

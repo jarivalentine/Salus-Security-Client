@@ -9,13 +9,17 @@ header {
     display: flex;
     justify-content: space-between;
 
-    > div {
+    > div > div{
         background-image: url('../img/default.png');
         background-position: left center;
         background-repeat: no-repeat;
         background-size: 4rem;
         padding-left: 5rem;
         margin-left: 1.5rem;
+    }
+
+    .hidden {
+        display: none;
     }
 
     p {
@@ -27,12 +31,44 @@ header {
         }
     }
 
-    a {
+    > a {
         background-image: url('../img/svg-wrench.svg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: 3rem;	
         height: 4.25rem;
         width: 4.25rem;
+    }
+
+    ul {
+        background-color: constraints.$gray;
+        position: relative;
+        z-index: 1;
+        width: 16rem;
+        margin: 0.5rem 0 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        box-sizing: border-box;
+        border-radius: 1rem;
+
+        li {
+            width: 100%;
+            font-size: 1.5rem;
+            font-family: constraints.$default-font;
+            padding: 0.75rem 0;
+            border-bottom: 0.0625rem solid white;
+            text-align: center;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            a {
+                width: 100%;
+                text-decoration: none;
+                color: white;
+            }
+        }
     }
 }
