@@ -1,14 +1,13 @@
 export default {
     methods:{
-        goTo(){
-            console.log();
+        goToSettings(){
             location.href='./settings.html';
         }
     },
     template: `
         <div class="lock">
             <h2>Premium Feature</h2>
-            <button @click="goTo">Get subscription</button>
+            <button @click="goToSettings">Get subscription</button>
         </div>
     `
 }
