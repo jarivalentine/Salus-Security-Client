@@ -6,7 +6,7 @@ import subscriptionComponent from '../components/subscriptionLock.js';
 createApp({
     data() {
         return {
-            message: 'Settings page'
+            message: 'subscriptionLock page'
         };
     },
     components: {

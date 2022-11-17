@@ -1,11 +1,14 @@
 export default {
+    methods:{
+        goTo(){
+            console.log();
+            location.href='./settings.html';
+        }
+    },
     template: `
-        <div class="blur">
-            
-        </div>
         <div class="lock">
             <h2>Premium Feature</h2>
-            <button>Get subscription</button>
+            <button @click="goTo">Get subscription</button>
         </div>
     `
 }
