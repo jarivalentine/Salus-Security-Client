@@ -9,6 +9,51 @@ $gray: #898989;
 $yellow: #F0E25D;
 $blue: #5B37DB;
 
+@mixin box {
+    background-color: $component-color;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+@mixin list-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.0625rem solid black;
+    padding: 0.75rem 0;
+    margin-bottom: 0.25rem;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    h3, p {
+        display: inline;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-right: 1rem;
+    }
+
+    em {
+        @include label;
+        margin-right: 0.5rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-right: 1rem;
+        padding-left: 1.65rem;
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: 1.2rem;	
+        opacity: 0.5;
+    }
+}
+
 @mixin tag {
     font-family: $default-font;
     font-size: 1.2rem;

@@ -1,0 +1,31 @@
+@use '../constraints';
+
+.history {
+    
+    article {
+        height: calc(50% - 0.75rem); // minus half of bottom margin
+        
+        &:first-of-type {
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            display: inline-block;
+        }
+
+        input {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        ul {
+            @include constraints.box;
+            overflow: scroll;
+            height: calc(100% - 3rem); // minus font height and margin bottom 
+
+            li {
+                @include constraints.list-item;
+            }
+        }
+    }
+}
