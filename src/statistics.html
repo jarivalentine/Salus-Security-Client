@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="./assets/css/screen.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="assets/js/pages/statistics.js" type="module"></script>
+    <script src="assets/js/pages/endpoints/endpoint-functions.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/api.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <div id="app">
@@ -16,6 +18,7 @@
     <main>
         <nav-component></nav-component>
         <div>
+            <button type="button" @click="allIncidentsThisYear()"> Create incident </button>
             <section>
                 <h2>This year</h2>
                 <strong>300</strong>

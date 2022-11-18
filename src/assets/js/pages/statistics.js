@@ -5,8 +5,16 @@ import navComponent from '../components/nav.js';
 createApp({
     data() {
         return {
-            message: 'Charts page'
+            message: 'Charts page',
+            lat: "",
+            long: ""
         };
+    },
+    methods: {
+        async allIncidentsThisYear(){
+            const allIncidents = await getAllIncidents();
+            console.log(allIncidents.length);
+        },
     },
     components: {
         headerComponent,
