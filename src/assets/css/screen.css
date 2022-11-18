@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
 header {
   width: 100vw;
-  height: 8.5rem;
+  height: 7.5rem;
   display: flex;
-  padding: 3rem 3rem 1.5rem 3rem;
+  padding: 2rem 2rem 1rem 2rem;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -113,7 +113,7 @@ nav ul .doorlock {
   margin-bottom: 1.5rem;
 }
 .home button {
-  height: 13rem;
+  height: 12rem;
   width: 26rem;
   border: none;
   background-color: #F0E25D;
@@ -132,7 +132,7 @@ nav ul .doorlock {
   cursor: pointer;
 }
 .home div article {
-  height: 13rem;
+  height: 12rem;
   width: calc(100% - 26rem - 1.5rem);
 }
 .home div article h2 {
@@ -175,7 +175,7 @@ nav ul .doorlock {
   outline: none;
 }
 .home > article {
-  height: calc(100% - 14.5rem);
+  height: calc(100% - 13.5rem);
 }
 .home > article ul {
   height: calc(100% - 3rem);
@@ -297,16 +297,43 @@ nav ul .doorlock {
   opacity: 0.5;
 }
 
+.maps h1 {
+  font-size: 2rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.maps label {
+  font-size: 1.5rem;
+}
+.maps .container {
+  width: 100%;
+  height: calc(100% - 3rem);
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 0;
+}
+.maps .container .map {
+  height: 100%;
+}
+.maps .container .material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 800, "GRAD" 0, "opsz" 0;
+  font-size: 2.5rem;
+  color: #5B37DB;
+}
+
 main {
   display: flex;
   justify-content: space-between;
-  gap: 1.5rem;
-  padding: 0rem 3rem 3rem 3rem;
+  padding: 0rem 2rem 2rem 2rem;
   box-sizing: border-box;
   height: 100%;
 }
 main > div {
-  width: calc(78vw - 3.75rem);
+  width: calc(78vw - 2rem);
   background-color: #F9F9F9;
   border-radius: 1.5rem;
   padding: 3rem;
@@ -333,7 +360,7 @@ body {
 }
 
 #app {
-  height: calc(100% - 8.5rem);
+  height: calc(100% - 7.5rem);
 }
 
 .tag {
