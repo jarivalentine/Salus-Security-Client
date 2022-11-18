@@ -17,7 +17,7 @@ createApp({
             const incidentsCurrentYear = allIncidents.filter(index => {
                 return new Date().getFullYear() === new Date(index.datetime).getFullYear();
             });
-            console.log(incidentsCurrentYear);
+            this.$refs.totalIncidents.innerHTML = incidentsCurrentYear.length;
 
             await this.percentageOfBystanders();
         },
@@ -36,9 +36,23 @@ createApp({
                 if (index.incident.length !== 0) amount += 1;
             });
 
-            const fraction = parseInt((amount/total).toFixed(2));
-            console.log(fraction);
-        }
+            const fraction = parseFloat((amount/total).toFixed(2))*100;
+            this.displayPieChartBystanders(fraction);
+        },
+        displayPieChartBystanders(fraction){
+            const ctx = document.querySelector("#pie-chart-bystanders").getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['bystanders', 'no bystanders'],
+                    datasets: [{
+                        label: 'Percentage',
+                        data: [fraction, 100],
+                        backgroundColor: ["Lightgrey", "Darkgrey"],
+                    }]
+                },
+            });
+        },
     },
     components: {
         headerComponent,

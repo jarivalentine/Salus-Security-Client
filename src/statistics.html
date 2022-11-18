@@ -5,12 +5,12 @@
     <title>Statistics</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="assets/js/pages/statistics.js" type="module"></script>
-    <script src="assets/js/pages/endpoints/endpoint-functions.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/api.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="assets/js/pages/statistics.js" type="module"></script>
+    <script defer src="assets/js/pages/endpoints/endpoint-functions.js"></script>
+    <script defer src="assets/js/main.js"></script>
+    <script defer src="assets/js/api.js"></script>
 </head>
 <body>
 <div id="app">
@@ -18,11 +18,9 @@
     <main>
         <nav-component></nav-component>
         <div>
-            <button type="button" @click="allIncidentsThisYear()"> Create incident </button>
             <section>
-                <h2>This year</h2>
-                <strong>300</strong>
-                <p>Incidents<em>-66%</em></p>
+                <button type="button" @click="allIncidentsThisYear()">render</button>
+                <h2> This year there are <span ref="totalIncidents"></span> reported incidents </h2>
             </section>
             <section>
                 <h2>Domes</h2>
@@ -33,11 +31,7 @@
             </section>
             <section>
                 <h2>Incidents</h2>
-                <canvas></canvas>
-            </section>
-            <section>
-                <h2>Incident rates</h2>
-                <canvas></canvas>
+                <canvas id="pie-chart-bystanders"></canvas>
             </section>
         </div>
     </main>
