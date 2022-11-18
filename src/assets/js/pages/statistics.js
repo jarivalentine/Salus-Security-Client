@@ -20,6 +20,7 @@ createApp({
             this.$refs.totalIncidents.innerHTML = incidentsCurrentYear.length;
 
             await this.percentageOfBystanders();
+            await this.frequencyOfTypes();
         },
 
         async percentageOfBystanders(){
@@ -39,6 +40,7 @@ createApp({
             const fraction = parseFloat((amount/total).toFixed(2))*100;
             this.displayPieChartBystanders(fraction);
         },
+
         displayPieChartBystanders(fraction){
             const ctx = document.querySelector("#pie-chart-bystanders").getContext('2d');
             new Chart(ctx, {
@@ -53,6 +55,38 @@ createApp({
                 },
             });
         },
+
+        async frequencyOfTypes(){
+            const allIncidents = await getAllIncidents();
+            const countedTypes = {};
+            allIncidents.map(index => {
+                countedTypes[index.type] = (countedTypes[index.type] || 0) + 1 ;
+            });
+            console.log(Object.keys(countedTypes))
+            this.displayBarChartTypes(Object.keys(countedTypes), Object.values(countedTypes));
+        },
+
+        displayBarChartTypes(types, amount){
+            const ctx = document.querySelector("#bar-chart-types").getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: types,
+                    datasets: [{
+                        label: 'Amount: ',
+                        data: amount,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                },
+            });
+        }
     },
     components: {
         headerComponent,
