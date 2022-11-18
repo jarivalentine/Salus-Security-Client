@@ -5,23 +5,34 @@ import navComponent from '../components/nav.js';
 createApp({
     data() {
         return {
-            message: 'Maps page'
+            message: 'Maps page',
+            showError: true
         };
     },
+    methods: {
+        loadMap() {
+            this.showError = false;
+            const map = new ol.Map({
+                target: 'incidents-map',
+                layers: [
+                    new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                    })                  
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([3.2248, 51.2092]),
+                    zoom: 13
+                })
+            });
+        },
+        locationDenied() {
+            this.showError = true;
+        }
+    },
     mounted() {
-        const map = new ol.Map({
-            target: 'map',
-            layers: [
-                new ol.layer.Tile({
-                source: new ol.source.OSM()
-                }),
-                markerLayer,                     
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([4.34878, 50.85045]),
-                zoom: 10
-            })
-        });
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(this.loadMap, this.locationDenied);
+        }
     },
     components: {
         headerComponent,

@@ -297,6 +297,29 @@ nav ul .doorlock {
   opacity: 0.5;
 }
 
+.maps h1 {
+  font-size: 2rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.maps label {
+  font-size: 1.5rem;
+}
+.maps .container {
+  width: 100%;
+  height: calc(100% - 3rem);
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 0;
+}
+.maps .container .map {
+  height: 100%;
+}
+
 main {
   display: flex;
   justify-content: space-between;
