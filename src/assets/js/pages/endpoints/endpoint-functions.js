@@ -22,3 +22,11 @@ async function getAllIncidents(){
     }
 }
 
+async function getAllBystandersFromIncident(incidentId){
+    try {
+        const fetchedResponse = await fetch(`${URL}/api/incidents/${incidentId}/bystanders`);
+        return await fetchedResponse.json();
+    } catch (e) {
+        console.error(e);
+    }
+}
