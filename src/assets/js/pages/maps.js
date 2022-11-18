@@ -10,23 +10,37 @@ createApp({
         };
     },
     methods: {
-        loadMap() {
+        loadMap(currentPosition) {
             this.showError = false;
-            const map = new ol.Map({
-                target: 'incidents-map',
-                layers: [
+            const lat = currentPosition.coords.latitude;
+            const lon = currentPosition.coords.longitude;
+            const center = ol.proj.fromLonLat([lon, lat]);
+            const map = this.createMap(center);
+            map.addOverlay(this.createMarker(center));
+        },
+        locationDenied() {
+            this.showError = true;
+        },
+        createMap(center) {
+            return new ol.Map({
+                target: "incidents-map",
+                layers : [
                     new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                    })                  
+                        source: new ol.source.OSM()
+                    })
                 ],
-                view: new ol.View({
-                    center: ol.proj.fromLonLat([3.2248, 51.2092]),
+                view : new ol.View({
+                    center: center,
                     zoom: 13
                 })
             });
         },
-        locationDenied() {
-            this.showError = true;
+        createMarker(position) {
+            return new ol.Overlay({
+                position: position,
+                element: document.getElementById("marker"),
+                positioning: "bottom-center"
+            });
         }
     },
     mounted() {
