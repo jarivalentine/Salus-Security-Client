@@ -35,8 +35,10 @@ createApp({
                 incidentsWithBystanders.push({"incident": await getAllBystandersFromIncident(i)});
             }
 
-            incidentsWithBystanders.map(index => {
-                if (index.incident.length !== 0) amount += 1;
+            incidentsWithBystanders.forEach(index => {
+                if (index.incident.length !== 0) {
+                    amount += 1;
+                }
             });
 
             const fraction = parseFloat((amount/total).toFixed(2))*100;
@@ -63,7 +65,6 @@ createApp({
             allIncidents.map(index => {
                 countedTypes[index.type] = (countedTypes[index.type] || 0) + 1 ;
             });
-            console.log(Object.keys(countedTypes))
             this.displayBarChartTypes(Object.keys(countedTypes), Object.values(countedTypes));
         },
 

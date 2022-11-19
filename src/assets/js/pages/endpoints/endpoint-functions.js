@@ -20,6 +20,7 @@ async function getAllIncidents(){
     } catch (e) {
         console.error(e);
     }
+    return null;
 }
 
 async function getAllBystandersFromIncident(incidentId){
@@ -29,6 +30,7 @@ async function getAllBystandersFromIncident(incidentId){
     } catch (e) {
         console.error(e);
     }
+    return null;
 }
 
 async function getAllHelpedIncidentsFromUser(userId){
@@ -38,4 +40,5 @@ async function getAllHelpedIncidentsFromUser(userId){
     } catch (e) {
         console.error(e);
     }
+    return null;
 }
