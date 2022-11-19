@@ -6,8 +6,9 @@ createApp({
     data() {
         return {
             message: 'Charts page',
-            lat: "",
-            long: ""
+            incidentsReady: false,
+            pieReady: false,
+            barReady: false,
         };
     },
     methods: {
@@ -17,10 +18,8 @@ createApp({
             const incidentsCurrentYear = allIncidents.filter(index => {
                 return new Date().getFullYear() === new Date(index.datetime).getFullYear();
             });
-            this.$refs.totalIncidents.innerHTML = incidentsCurrentYear.length;
 
-            await this.percentageOfBystanders();
-            await this.frequencyOfTypes();
+            this.$refs.totalIncidents.innerHTML = incidentsCurrentYear.length;
         },
 
         async percentageOfBystanders(){
@@ -87,6 +86,14 @@ createApp({
                 },
             });
         }
+    },
+    async mounted() {
+        await this.allIncidentsThisYear();
+        this.incidentsReady = true;
+        await this.percentageOfBystanders();
+        this.pieReady = true;
+        await this.frequencyOfTypes();
+        this.barReady = true;
     },
     components: {
         headerComponent,

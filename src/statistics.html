@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="./assets/css/screen.css">
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script defer src="assets/js/pages/statistics.js" type="module"></script>
     <script defer src="assets/js/pages/endpoints/endpoint-functions.js"></script>
+    <script defer src="assets/js/pages/statistics.js" type="module"></script>
     <script defer src="assets/js/main.js"></script>
     <script defer src="assets/js/api.js"></script>
 </head>
@@ -17,16 +17,15 @@
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
-        <div>
-            <section>
-                <button type="button" @click="allIncidentsThisYear()">render</button>
+        <div class="statistics">
+            <section v-show="incidentsReady">
                 <h2> This year there are <span ref="totalIncidents"></span> reported incidents </h2>
             </section>
-            <section>
+            <section v-show="pieReady">
                 <h2> Frequency of types </h2>
                 <canvas id="bar-chart-types"></canvas>
             </section>
-            <section>
+            <section v-show="barReady">
                 <h2>Incidents</h2>
                 <canvas id="pie-chart-bystanders"></canvas>
             </section>
