@@ -25,9 +25,13 @@
                 <h2> Frequency of types </h2>
                 <canvas id="bar-chart-types"></canvas>
             </section>
-            <section v-show="barReady">
+            <section v-show="barTypesReady">
                 <h2>Incidents</h2>
                 <canvas id="pie-chart-bystanders"></canvas>
+            </section>
+            <section v-show="barBystandersReady">
+                <h2>Best bystanders</h2>
+                <canvas id="bar-chart-bystanders"></canvas>
             </section>
         </div>
     </main>

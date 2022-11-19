@@ -30,3 +30,12 @@ async function getAllBystandersFromIncident(incidentId){
         console.error(e);
     }
 }
+
+async function getAllHelpedIncidentsFromUser(userId){
+    try {
+        const fetchedResponse = await fetch(`${URL}/api/users/${userId}/incidents/helped`);
+        return await fetchedResponse.json();
+    } catch (e) {
+        console.error(e);
+    }
+}

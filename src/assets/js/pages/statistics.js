@@ -1,3 +1,5 @@
+"use strict";
+
 const { createApp } = Vue;
 import headerComponent from '../components/header.js';
 import navComponent from '../components/nav.js';
@@ -8,7 +10,8 @@ createApp({
             message: 'Charts page',
             incidentsReady: false,
             pieReady: false,
-            barReady: false,
+            barTypesReady: false,
+            barBystandersReady: false,
         };
     },
     methods: {
@@ -39,7 +42,6 @@ createApp({
             const fraction = parseFloat((amount/total).toFixed(2))*100;
             this.displayPieChartBystanders(fraction);
         },
-
         displayPieChartBystanders(fraction){
             const ctx = document.querySelector("#pie-chart-bystanders").getContext('2d');
             new Chart(ctx, {
@@ -85,6 +87,38 @@ createApp({
                     }
                 },
             });
+        },
+        async bestBystanders(){
+            const amountOfHelpedIncidents = [];
+            const listOfBystanders = [];
+            for (const user of users) {
+                const helpedIncidents = await getAllHelpedIncidentsFromUser(user);
+                amountOfHelpedIncidents.push(helpedIncidents.length);
+                listOfBystanders.push(user);
+            }
+            this.displayBarChartBystanders(listOfBystanders, amountOfHelpedIncidents);
+        },
+
+        displayBarChartBystanders(listOfBystanders, amountOfHelpedIncidents) {
+            const ctx = document.querySelector("#bar-chart-bystanders").getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: listOfBystanders,
+                    datasets: [{
+                        label: 'Amount: ',
+                        data: amountOfHelpedIncidents,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                },
+            });
         }
     },
     async mounted() {
@@ -93,7 +127,9 @@ createApp({
         await this.percentageOfBystanders();
         this.pieReady = true;
         await this.frequencyOfTypes();
-        this.barReady = true;
+        this.barTypesReady = true;
+        await this.bestBystanders();
+        this.barBystandersReady = true;
     },
     components: {
         headerComponent,
