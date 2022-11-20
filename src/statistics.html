@@ -18,18 +18,24 @@
     <main>
         <nav-component></nav-component>
         <div class="statistics">
-            <section v-show="incidentsReady">
-                <h2> This year there are <span ref="totalIncidents"></span> reported incidents </h2>
+            <section>
+            <!-- <section v-show="incidentsReady"> REMOVE SECTION ABOVE -->
+                <h2> This year there are <span>7</span><!-- <span ref="totalIncidents"></span>  REMOVE SPAN LEFT --> reported incidents </h2>
             </section>
-            <section v-show="pieReady">
+
+            <section>
+            <!-- <section v-show="pieReady"> REMOVE SECTION ABOVE -->
                 <h2> Frequency of types </h2>
                 <canvas id="bar-chart-types"></canvas>
             </section>
-            <section v-show="barTypesReady">
+            <section>
+                <!-- <section v-show="barTypesReady"> REMOVE SECTION ABOVE -->
                 <h2>Incidents</h2>
                 <canvas id="pie-chart-bystanders"></canvas>
             </section>
-            <section v-show="barBystandersReady">
+
+            <section>
+                <!-- <section v-show="barBystandersReady"> REMOVE SECTION ABOVE -->
                 <h2>Best bystanders</h2>
                 <canvas id="bar-chart-bystanders"></canvas>
             </section>
