@@ -4,7 +4,7 @@ export default {
             firstname: 'Jarne Van Parys',
             tag: 'Gardian Angel',
             isActive: false
-        }
+        };
     },
     methods: {
         toggleMenu() {
@@ -28,4 +28,4 @@ export default {
             <a href="./settings.html"></a>
         </header>
     `
-}
+};
