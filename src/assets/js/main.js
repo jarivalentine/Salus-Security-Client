@@ -9,3 +9,7 @@ function loadConfig() {
             api = `${config.host ? config.host + '/': ''}${config.group ? config.group + '/' : ''}api/`;
         });
 }
+
+function login(id) {
+    return 'look ma, no hands!';
+}
