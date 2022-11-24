@@ -5,6 +5,7 @@
     <title>Flag</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
+    <script defer src="assets/js/pages/endpoints/endpoint-functions.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="assets/js/pages/flag.js" type="module"></script>
     <script src="assets/js/main.js"></script>
@@ -16,34 +17,33 @@
     <main>
         <nav-component></nav-component>
         <div>
-            <h1>auto rec by a.i.</h1>
+            <h1>Auto recorded by Salus Security AI &#169;</h1>
             <section>
-                <h2>Type</h2>
-                <div>
-                    <em>label 1</em>
-                    <em>label 2</em>
-                    <em>label 3</em>
+                <h2>{{incidentType}}</h2>
+                <div v-for="label in incidentLabels">
+                    <em>{{label}} </em>
                 </div>
             </section>
-            <section>
-                <h2>Status</h2>
-                <ul>
+
+            <section v-show="informationReady">
+                <h2>Bystanders</h2>
+                <ul v-for="bystander in incidentBystanders">
+                    <li><span>{{bystander}}</span></li>
                 </ul>
             </section>
-            <section>
-                <h2>Contributors</h2>
-                <ul>
-                    <template>
-                        <li><span></span></li>
-                    </template>
+
+            <section v-show="informationReady">
+                <h2>Aggressors</h2>
+                <ul  v-for="aggressor in incidentAggressors">
+                    <li><span>{{aggressor}}</span></li>
                 </ul>
             </section>
-            <section>
-                <h2>Contributors</h2>
+
+            <section v-show="informationReady">
+                <h2> Additional Information </h2>
                 <ul>
-                    <template>
-                        <li><span></span></li>
-                    </template>
+                    <li><span>{{incidentValidated}} &#169;</span></li>
+                    <li><span>Date: {{incidentDatetime}}</span></li>
                 </ul>
             </section>
         </div>

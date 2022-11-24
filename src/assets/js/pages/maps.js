@@ -6,7 +6,7 @@ createApp({
     data() {
         return {
             message: 'Maps page',
-            showError: true
+            showError: false
         };
     },
     methods: {
@@ -19,7 +19,7 @@ createApp({
             map.addOverlay(this.createMarker(center));
         },
         locationDenied() {
-            this.showError = true;
+            this.showError = !this.showError;
         },
         createMap(center) {
             return new ol.Map({
