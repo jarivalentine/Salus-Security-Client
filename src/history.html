@@ -22,13 +22,12 @@
                 <ul v-for="incident in flaggedIncidents">
                         <li>
                             <div>
-                                <h3>Type</h3>
-                                <em class="label">Label 1</em>
-                                <em class="label">Label 2</em>
+                                <h3>{{incident.type}}</h3>
+                                <em class="label" v-for="label in incident.labels">{{label}}</em>
                             </div>
                             <div>
-                                <p>10/10/2022</p>
-                                <p>09:31</p>
+                                <p>{{new Date(incident.datetime).toLocaleDateString()}}</p>
+                                <p>{{new Date(incident.datetime).toLocaleTimeString()}} </p>
                             </div>
                         </li>
                 </ul>

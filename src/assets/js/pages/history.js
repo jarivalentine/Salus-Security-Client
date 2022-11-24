@@ -16,7 +16,7 @@ createApp({
     },
     methods: {
         async dataFromIncidents(){
-            console.log(await getAllIncidentsFromUser(localStorage.getItem("userId")));
+            this.flaggedIncidents = await getAllIncidentsFromUser(localStorage.getItem("userId"));
         },
         async dataFromIncidentHelped(){
 
