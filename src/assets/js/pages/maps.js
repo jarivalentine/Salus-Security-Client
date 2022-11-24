@@ -60,10 +60,16 @@ createApp({
             const incident = await getIncidents(e.target.dataset.id);
             const $popup = document.createElement('div');
             $popup.classList.add('popup');
+            console.log(incident);
+            let labels = '';
+            incident.labels.forEach(label => {
+                labels += `<li>${label}</span>`;
+            });
             $popup.innerHTML = `
-                <p>${incident.type}</p>`;
-            $popup.style.left = e.clientX - 95 + 'px';
-            $popup.style.top = e.clientY - 120 + 'px';
+                <p>${incident.type}</p>
+                <ul>${labels}</ul>`;
+            $popup.style.right = '0px';
+            $popup.style.top = '0px';
             document.querySelector('#container').appendChild($popup);
             this.drawRoute(incident);
         },

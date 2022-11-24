@@ -318,6 +318,7 @@ nav ul .doorlock {
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   padding: 0;
+  position: relative;
 }
 .maps #container .map {
   height: 100%;
@@ -345,13 +346,26 @@ nav ul .doorlock {
 }
 .maps #container .popup {
   width: 12rem;
-  height: 6rem;
   position: absolute;
   background-color: #F9F9F9;
-  border-radius: 1.5rem;
+  border-radius: 0.75rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   padding: 1rem;
   box-sizing: border-box;
+}
+.maps #container .popup p {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+.maps #container .popup li {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin: 0 0.2rem 0.2rem 0;
 }
 .maps #container .error {
   font-size: 1.5rem;
