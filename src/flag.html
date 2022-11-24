@@ -16,34 +16,25 @@
     <main>
         <nav-component></nav-component>
         <div>
-            <h1>auto rec by a.i.</h1>
+            <h1>Auto recorded by Salus Security AI &#169;</h1>
             <section>
-                <h2>Type</h2>
+                <h2>{{incidentType}}</h2>
                 <div>
-                    <em>label 1</em>
-                    <em>label 2</em>
-                    <em>label 3</em>
+                    <em v-for="label in incidentLabels">{{label}}</em>
                 </div>
             </section>
+
             <section>
-                <h2>Status</h2>
+                <h2>Bystanders</h2>
                 <ul>
+                    <li v-for="bystander in incidentBystanders"><span>{{bystander}}</span></li>
                 </ul>
             </section>
+
             <section>
-                <h2>Contributors</h2>
+                <h2>Aggressors</h2>
                 <ul>
-                    <template>
-                        <li><span></span></li>
-                    </template>
-                </ul>
-            </section>
-            <section>
-                <h2>Contributors</h2>
-                <ul>
-                    <template>
-                        <li><span></span></li>
-                    </template>
+                    <li v-for="aggressor in incidentAggressors"><span>{{aggressor}}</span></li>
                 </ul>
             </section>
         </div>
