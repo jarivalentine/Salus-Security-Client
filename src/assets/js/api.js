@@ -1,11 +1,3 @@
-function poc() {
-    const messageBody = {
-        "quote": "some quote"
-    };
-    get("quotes/1");
-    post("quotes", messageBody);
-    put("quotes/1", messageBody);
-}
 
 function get(uri, successHandler = logJson, failureHandler = logError) {
     const request = new Request(api + uri, {
