@@ -318,7 +318,6 @@ nav ul .doorlock {
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   padding: 0;
-  position: relative;
 }
 .maps #container .map {
   height: 100%;
@@ -344,8 +343,15 @@ nav ul .doorlock {
 .maps #container .flag:hover {
   cursor: pointer;
 }
-.maps #container .hidden {
-  display: none;
+.maps #container .popup {
+  width: 12rem;
+  height: 6rem;
+  position: absolute;
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 .maps #container .error {
   font-size: 1.5rem;

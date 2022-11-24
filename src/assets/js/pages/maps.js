@@ -7,12 +7,16 @@ createApp({
         return {
             message: 'Maps page',
             showError: false,
+            map: null,
+            myLocation: null,
+            routeLayer: null
         };
     },
     methods: {
         loadMap(incidents, location) {
+            this.myLocation = location;
             const center = ol.proj.fromLonLat([location.coords.longitude, location.coords.latitude]); 
-            const map = new ol.Map({
+            this.map = new ol.Map({
                 target: 'incidents-map',
                 layers : [
                     new ol.layer.Tile({
@@ -24,10 +28,10 @@ createApp({
                     zoom: 12
                 })
             });
-            map.addOverlay(this.createMarker(center));
+            this.map.addOverlay(this.createMarker(center));
             incidents.forEach(incident => {
                 const location = ol.proj.fromLonLat([incident.latitude, incident.longitude]);
-                map.addOverlay(this.createMarker(location, incident.id))
+                this.map.addOverlay(this.createMarker(location, incident.id))
             });
             this.loaded = true;
         },
@@ -49,8 +53,44 @@ createApp({
         locationDenied() {
             this.showError = true;
         },
-        clickFlag(e) {
-            console.log(e.target.dataset.id);
+        async clickFlag(e) {
+            document.querySelectorAll('.popup').forEach(box => {
+                box.remove();
+            });
+            const incident = await getIncidents(e.target.dataset.id);
+            const $popup = document.createElement('div');
+            $popup.classList.add('popup');
+            $popup.innerHTML = `
+                <p>${incident.type}</p>`;
+            $popup.style.left = e.clientX - 95 + 'px';
+            $popup.style.top = e.clientY - 120 + 'px';
+            document.querySelector('#container').appendChild($popup);
+            this.drawRoute(incident);
+        },
+        async drawRoute(incident) {
+            const startlong = this.myLocation.coords.longitude;
+            const startlat = this.myLocation.coords.latitude;
+            const endlong = incident.latitude;
+            const endlat = incident.longitude;
+            getRoute(startlong, startlat, endlong, endlat).then(route => {
+                this.map.removeLayer(this.routeLayer);
+                const polyline = route.geometry.coordinates.map(el => ol.proj.fromLonLat(el));
+                this.routeLayer = new ol.layer.Vector({
+                    source:  new ol.source.Vector({
+                        features: [ new ol.Feature({
+                            type: 'route',
+                            geometry: new ol.geom.LineString(polyline)
+                        })]
+                    }),
+                    style: new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            width: 6,
+                            color: [91, 55, 219, 0.5]
+                        })
+                    })
+                })
+                this.map.addLayer(this.routeLayer);
+            });
         }
     },
     mounted() {

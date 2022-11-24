@@ -2,6 +2,9 @@
 
 const URL = "https://project-ii.ti.howest.be/mars-11";
 
+const API_KEY = "5b3ce3597851110001cf6248904fbdec39724aebbac4826fabeb415a";
+const OPENROUTEBASEURL = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${API_KEY}`;
+
 const users = ['1989-01-28_AL',
                 '1992-02-04_SH',
                 '1997-04-18_CB',
@@ -13,9 +16,30 @@ const users = ['1989-01-28_AL',
                 '1976-11-09_MA',
                 '1978-12-22_JVD'];
 
+async function getRoute(startlong, startlat, endlong, endlat) {
+    try {
+        const response = await fetch(`${OPENROUTEBASEURL}&start=${startlong},${startlat}&end=${endlong},${endlat}`);
+        const result = await response.json();
+        return result.features[0];
+    } catch (e) {
+        console.error(e);
+    }
+    return null;
+}
+
 async function getAllIncidents(){
 	try {
         const fetchedResponse = await fetch(`${URL}/api/incidents`);
+        return await fetchedResponse.json();
+    } catch (e) {
+        console.error(e);
+    }
+    return null;
+}
+
+async function getIncidents(id) {
+    try {
+        const fetchedResponse = await fetch(`${URL}/api/incidents/${id}`);
         return await fetchedResponse.json();
     } catch (e) {
         console.error(e);
