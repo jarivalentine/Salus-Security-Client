@@ -19,7 +19,7 @@
         <nav-component></nav-component>
         <div class="home">
             <div>
-                <button @click="checkLocationPermission()">Flag<br>Incident</button>
+                <button @click="checkPermissionForCreatingFlag()">Flag<br>Incident</button>
                 <article>
                     <h2>Incident settings</h2>
                     <div>
@@ -57,7 +57,7 @@
                         </div>
                         <div>
                             <p>{{calculateDates(incident)["hours"]}}h {{calculateDates(incident)["minutes"]}}m {{calculateDates(incident)["seconds"]}}s ago</p>
-                            <p>1000m away</p>
+                            <p> toBeImplemented m away</p>
                             <a @click="storeIncident(incident)" href="./route.html">View Route</a>
                         </div>
                     </li>
