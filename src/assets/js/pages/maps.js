@@ -6,63 +6,51 @@ createApp({
     data() {
         return {
             message: 'Maps page',
-            showError: true,
-            loaded: false,
+            showError: false,
         };
     },
     methods: {
         loadMap(incidents, location) {
-            this.showError = false;
-            const lat = location.coords.latitude;
-            const lon = location.coords.longitude;
-            const center = ol.proj.fromLonLat([lon, lat]); 
-            const [incidentsMarkers, IncidentsMarkerVectors] = this.createIncidentMarkers(incidents)
-            const myMarker = this.createMyMarker(center);
+            const center = ol.proj.fromLonLat([location.coords.longitude, location.coords.latitude]); 
             const map = new ol.Map({
                 target: 'incidents-map',
-                layers: [
+                layers : [
                     new ol.layer.Tile({
                         source: new ol.source.OSM()
-                    }), 
-                    incidentsMarkers
+                    })
                 ],
-                view: new ol.View({
-                    center: ol.proj.fromLonLat(center),
-                    zoom: 10
+                view : new ol.View({
+                    center: center,
+                    zoom: 12
                 })
             });
-            const bounds = IncidentsMarkerVectors.getExtent();
-            map.getView().fit(bounds, {padding: [35, 10, 10, 10]});
-            map.addOverlay(myMarker);
+            map.addOverlay(this.createMarker(center));
+            incidents.forEach(incident => {
+                const location = ol.proj.fromLonLat([incident.latitude, incident.longitude]);
+                map.addOverlay(this.createMarker(location, incident.id))
+            });
             this.loaded = true;
         },
-        createIncidentMarkers(incidents) {
-            const markers = incidents.map(incident => new ol.Feature({
-                type: 'marker',
-                geometry: new ol.geom.Point(ol.proj.fromLonLat([incident.latitude, incident.longitude]))
-            }));
-            const markerVectors = new ol.source.Vector({
-                features: markers
-            });        
-            return [new ol.layer.Vector({
-                source: markerVectors,
-                style: new ol.style.Style({
-                    image: new ol.style.Icon({
-                        src: "assets/img/svg-flag.svg",
-                        anchor: [0.5, 1]
-                    })
-                }) 
-            }), markerVectors];  
-        },
-        createMyMarker(position) {
+        createMarker(position, incidentId) {
+            const $marker = document.createElement('div');
+            if (incidentId) {
+                $marker.classList.add('flag');
+                $marker.addEventListener('click', this.clickFlag);
+                $marker.dataset.id = incidentId;
+            } 
+            else $marker.classList.add('marker');
+            document.querySelector('#container').appendChild($marker);
             return new ol.Overlay({
                 position: position,
-                element: document.getElementById("marker"),
+                element: $marker,
                 positioning: "bottom-center"
             });
         } ,
         locationDenied() {
             this.showError = true;
+        },
+        clickFlag(e) {
+            console.log(e.target.dataset.id);
         }
     },
     mounted() {

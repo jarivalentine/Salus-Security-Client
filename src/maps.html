@@ -19,10 +19,9 @@
         <nav-component></nav-component>
         <div class="maps">
             <h1>Safety map</h1>
-            <div class="container">
+            <div id="container">
                 <p v-if="showError" class="error">Share your location to view the map</p>
                 <div id="incidents-map" class="map"></div>
-                <span :class="{ hidden: !loaded }" id="marker" class="material-symbols-outlined">person_pin_circle</span>
             </div>
         </div>
     </main>

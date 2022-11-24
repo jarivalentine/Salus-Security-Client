@@ -8,13 +8,16 @@ header {
   box-sizing: border-box;
   justify-content: space-between;
 }
-header > div > div {
+header #menu {
   background-image: url("../img/default.png");
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 4rem;
   padding-left: 5rem;
   margin-left: 1.5rem;
+}
+header #menu:hover {
+  cursor: pointer;
 }
 header .hidden {
   display: none;
@@ -50,7 +53,6 @@ header ul li {
   width: 100%;
   font-size: 1.5rem;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  padding: 0.75rem 0;
   border-bottom: 0.0625rem solid white;
   text-align: center;
 }
@@ -58,7 +60,9 @@ header ul li:last-child {
   border-bottom: none;
 }
 header ul li a {
+  display: block;
   width: 100%;
+  padding: 0.75rem 0;
   text-decoration: none;
   color: white;
 }
@@ -305,7 +309,7 @@ nav ul .doorlock {
 .maps label {
   font-size: 1.5rem;
 }
-.maps .container {
+.maps #container {
   width: 100%;
   height: calc(100% - 3rem);
   background-color: #F9F9F9;
@@ -314,21 +318,36 @@ nav ul .doorlock {
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   padding: 0;
+  position: relative;
 }
-.maps .container .map {
+.maps #container .map {
   height: 100%;
   border-radius: 0.75rem;
   overflow: hidden;
 }
-.maps .container .material-symbols-outlined {
-  font-variation-settings: "FILL" 1, "wght" 800, "GRAD" 0, "opsz" 0;
-  font-size: 2.5rem;
-  color: #5B37DB;
+.maps #container .marker {
+  background-image: url("../img/pin.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 2rem;
+  height: 2rem;
+  width: 2rem;
 }
-.maps .container .hidden {
+.maps #container .flag {
+  background-image: url("../img/svg-flag.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.maps #container .flag:hover {
+  cursor: pointer;
+}
+.maps #container .hidden {
   display: none;
 }
-.maps .container .error {
+.maps #container .error {
   font-size: 1.5rem;
   font-weight: bold;
   color: red;
