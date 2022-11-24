@@ -20,12 +20,20 @@ function loadConfig() {
         });
 }
 
-function login(userId){
-    const userIdLength = 13;
-    const invalid = "invalid userId";
-    if (userId.length !== userIdLength || !users.includes(userId)){
+async function login(userId){
+    const invalid = "userId not recognized";
+    const valid = `logged is as user: ${userId}`;
+    if (!await validUserId(userId)){
         console.log(invalid);
         return;
     }
     localStorage.setItem("userId", userId);
+    console.log(valid);
+}
+
+async function validUserId(userId){
+    const userIds = [];
+    const users = await getAllUsers();
+    users.map(index => userIds.push(index.id));
+    return userIds.includes(userId);
 }

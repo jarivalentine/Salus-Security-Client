@@ -15,7 +15,8 @@ createApp({
           const lat = positions[0];
           const long = positions[1];
           const incident = await createIncident(user, lat, long);
-          console.log(incident);
+          localStorage.setItem("incident", JSON.stringify(incident));
+          window.location.href = 'flag.html';
       },
         generateRandomLocation(location){
           const tempLat = parseFloat(location.coords.latitude.toFixed(1));

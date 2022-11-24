@@ -91,8 +91,11 @@ createApp({
         },
         async bestBystanders(){
             const amountOfHelpedIncidents = [];
+            const userIds = [];
             const listOfBystanders = [];
-            for (const user of users) {
+            const users = await getAllUsers();
+            users.map(index => userIds.push(index.id));
+            for (const user of userIds) {
                 const helpedIncidents = await getAllHelpedIncidentsFromUser(user);
                 amountOfHelpedIncidents.push(helpedIncidents.length);
                 listOfBystanders.push(user);
