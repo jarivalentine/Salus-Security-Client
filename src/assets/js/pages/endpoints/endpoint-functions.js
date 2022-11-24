@@ -33,6 +33,16 @@ async function getAllBystandersFromIncident(incidentId){
     return null;
 }
 
+async function getAllAggressorsFromIncident(incidentId){
+    try {
+        const fetchedResponse = await fetch(`${URL}/api/incidents/${incidentId}/aggressors`);
+        return await fetchedResponse.json();
+    } catch (e) {
+        console.error(e);
+    }
+    return null;
+}
+
 async function getAllHelpedIncidentsFromUser(userId){
     try {
         const fetchedResponse = await fetch(`${URL}/api/users/${userId}/incidents/helped`);

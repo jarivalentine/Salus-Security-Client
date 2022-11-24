@@ -5,6 +5,7 @@
     <title>Flag</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
+    <script defer src="assets/js/pages/endpoints/endpoint-functions.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="assets/js/pages/flag.js" type="module"></script>
     <script src="assets/js/main.js"></script>
@@ -19,22 +20,29 @@
             <h1>Auto recorded by Salus Security AI &#169;</h1>
             <section>
                 <h2>{{incidentType}}</h2>
-                <div>
-                    <em v-for="label in incidentLabels">{{label}}</em>
+                <div v-for="label in incidentLabels">
+                    <em>{{label}} </em>
                 </div>
             </section>
 
-            <section>
+            <section v-show="informationReady">
                 <h2>Bystanders</h2>
-                <ul>
-                    <li v-for="bystander in incidentBystanders"><span>{{bystander}}</span></li>
+                <ul v-for="bystander in incidentBystanders">
+                    <li><span>{{bystander}}</span></li>
                 </ul>
             </section>
 
-            <section>
+            <section v-show="informationReady">
                 <h2>Aggressors</h2>
-                <ul>
-                    <li v-for="aggressor in incidentAggressors"><span>{{aggressor}}</span></li>
+                <ul  v-for="aggressor in incidentAggressors">
+                    <li><span>{{aggressor}}</span></li>
+                </ul>
+            </section>
+
+            <section v-show="informationReady">
+                <h2> Additional Information </h2>
+                <ul  v-for="info in extraInformation">
+                    <li><span>{{info}}</span></li>
                 </ul>
             </section>
         </div>
