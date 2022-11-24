@@ -2,55 +2,38 @@
 
 const URL = "https://project-ii.ti.howest.be/mars-11";
 
-
-async function getAllUsers(){
+async function get(url){
     try {
-        const fetchedResponse = await fetch(`${URL}/api/users`);
+        const fetchedResponse = await fetch(`${url}`);
         return await fetchedResponse.json();
     } catch (e) {
         console.error(e);
     }
     return null;
+}
+
+async function getAllUsers(){
+    return get(`${URL}/api/users`);
 }
 
 async function getAllIncidents(){
-	try {
-        const fetchedResponse = await fetch(`${URL}/api/incidents`);
-        return await fetchedResponse.json();
-    } catch (e) {
-        console.error(e);
-    }
-    return null;
+	return get(`${URL}/api/incidents`);
+}
+
+async function getAllIncidentsFromUser(userId){
+    return get(`${URL}/api/users/${userId}/incidents`);
 }
 
 async function getAllBystandersFromIncident(incidentId){
-    try {
-        const fetchedResponse = await fetch(`${URL}/api/incidents/${incidentId}/bystanders`);
-        return await fetchedResponse.json();
-    } catch (e) {
-        console.error(e);
-    }
-    return null;
+    return get(`${URL}/api/incidents/${incidentId}/bystanders`);
 }
 
 async function getAllAggressorsFromIncident(incidentId){
-    try {
-        const fetchedResponse = await fetch(`${URL}/api/incidents/${incidentId}/aggressors`);
-        return await fetchedResponse.json();
-    } catch (e) {
-        console.error(e);
-    }
-    return null;
+    return get(`${URL}/api/incidents/${incidentId}/aggressors`);
 }
 
 async function getAllHelpedIncidentsFromUser(userId){
-    try {
-        const fetchedResponse = await fetch(`${URL}/api/users/${userId}/incidents/helped`);
-        return await fetchedResponse.json();
-    } catch (e) {
-        console.error(e);
-    }
-    return null;
+    return get(`${URL}/api/users/${userId}/incidents/helped`);
 }
 
 function createBody(reporterId, latitude, longitude) {

@@ -34,7 +34,16 @@ createApp({
             } else {
                 this.incidentValidated = "This incident is deemed invalid by the Salus Security AI";
             }
-            this.incidentDatetime = this.incident["datetime"];
+            this.incidentDatetime = this.displayDate(this.incident["datetime"]);
+        },
+        displayDate(date){
+            const year = new Date(date).getFullYear();
+            const month = new Date(date).getMonth();
+            const day = new Date(date).getDay();
+            const hours = new Date(date).getHours();
+            const minutes = new Date(date).getMinutes();
+            const seconds = new Date(date).getSeconds();
+            return `${day}/${month}/${year} on ${hours}:${minutes}:${seconds}`;
         },
         presentUsers(users){
             const listOfUsers = [];
