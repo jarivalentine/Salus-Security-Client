@@ -5,36 +5,39 @@
     <title>Statistics</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="assets/js/pages/endpoints/endpoint-functions.js"></script>
     <script src="assets/js/pages/statistics.js" type="module"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/api.js"></script>
+    <script defer src="assets/js/main.js"></script>
+    <script defer src="assets/js/api.js"></script>
 </head>
 <body>
 <div id="app">
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
-        <div>
+        <div class="statistics">
             <section>
-                <h2>This year</h2>
-                <strong>300</strong>
-                <p>Incidents<em>-66%</em></p>
+            <!-- <section v-show="incidentsReady"> REMOVE SECTION ABOVE -->
+                <h2> This year there are <span>7</span><!-- <span ref="totalIncidents"></span>  REMOVE SPAN LEFT --> reported incidents </h2>
+            </section>
+
+            <section>
+            <!-- <section v-show="pieReady"> REMOVE SECTION ABOVE -->
+                <h2> Frequency of types </h2>
+                <canvas id="bar-chart-types"></canvas>
             </section>
             <section>
-                <h2>Domes</h2>
-                <ol>
-                    <li>Starbase<span>20%</span></li>
-                </ol>
-                <p>incident %</p>
-            </section>
-            <section>
+                <!-- <section v-show="barTypesReady"> REMOVE SECTION ABOVE -->
                 <h2>Incidents</h2>
-                <canvas></canvas>
+                <canvas id="pie-chart-bystanders"></canvas>
             </section>
+
             <section>
-                <h2>Incident rates</h2>
-                <canvas></canvas>
+                <!-- <section v-show="barBystandersReady"> REMOVE SECTION ABOVE -->
+                <h2>Best bystanders</h2>
+                <canvas id="bar-chart-bystanders"></canvas>
             </section>
         </div>
     </main>
