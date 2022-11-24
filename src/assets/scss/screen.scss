@@ -1,6 +1,7 @@
 @use 'header';
 @use 'nav';
 @use 'main';
+@use 'subscriptionLock';
 @use 'constraints';
 
 [v-cloak] {
