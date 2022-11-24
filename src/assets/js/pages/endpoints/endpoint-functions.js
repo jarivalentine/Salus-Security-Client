@@ -42,3 +42,32 @@ async function getAllHelpedIncidentsFromUser(userId){
     }
     return null;
 }
+
+function createBody(reporterId, latitude, longitude) {
+    return {
+        "reporterId": reporterId,
+        "latitude": latitude,
+        "longitude": longitude
+    }
+}
+
+async function createIncident(reporterId, latitude, longitude){
+    const options = createOptionsPost(createBody(reporterId, latitude, longitude));
+    try {
+        const fetchedResponse = await fetch(`${URL}/api/incidents`, options);
+        return await fetchedResponse.json();
+    } catch (e) {
+        console.error(e);
+    }
+    return null;
+}
+
+function createOptionsPost(body){
+    return {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json;'
+        },
+        body: JSON.stringify(body)
+    }
+}

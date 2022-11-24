@@ -5,6 +5,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
+    <script defer src="assets/js/pages/endpoints/endpoint-functions.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="assets/js/pages/index.js" type="module"></script>
     <script src="assets/js/main.js"></script>
@@ -18,7 +19,7 @@
         <nav-component></nav-component>
         <div class="home">
             <div>
-                <button>Flag<br>Incident</button>
+                <button @click="checkLocationPermission()">Flag<br>Incident</button>
                 <article>
                     <h2>Incident settings</h2>
                     <div>
@@ -35,11 +36,17 @@
                         </div>
                         <div>
                             <label for="gestures">Gestures</label>
-                            <select id="gestures"></select>
+                            <select id="gestures">
+                                <option value="flick wrist"> Flick Wrist </option>
+                                <option value="shake wrist"> Shake Wrist </option>
+                                <option value="scream activation"> Scream activation </option>
+                                <option value="double tap"> Double Tap </option>
+                            </select>
                         </div>
                     </div>
                 </article>
             </div>
+            <!-- <p v-if="showError" class="error">Share your location to view the map</p> -->
             <article>
                 <h2>Notifications</h2>
                 <ul>

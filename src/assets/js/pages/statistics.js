@@ -52,7 +52,7 @@ createApp({
                     labels: ['bystanders', 'no bystanders'],
                     datasets: [{
                         label: 'Percentage',
-                        data: [fraction, 100],
+                        data: [fraction, 100-fraction],
                         backgroundColor: ["Lightgrey", "Darkgrey"],
                     }]
                 },
