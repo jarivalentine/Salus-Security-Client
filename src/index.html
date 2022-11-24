@@ -47,81 +47,18 @@
                 </article>
             </div>
             <p v-if="showError" class="error">Share your location to view the map</p>
-            <article>
+            <article v-show="incidentsReady">
                 <h2>Notifications</h2>
                 <ul>
-                    <!-- <template> -->
-                        <li>
-                            <div>
-                                <h3>Type</h3>
-                                <em class="label">Label 1</em>
-                                <em class="label">Label 2</em>
-                            </div>
-                            <div>
-                                <p>30s ago</p>
-                                <p>1000m away</p>
-                                <a href="./route.html">View Route</a>
-                            </div>
-                        </li>
-
-                    <li>
+                    <li v-for="incident in allIncidents">
                         <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
+                            <h3>{{incident.type}}</h3>
+                            <em class="label" v-for="label in incident.labels">{{label}}</em>
                         </div>
                         <div>
-                            <p>30s ago</p>
+                            <p>{{calculateDates(incident)["hours"]}}h {{calculateDates(incident)["minutes"]}}m {{calculateDates(incident)["seconds"]}}s ago</p>
                             <p>1000m away</p>
-                            <a href="./route.html">View Route</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>30s ago</p>
-                            <p>1000m away</p>
-                            <a href="./route.html">View Route</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>30s ago</p>
-                            <p>1000m away</p>
-                            <a href="./route.html">View Route</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>30s ago</p>
-                            <p>1000m away</p>
-                            <a href="./route.html">View Route</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>30s ago</p>
-                            <p>1000m away</p>
-                            <a href="./route.html">View Route</a>
+                            <a @click="storeIncident(incident)" href="./route.html">View Route</a>
                         </div>
                     </li>
                 </ul>

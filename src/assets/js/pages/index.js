@@ -6,6 +6,9 @@ createApp({
     data() {
         return {
             message: 'Home page',
+            incidentsReady: false,
+            allIncidents: [],
+            dates: [],
             showError: false
         };
     },
@@ -40,6 +43,32 @@ createApp({
                 this.showError = !this.showError;
             }
         },
+
+        // notifications section
+
+        async displayNotifications(){
+          this.allIncidents = await getAllIncidents();
+          this.allIncidents.reverse();
+        },
+
+        calculateDates(incident){
+          const hours = new Date().getHours() - new Date(incident["datetime"]).getHours();
+          const minutes = new Date().getMinutes() - new Date(incident["datetime"]).getMinutes();
+          const seconds = Math.abs(new Date(incident["datetime"]).getSeconds() - new Date().getSeconds());
+          return {
+              "hours": hours,
+              "minutes": minutes,
+              "seconds": seconds,
+          };
+        },
+
+        storeIncident(incident){
+          localStorage.setItem("incident-route", JSON.stringify(incident));
+        }
+    },
+    async mounted(){
+        await this.displayNotifications();
+        this.incidentsReady = true;
     },
     components: {
         headerComponent,
