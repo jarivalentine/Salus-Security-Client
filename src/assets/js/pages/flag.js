@@ -12,6 +12,8 @@ createApp({
             incidentBystanders: [],
             incidentAggressors: [],
             extraInformation: [],
+            incidentDatetime: null,
+            incidentValidated: null,
             informationReady: false,
         };
     },
@@ -23,20 +25,24 @@ createApp({
             this.incidentLabels = this.incident["labels"];
             const bystanders = await getAllBystandersFromIncident(this.incident["id"]);
             const aggressors = await getAllAggressorsFromIncident(this.incident["id"]);
-            console.log(this.incident["id"]);
+            console.log(this.incident);
             this.incidentBystanders = this.presentUsers(bystanders);
             this.incidentAggressors = this.presentUsers(aggressors);
+
+            if (this.incident["validated"]){
+                this.incidentValidated = "This incident is deemed valid by the Salus Security AI";
+            } else {
+                this.incidentValidated = "This incident is deemed invalid by the Salus Security AI";
+            }
+            this.incidentDatetime = this.incident["datetime"];
         },
         presentUsers(users){
             const listOfUsers = [];
             users.map(index => {
-               listOfUsers.push(`${index.firstname} ${index.lastname} (id: ${index.id})`);
+               listOfUsers.push(`${index.firstname} ${index.lastname} (${index.id})`);
             });
             return listOfUsers;
         },
-        addExtraInformation(){
-
-        }
     },
     async mounted() {
         await this.displayItems();

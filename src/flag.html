@@ -41,8 +41,9 @@
 
             <section v-show="informationReady">
                 <h2> Additional Information </h2>
-                <ul  v-for="info in extraInformation">
-                    <li><span>{{info}}</span></li>
+                <ul>
+                    <li><span>{{incidentValidated}} &#169;</span></li>
+                    <li><span>Date: {{incidentDatetime}}</span></li>
                 </ul>
             </section>
         </div>
