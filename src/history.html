@@ -19,49 +19,26 @@
         <div class="history">
             <article v-show="flaggedIncidentsReady">
                 <h2>Incidents you flagged</h2>
-                <ul v-for="incident in flaggedIncidents">
-                        <li>
-                            <div>
-                                <h3>{{incident.type}}</h3>
-                                <em class="label" v-for="label in incident.labels">{{label}}</em>
-                            </div>
-                            <div>
-                                <p>{{new Date(incident.datetime).toLocaleDateString()}}</p>
-                                <p>{{new Date(incident.datetime).toLocaleTimeString()}} </p>
-                            </div>
+                <ul>
+                        <li v-for="incident in flaggedIncidents">
+                            <h3>{{incident.type}}</h3>
+                            <em class="label" v-for="label in incident.labels">{{label}}</em>
+                            <p>{{new Date(incident.datetime).toLocaleDateString()}}</p>
+                            <p>{{new Date(incident.datetime).toLocaleTimeString()}} </p>
                         </li>
                 </ul>
             </article>
 
             <article v-show="helpedIncidentsReady">
                 <h2>Incidents you helped</h2>
-                <ul v-for="incident in helpedIncidents">
-                    <li><h3>No Incidents ...</h3></li>
-                    <template>
-                        <li>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                            <p>10/10/2022</p>
-                            <p>09:31</p>
+                <ul>
+                        <li v-for="incident in helpedIncidents">
+                            <h3>{{ incident.type }}</h3>
+                            <h4> You've helped: {{incident.reporterId}}</h4>
+                            <em v-for="label in incident.labels" class="label">{{label}}</em>
+                            <p>{{new Date(incident.datetime).toLocaleDateString()}}</p>
+                            <p>{{new Date(incident.datetime).toLocaleTimeString()}} </p>
                         </li>
-                    </template>
-                </ul>
-            </article>
-
-            <article v-show="causedIncidentsReady">
-                <h2>Incidents you caused</h2>
-                <ul v-for="incident in helpedIncidents">
-                    <li><h3>No Incidents ...</h3></li>
-                    <template>
-                        <li>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                            <p>10/10/2022</p>
-                            <p>09:31</p>
-                        </li>
-                    </template>
                 </ul>
             </article>
         </div>

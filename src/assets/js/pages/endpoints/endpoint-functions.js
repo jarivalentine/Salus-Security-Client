@@ -16,6 +16,14 @@ async function getAllUsers(){
     return get(`${URL}/api/users`);
 }
 
+async function subscribeUser(userId){ //put
+    return get(`${URL}/api/users${userId}/subscribe`);
+}
+
+async function unsubscribeUser(userId){ //put
+    return get(`${URL}/api/users${userId}/unsubscribe`);
+}
+
 async function getAllIncidents(){
 	return get(`${URL}/api/incidents`);
 }

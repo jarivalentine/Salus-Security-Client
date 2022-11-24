@@ -8,30 +8,25 @@ createApp({
             message: 'History page',
             flaggedIncidents: [],
             helpedIncidents: [],
-            causedIncidents: [],
             flaggedIncidentsReady: false,
             helpedIncidentsReady: false,
-            causedIncidentsReady: false,
         };
     },
     methods: {
         async dataFromIncidents(){
-            this.flaggedIncidents = await getAllIncidentsFromUser(localStorage.getItem("userId"));
+            const userId = localStorage.getItem("userId");
+            this.flaggedIncidents = await getAllIncidentsFromUser(userId);
         },
         async dataFromIncidentHelped(){
-
-        },
-        async dataFromIncidentsCaused(){
-
+            const userId = localStorage.getItem("userId");
+            this.helpedIncidents = await getAllHelpedIncidentsFromUser(userId);
         },
     },
     async mounted() {
-        await this.dataFromIncidents();
-        this.flaggedIncidentsReady = true;
         await this.dataFromIncidentHelped();
         this.helpedIncidentsReady = true;
-        await this.dataFromIncidentsCaused();
-        this.causedIncidentsReady = true;
+        await this.dataFromIncidents();
+        this.flaggedIncidentsReady = true;
     },
     components: {
         headerComponent,
