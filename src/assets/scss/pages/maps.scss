@@ -21,7 +21,7 @@
 
         .map {
             height: 100%;
-            border-radius: 1.5rem;
+            border-radius: 0.75rem;
             overflow: hidden;
         }
 
@@ -33,6 +33,17 @@
                 'opsz' 0;
             font-size: 2.5rem;
             color: constraints.$blue;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: red;
+            padding: 1rem;
         }
     }
 }

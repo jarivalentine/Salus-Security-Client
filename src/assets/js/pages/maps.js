@@ -6,7 +6,8 @@ createApp({
     data() {
         return {
             message: 'Maps page',
-            showError: true
+            showError: true,
+            loaded: false,
         };
     },
     methods: {
@@ -14,7 +15,28 @@ createApp({
             this.showError = false;
             const lat = location.coords.latitude;
             const lon = location.coords.longitude;
-            const center = ol.proj.fromLonLat([lon, lat]);
+            const center = ol.proj.fromLonLat([lon, lat]); 
+            const [incidentsMarkers, IncidentsMarkerVectors] = this.createIncidentMarkers(incidents)
+            const myMarker = this.createMyMarker(center);
+            const map = new ol.Map({
+                target: 'incidents-map',
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    }), 
+                    incidentsMarkers
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat(center),
+                    zoom: 10
+                })
+            });
+            const bounds = IncidentsMarkerVectors.getExtent();
+            map.getView().fit(bounds, {padding: [35, 10, 10, 10]});
+            map.addOverlay(myMarker);
+            this.loaded = true;
+        },
+        createIncidentMarkers(incidents) {
             const markers = incidents.map(incident => new ol.Feature({
                 type: 'marker',
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([incident.latitude, incident.longitude]))
@@ -22,7 +44,7 @@ createApp({
             const markerVectors = new ol.source.Vector({
                 features: markers
             });        
-            const markerLayer = new ol.layer.Vector({
+            return [new ol.layer.Vector({
                 source: markerVectors,
                 style: new ol.style.Style({
                     image: new ol.style.Icon({
@@ -30,25 +52,9 @@ createApp({
                         anchor: [0.5, 1]
                     })
                 }) 
-            });        
-            const map = new ol.Map({
-                target: 'incidents-map',
-                layers: [
-                    new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                    }),
-                    markerLayer,                     
-                ],
-                view: new ol.View({
-                    center: ol.proj.fromLonLat(center),
-                    zoom: 10
-                })
-            });
-            const bounds = markerVectors.getExtent();
-            map.getView().fit(bounds, {padding: [10, 10, 10, 10]});
-            map.addOverlay(this.createMarker(center));
+            }), markerVectors];  
         },
-        createMarker(position) {
+        createMyMarker(position) {
             return new ol.Overlay({
                 position: position,
                 element: document.getElementById("marker"),

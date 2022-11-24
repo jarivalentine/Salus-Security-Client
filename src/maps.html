@@ -22,7 +22,7 @@
             <div class="container">
                 <p v-if="showError" class="error">Share your location to view the map</p>
                 <div id="incidents-map" class="map"></div>
-                <span id="marker" class="material-symbols-outlined">person_pin_circle</span>
+                <span :class="{ hidden: !loaded }" id="marker" class="material-symbols-outlined">person_pin_circle</span>
             </div>
         </div>
     </main>
