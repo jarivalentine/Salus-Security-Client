@@ -51,10 +51,17 @@ createApp({
         },
 
         calculateDates(incident){
-          const hours = new Date().getHours() - new Date(incident["datetime"]).getHours();
-          const minutes = Math.abs(new Date().getMinutes() - new Date(incident["datetime"]).getMinutes());
-          const seconds = Math.abs(new Date().getSeconds() - new Date(incident["datetime"]).getSeconds());
+          const currentDate = new Date();
+          const incidentDate = new Date(incident["datetime"]);
+
+          const difference = currentDate - incidentDate;
+          const days = new Date(difference).getDay() - incidentDate.getDay();
+          const hours = new Date(difference).getHours();
+          const minutes = new Date(difference).getMinutes();
+          const seconds = new Date(difference).getSeconds();
+
           return {
+              "days": days,
               "hours": hours,
               "minutes": minutes,
               "seconds": seconds,

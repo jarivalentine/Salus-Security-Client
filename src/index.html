@@ -56,7 +56,7 @@
                             <em class="label" v-for="label in incident.labels">{{label}}</em>
                         </div>
                         <div>
-                            <p>{{calculateDates(incident)["hours"]}}h {{calculateDates(incident)["minutes"]}}m {{calculateDates(incident)["seconds"]}}s ago</p>
+                            <p>{{calculateDates(incident)["days"]}}d {{calculateDates(incident)["hours"]}}h {{calculateDates(incident)["minutes"]}}m {{calculateDates(incident)["seconds"]}}s ago</p>
                             <p> toBeImplemented m away</p>
                             <a @click="storeIncident(incident)" href="./route.html">View Route</a>
                         </div>
