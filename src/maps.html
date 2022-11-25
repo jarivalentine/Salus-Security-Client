@@ -7,24 +7,22 @@
     <link rel="stylesheet" href="./assets/css/screen.css">
     <script src="https://cdn.jsdelivr.net/npm/ol@v7.1.0/dist/ol.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.1.0/ol.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="assets/js/pages/maps.js" type="module"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/api.js"></script>
+    <script defer src="assets/js/api.js"></script>
+    <script src="assets/js/pages/maps.js" type="module"></script>
 </head>
 <body>
-<div id="app">
+<div id="app" v-cloak>
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
         <div class="maps">
             <h1>Safety map</h1>
-            <div class="container">
+            <div id="container">
                 <p v-if="showError" class="error">Share your location to view the map</p>
                 <div id="incidents-map" class="map"></div>
-                <span id="marker" class="material-symbols-outlined">
-                    person_pin_circle
-                </span>
             </div>
         </div>
     </main>

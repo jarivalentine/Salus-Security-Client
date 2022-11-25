@@ -24,9 +24,9 @@ createApp({
           const tempLat = parseFloat(location.coords.latitude.toFixed(1));
           const tempLong = parseFloat(location.coords.longitude.toFixed(1));
           const operators = {
-              '+': function (a, b) {return a + b},
-              '-': function (a, b) {return a - b}
-          }
+              '+': function (a, b) {return a + b;},
+              '-': function (a, b) {return a - b;}
+          };
           const lat = (operators[this.randomOperator()](tempLat, parseFloat((Math.random()/10).toFixed(2)))).toString();
           const long = (operators[this.randomOperator()](tempLong, parseFloat((Math.random()/10).toFixed(2)))).toString();
           this.postIncident([lat, long]);
@@ -53,12 +53,10 @@ createApp({
         calculateDates(incident){
           const currentDate = new Date();
           const incidentDate = new Date(incident["datetime"]);
-
-          const difference = currentDate - incidentDate;
-          const days = new Date(difference).getDay() - incidentDate.getDay();
-          const hours = new Date(difference).getHours();
-          const minutes = new Date(difference).getMinutes();
-          const seconds = new Date(difference).getSeconds();
+          const days = Math.abs(incidentDate.getDay() - currentDate.getDay());
+          const hours = Math.abs(incidentDate.getHours() - currentDate.getHours());
+          const minutes = Math.abs(incidentDate.getMinutes() - currentDate.getMinutes());
+          const seconds = Math.abs(incidentDate.getSeconds() - currentDate.getSeconds());
 
           return {
               "days": days,
@@ -71,8 +69,8 @@ createApp({
         haversineCalculation(lat1, lon1, lat2, lon2){ // distance between two points on a sfeer. crd.: geeksforgeeks.org -> haversine
             const degreesHalfCircle = 180;
             const radiusEarth = 6371;
-            let dLat = (lat2 - lat1) * Math.PI / degreesHalfCircle;
-            let dLon = (lon2 - lon1) * Math.PI / degreesHalfCircle;
+            const dLat = (lat2 - lat1) * Math.PI / degreesHalfCircle;
+            const dLon = (lon2 - lon1) * Math.PI / degreesHalfCircle;
             lat1 = lat1 * Math.PI / degreesHalfCircle;
             lat2 = lat2 * Math.PI / degreesHalfCircle;
             const x = Math.pow(Math.sin(dLat / 2), 2) +

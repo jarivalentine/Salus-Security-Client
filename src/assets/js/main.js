@@ -16,7 +16,6 @@ function loadConfig() {
         .then(resp => resp.json())
         .then(config => {
             api = `${config.host ? config.host + '/': ''}${config.group ? config.group + '/' : ''}api/`;
-            init();
         });
 }
 
@@ -31,7 +30,7 @@ async function login(userId){
     console.log(valid);
 }
 
-async function validUserId(userId){
+async function validUserId(userId) {
     const userIds = [];
     const users = await getAllUsers();
     users.map(index => userIds.push(index.id));

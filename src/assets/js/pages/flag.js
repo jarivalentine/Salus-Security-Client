@@ -19,7 +19,9 @@ createApp({
     },
     methods: {
         async displayItems(){
-            if (this.incident === null) return;
+            if (this.incident === null) {
+                return;
+            }
             this.incident = JSON.parse(this.incident);
             this.incidentType = this.incident["type"];
             this.incidentLabels = this.incident["labels"];

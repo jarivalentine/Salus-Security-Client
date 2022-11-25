@@ -17,6 +17,16 @@ $blue: #5B37DB;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
+@mixin popup {
+    width: 12rem;
+    position: absolute;
+    background-color: $component-color;
+    border-radius: 0.75rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
 @mixin list-item {
     display: flex;
     justify-content: space-between;
