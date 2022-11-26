@@ -15,7 +15,7 @@
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
-        <div>
+        <div v-show="subscriptionCheckReady">
             <section>
                 <h2>Settings</h2>
                 <div>
@@ -27,25 +27,58 @@
                     </ul>
                 </div>
             </section>
-            <section>
+
+
+            <section v-if="basic">
                 <h2>Subscriptions</h2>
                 <div>
-                    <h3>Basic plan</h3><em>current plan</em>
+                    <h3>Basic plan</h3>
+                    <em>current plan</em>
                     <h3>M 0.00 / Month</h3>
+                    <hr>
                     <ul>
                         <li>Flag Incidents</li>
-                        <li>View History</li>
-                        <li>Maps, Statistics, Doorlock</li> 
+                        <li> - View History</li>
+                        <li> - Maps, Statistics, Doorlock</li>
                     </ul>
                 </div>
+
                 <div>
                     <h3>Premium plan </h3>
                     <h3>M 3.99 / Month</h3>
-                    <button>Subscribe</button>
+                    <button @click="subscribeUser()">Subscribe</button>
+                    <hr>
                     <ul>
                         <li>Flag Incidents</li>
-                        <li>View History</li>
-                        <li>Maps, Statistics, Doorlock</li> 
+                        <li> + View History</li>
+                        <li> + Maps, Statistics, Doorlock</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section v-if="premium">
+                <h2>Subscriptions</h2>
+                <div>
+                    <h3>Basic plan</h3>
+                    <h3>M 0.00 / Month</h3>
+                    <button @click="unSubscribeUser()">Unsubscribe</button>
+                    <hr>
+                    <ul>
+                        <li>Flag Incidents</li>
+                        <li> - View History</li>
+                        <li> - Maps, Statistics, Doorlock</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Premium plan </h3>
+                    <em>current plan</em>
+                    <h3>M 3.99 / Month</h3>
+                    <hr>
+                    <ul>
+                        <li>Flag Incidents</li>
+                        <li> + View History</li>
+                        <li> + Maps, Statistics, Doorlock</li>
                     </ul>
                 </div>
             </section>

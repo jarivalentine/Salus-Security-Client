@@ -25,9 +25,34 @@ async function get(url){
     return null;
 }
 
+async function post(url, options){
+    try {
+        const fetchedResponse = await fetch(`${url}`, options);
+        return await fetchedResponse.json();
+    } catch (e) {
+        console.error(e);
+    }
+    return null;
+}
+
 async function getAllUsers(){
     return get(`${URL}/api/users`);
 }
+
+async function getOneUser(userId){
+    return get(`${URL}/api/users/${userId}`);
+}
+
+async function subscribeUser(userId){
+    const options = createOptions(null, 'PUT');
+    return post(`${URL}/api/users/${userId}/subscribe`, options);
+}
+
+async function unSubscribeUser(userId){
+    const options = createOptions(null, 'PUT');
+    return post(`${URL}/api/users/${userId}/unsubscribe`, options);
+}
+
 
 async function getIncident(incidentId){
     return get(`${URL}/api/incidents/${incidentId}`);
@@ -62,19 +87,13 @@ function createBody(reporterId, latitude, longitude) {
 }
 
 async function createIncident(reporterId, latitude, longitude){
-    const options = createOptionsPost(createBody(reporterId, latitude, longitude));
-    try {
-        const fetchedResponse = await fetch(`${URL}/api/incidents`, options);
-        return await fetchedResponse.json();
-    } catch (e) {
-        console.error(e);
-    }
-    return null;
+    const options = createOptions(createBody(reporterId, latitude, longitude), 'POST');
+    return post(`${URL}/api/incidents`, options);
 }
 
-function createOptionsPost(body){
+function createOptions(body, method){
     return {
-        method: 'POST',
+        method: `${method}`,
         headers: {
             'Content-type': 'application/json;'
         },
