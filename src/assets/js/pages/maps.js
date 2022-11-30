@@ -60,7 +60,6 @@ createApp({
             const incident = await getIncidents(e.target.dataset.id);
             const $popup = document.createElement('div');
             $popup.classList.add('popup');
-            console.log(incident);
             let labels = '';
             incident.labels.forEach(label => {
                 labels += `<li>${label}</span>`;
