@@ -318,7 +318,10 @@ nav ul .doorlock {
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   padding: 0;
+<<<<<<< HEAD
   position: relative;
+=======
+>>>>>>> 13807e2a083a4829f4c1e8373e0a998d3a5d99b8
 }
 .maps #container .map {
   height: 100%;
@@ -393,6 +396,23 @@ main h2 {
   font-size: 1.5rem;
   font-family: "Lexend", Arial, Helvetica, sans-serif;
   margin-bottom: 1.5rem;
+}
+
+.lock {
+  background-color: #898989;
+  background-image: url(../img/svg-block-lock.svg);
+  background-position: 3rem center;
+  background-repeat: no-repeat;
+  background-size: 8rem;
+  border-radius: 1.25rem;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 50%;
+  padding: 2.125rem;
+  text-align: center;
 }
 
 [v-cloak] {
