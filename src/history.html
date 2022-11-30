@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="assets/js/pages/history.js" type="module"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/api.js"></script>
+    <script defer src="assets/js/api.js"></script>
+    <script src="assets/js/pages/history.js" type="module"></script>
 </head>
 <body>
 <div id="app">
@@ -16,81 +16,38 @@
     <main>
         <nav-component></nav-component>
         <div class="history">
-            <article>
+            <article v-show="flaggedIncidentsReady">
                 <h2>Incidents you flagged</h2>
                 <ul>
-                    <!-- <template> -->
-                        <li>
-                            <div>
-                                <h3>Type</h3>
-                                <em class="label">Label 1</em>
-                                <em class="label">Label 2</em>
-                            </div>
-                            <div>
-                                <p>10/10/2022</p>
-                                <p>09:31</p>
-                            </div>
-                        </li>
-                    <!-- </template> -->
-                    <li>
+                    <li v-for="incident in flaggedIncidents">
                         <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
+                            <h3>{{incident.type}}</h3>
+                            <em class="label" v-for="label in incident.labels">{{label}}</em>
+                            <em v-if="incident.validated" class="label">Valid</em>
+                            <em v-else class="label">Invalid</em>
                         </div>
                         <div>
-                            <p>10/10/2022</p>
-                            <p>09:31</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>10/10/2022</p>
-                            <p>09:31</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>10/10/2022</p>
-                            <p>09:31</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>10/10/2022</p>
-                            <p>09:31</p>
+                            <p>{{new Date(incident.datetime).toLocaleDateString()}}</p>
+                            <p>{{new Date(incident.datetime).toLocaleTimeString()}} </p>
                         </div>
                     </li>
                 </ul>
             </article>
-            <article>
+
+            <article v-show="helpedIncidentsReady">
                 <h2>Incidents you helped</h2>
                 <ul>
-                    <li><h3>No Incidents ...</h3></li>
-                    <template>
-                        <li>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                            <p>10/10/2022</p>
-                            <p>09:31</p>
-                        </li>
-                    </template>
+                    <li v-for="incident in helpedIncidents">
+                        <h4>You've helped: {{incident.reporterId}} </h4>
+                        <div>
+                            <h3>{{incident.type}}</h3>
+                            <em class="label" v-for="label in incident.labels">{{label}}</em>
+                        </div>
+                        <div>
+                            <p>{{new Date(incident.datetime).toLocaleDateString()}}</p>
+                            <p>{{new Date(incident.datetime).toLocaleTimeString()}} </p>
+                        </div>
+                    </li>
                 </ul>
             </article>
         </div>

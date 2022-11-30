@@ -11,10 +11,17 @@ export default {
             this.isActive = !this.isActive;
         }
     },
+    mounted() {
+        document.querySelector('body').addEventListener('click', (e) => {
+            if (this.isActive && e.target.id !== 'menu' && e.target.parentNode.id !== 'menu') {
+                this.isActive = false;
+            }
+        });
+    },
     template: `
         <header>
             <div>
-                <div @click="toggleMenu">
+                <div id="menu" @click="toggleMenu">
                     <p>{{ firstname }}</p>
                     <p class="tag">{{ tag }}</p>
                 </div>

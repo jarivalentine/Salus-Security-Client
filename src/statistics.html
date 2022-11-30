@@ -6,11 +6,10 @@
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script defer src="assets/js/pages/endpoints/endpoint-functions.js"></script>
-    <script src="assets/js/pages/statistics.js" type="module"></script>
-    <script defer src="assets/js/main.js"></script>
     <script defer src="assets/js/api.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/pages/statistics.js" type="module"></script>
 </head>
 <body>
 <div id="app">
@@ -18,24 +17,20 @@
     <main>
         <nav-component></nav-component>
         <div class="statistics">
-            <section>
-            <!-- <section v-show="incidentsReady"> REMOVE SECTION ABOVE -->
-                <h2> This year there are <span>7</span><!-- <span ref="totalIncidents"></span>  REMOVE SPAN LEFT --> reported incidents </h2>
+            <section v-show="incidentsReady">
+                <h2> This year there are <span ref="totalIncidents"></span> reported incidents </h2>
             </section>
 
-            <section>
-            <!-- <section v-show="pieReady"> REMOVE SECTION ABOVE -->
+            <section v-show="pieReady">
                 <h2> Frequency of types </h2>
                 <canvas id="bar-chart-types"></canvas>
             </section>
-            <section>
-                <!-- <section v-show="barTypesReady"> REMOVE SECTION ABOVE -->
-                <h2>Incidents</h2>
+            <section v-show="barTypesReady">
+                <h2>Incidents with bystanders</h2>
                 <canvas id="pie-chart-bystanders"></canvas>
             </section>
 
-            <section>
-                <!-- <section v-show="barBystandersReady"> REMOVE SECTION ABOVE -->
+            <section v-show="barBystandersReady">
                 <h2>Best bystanders</h2>
                 <canvas id="bar-chart-bystanders"></canvas>
             </section>

@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="assets/js/pages/index.js" type="module"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/api.js"></script>
+    <script defer src="assets/js/api.js"></script>
+    <script src="assets/js/pages/index.js" type="module"></script>
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -18,7 +18,7 @@
         <nav-component></nav-component>
         <div class="home">
             <div>
-                <button>Flag<br>Incident</button>
+                <button @click="checkPermissionForCreatingFlag()">Flag<br>Incident</button>
                 <article>
                     <h2>Incident settings</h2>
                     <div>
@@ -35,86 +35,29 @@
                         </div>
                         <div>
                             <label for="gestures">Gestures</label>
-                            <select id="gestures"></select>
+                            <select id="gestures">
+                                <option value="flick wrist"> Flick Wrist </option>
+                                <option value="shake wrist"> Shake Wrist </option>
+                                <option value="scream activation"> Scream activation </option>
+                                <option value="double tap"> Double Tap </option>
+                            </select>
                         </div>
                     </div>
                 </article>
             </div>
-            <article>
+            <p v-if="showError" class="error">Share your location to view the map</p>
+            <article v-show="incidentsReady">
                 <h2>Notifications</h2>
                 <ul>
-                    <!-- <template> -->
-                        <li>
-                            <div>
-                                <h3>Type</h3>
-                                <em class="label">Label 1</em>
-                                <em class="label">Label 2</em>
-                            </div>
-                            <div>
-                                <p>30s ago</p>
-                                <p>1000m away</p>
-                                <a href="./route.html">View Route</a>
-                            </div>
-                        </li>
-                    <!-- </template> -->
-                    <li>
+                    <li v-for="incident in allIncidents">
                         <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
+                            <h3>{{incident.type}}</h3>
+                            <em class="label" v-for="label in incident.labels">{{label}}</em>
                         </div>
                         <div>
-                            <p>30s ago</p>
-                            <p>1000m away</p>
-                            <a href="./route.html">View Route</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>30s ago</p>
-                            <p>1000m away</p>
-                            <a href="./route.html">View Route</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>30s ago</p>
-                            <p>1000m away</p>
-                            <a href="./route.html">View Route</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>30s ago</p>
-                            <p>1000m away</p>
-                            <a href="./route.html">View Route</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <h3>Type</h3>
-                            <em class="label">Label 1</em>
-                            <em class="label">Label 2</em>
-                        </div>
-                        <div>
-                            <p>30s ago</p>
-                            <p>1000m away</p>
-                            <a href="./route.html">View Route</a>
+                            <p>{{calculateDates(incident)["days"]}}d {{calculateDates(incident)["hours"]}}h {{calculateDates(incident)["minutes"]}}m {{calculateDates(incident)["seconds"]}}s ago</p>
+                            <p> toBeImplemented m away</p>
+                            <a @click="storeIncident(incident)" href="./route.html">View Route</a>
                         </div>
                     </li>
                 </ul>

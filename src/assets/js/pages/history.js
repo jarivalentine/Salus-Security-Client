@@ -5,8 +5,28 @@ import navComponent from '../components/nav.js';
 createApp({
     data() {
         return {
-            message: 'History page'
+            message: 'History page',
+            flaggedIncidents: [],
+            helpedIncidents: [],
+            flaggedIncidentsReady: false,
+            helpedIncidentsReady: false,
         };
+    },
+    methods: {
+        async dataFromIncidents(){
+            const userId = localStorage.getItem("userId");
+            this.flaggedIncidents = await getAllIncidentsFromUser(userId);
+        },
+        async dataFromIncidentHelped(){
+            const userId = localStorage.getItem("userId");
+            this.helpedIncidents = await getAllHelpedIncidentsFromUser(userId);
+        },
+    },
+    async mounted() {
+        await this.dataFromIncidentHelped();
+        this.helpedIncidentsReady = true;
+        await this.dataFromIncidents();
+        this.flaggedIncidentsReady = true;
     },
     components: {
         headerComponent,
