@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", loadConfig);
 // Entry point for the JS code.
 function init() {
     if (!localStorage.getItem("userId")){
+        console.log("hi");
         localStorage.setItem("userId", "1989-01-28_AL");
     }
     // Very small proof of concept.
@@ -17,6 +18,7 @@ function loadConfig() {
         .then(config => {
             api = `${config.host ? config.host + '/': ''}${config.group ? config.group + '/' : ''}api/`;
         });
+    init();
 }
 
 async function login(userId){
