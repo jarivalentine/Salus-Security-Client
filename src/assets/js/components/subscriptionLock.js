@@ -5,4 +5,4 @@ export default {
             <a href="./settings.html">Get subscription</a>
         </div>
     `
-}
+};
