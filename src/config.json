@@ -1,5 +1,6 @@
 {
   "host": "http://localhost:8080",
   "folder": "",
-  "group": ""
+  "group": "",
+  "mapsApiKey": "5b3ce3597851110001cf6248904fbdec39724aebbac4826fabeb415a"
 }

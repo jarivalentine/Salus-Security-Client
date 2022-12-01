@@ -1,12 +1,14 @@
 "use strict";
 
 const URL = "https://project-ii.ti.howest.be/mars-11";
-const API_KEY = "5b3ce3597851110001cf6248904fbdec39724aebbac4826fabeb415a";
-const OPEN_ROUTE_BASE_URL = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${API_KEY}`;
+const OPEN_ROUTE_BASE_URL = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=`;
 
 async function getRoute(startlong, startlat, endlong, endlat) {
+    const fetched = await fetch("config.json");
+    const configJson = await fetched.json();
+
     try {
-        const response = await fetch(`${OPEN_ROUTE_BASE_URL}&start=${startlong},${startlat}&end=${endlong},${endlat}`);
+        const response = await fetch(`${OPEN_ROUTE_BASE_URL}${configJson.mapsApiKey}&start=${startlong},${startlat}&end=${endlong},${endlat}`);
         const result = await response.json();
         return result.features[0];
     } catch (e) {
@@ -15,7 +17,7 @@ async function getRoute(startlong, startlat, endlong, endlat) {
     return null;
 }
 
-async function get(url){
+async function get(url) {
     try {
         const fetchedResponse = await fetch(`${url}`);
         return await fetchedResponse.json();
@@ -25,7 +27,7 @@ async function get(url){
     return null;
 }
 
-async function post(url, options){
+async function post(url, options) {
     try {
         const fetchedResponse = await fetch(`${url}`, options);
         return await fetchedResponse.json();
@@ -35,46 +37,46 @@ async function post(url, options){
     return null;
 }
 
-async function getAllUsers(){
+async function getAllUsers() {
     return get(`${URL}/api/users`);
 }
 
-async function getOneUser(userId){
+async function getOneUser(userId) {
     return get(`${URL}/api/users/${userId}`);
 }
 
-async function subscribeUser(userId){
+async function subscribeUser(userId) {
     const options = createOptions(null, 'PUT');
     return post(`${URL}/api/users/${userId}/subscribe`, options);
 }
 
-async function unSubscribeUser(userId){
+async function unSubscribeUser(userId) {
     const options = createOptions(null, 'PUT');
     return post(`${URL}/api/users/${userId}/unsubscribe`, options);
 }
 
 
-async function getIncident(incidentId){
+async function getIncident(incidentId) {
     return get(`${URL}/api/incidents/${incidentId}`);
 }
 
-async function getAllIncidents(){
+async function getAllIncidents() {
     return get(`${URL}/api/incidents`);
 }
 
-async function getAllIncidentsFromUser(userId){
+async function getAllIncidentsFromUser(userId) {
     return get(`${URL}/api/users/${userId}/incidents`);
 }
 
-async function getAllBystandersFromIncident(incidentId){
+async function getAllBystandersFromIncident(incidentId) {
     return get(`${URL}/api/incidents/${incidentId}/bystanders`);
 }
 
-async function getAllAggressorsFromIncident(incidentId){
+async function getAllAggressorsFromIncident(incidentId) {
     return get(`${URL}/api/incidents/${incidentId}/aggressors`);
 }
 
-async function getAllHelpedIncidentsFromUser(userId){
+async function getAllHelpedIncidentsFromUser(userId) {
     return get(`${URL}/api/users/${userId}/incidents/helped`);
 }
 
@@ -86,12 +88,12 @@ function createBody(reporterId, latitude, longitude) {
     };
 }
 
-async function createIncident(reporterId, latitude, longitude){
+async function createIncident(reporterId, latitude, longitude) {
     const options = createOptions(createBody(reporterId, latitude, longitude), 'POST');
     return post(`${URL}/api/incidents`, options);
 }
 
-function createOptions(body, method){
+function createOptions(body, method) {
     return {
         method: `${method}`,
         headers: {

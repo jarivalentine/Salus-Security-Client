@@ -1,4 +1,4 @@
-const { createApp } = Vue;
+const {createApp} = Vue;
 import headerComponent from '../components/header.js';
 import navComponent from '../components/nav.js';
 
@@ -8,34 +8,39 @@ createApp({
             message: 'Home page',
             incidentsReady: false,
             allIncidents: [],
-            showError: false
+            showError: false,
+            location: null,
         };
     },
     methods: {
-      async postIncident(positions){
-          const user = localStorage.getItem("userId");
-          const lat = positions[0];
-          const long = positions[1];
-          const incident = await createIncident(user, lat, long);
-          localStorage.setItem("incident", JSON.stringify(incident));
-          window.location.href = 'flag.html';
-      },
-        generateRandomLocation(location){
-          const tempLat = parseFloat(location.coords.latitude.toFixed(1));
-          const tempLong = parseFloat(location.coords.longitude.toFixed(1));
-          const operators = {
-              '+': function (a, b) {return a + b;},
-              '-': function (a, b) {return a - b;}
-          };
-          const lat = (operators[this.randomOperator()](tempLat, parseFloat((Math.random()/10).toFixed(2)))).toString();
-          const long = (operators[this.randomOperator()](tempLong, parseFloat((Math.random()/10).toFixed(2)))).toString();
-          this.postIncident([lat, long]);
+        async postIncident(positions) {
+            const user = localStorage.getItem("userId");
+            const lat = positions[0];
+            const long = positions[1];
+            const incident = await createIncident(user, lat, long);
+            localStorage.setItem("incident", JSON.stringify(incident));
+            window.location.href = 'flag.html';
         },
-        randomOperator(){
+        generateRandomLocation(location) {
+            const tempLat = parseFloat(location.coords.latitude.toFixed(1));
+            const tempLong = parseFloat(location.coords.longitude.toFixed(1));
+            const operators = {
+                '+': function (a, b) {
+                    return a + b;
+                },
+                '-': function (a, b) {
+                    return a - b;
+                }
+            };
+            const lat = (operators[this.randomOperator()](tempLat, parseFloat((Math.random() / 10).toFixed(2)))).toString();
+            const long = (operators[this.randomOperator()](tempLong, parseFloat((Math.random() / 10).toFixed(2)))).toString();
+            this.postIncident([lat, long]);
+        },
+        randomOperator() {
             const operators = ["+", "-"];
             return operators[Math.floor(Math.random() * operators.length)];
         },
-        checkPermissionForCreatingFlag(){
+        checkPermissionForCreatingFlag() {
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(this.generateRandomLocation);
             } else {
@@ -45,28 +50,49 @@ createApp({
 
         // notifications section
 
-        async displayNotifications(){
-          this.allIncidents = await getAllIncidents();
-          this.allIncidents.reverse();
+        async displayNotifications() {
+            this.allIncidents = await getAllIncidents();
+            this.allIncidents.filter(incident => {
+                const currentDate = new Date();
+                const incidentDate = new Date(incident["datetime"]);
+                if (incidentDate.getDay() - currentDate.getDay() === 0) {
+                    return incident;
+                }
+            });
+            console.log(this.allIncidents);
+            this.allIncidents.reverse();
         },
 
-        calculateDates(incident){
-          const currentDate = new Date();
-          const incidentDate = new Date(incident["datetime"]);
-          const days = Math.abs(incidentDate.getDay() - currentDate.getDay());
-          const hours = Math.abs(incidentDate.getHours() - currentDate.getHours());
-          const minutes = Math.abs(incidentDate.getMinutes() - currentDate.getMinutes());
-          const seconds = Math.abs(incidentDate.getSeconds() - currentDate.getSeconds());
+        calculateDates(incident) {
+            const currentDate = new Date();
+            const millisecondsToSeconds = 1000;
+            const secondsInHour = 3600;
+            const secondsInMinute = 60;
+            const incidentDate = new Date(incident["datetime"]);
 
-          return {
-              "days": days,
-              "hours": hours,
-              "minutes": minutes,
-              "seconds": seconds,
-          };
+            const currentSeconds = currentDate.getTime() / millisecondsToSeconds;
+            const incidentSeconds = incidentDate.getTime() / millisecondsToSeconds;
+            const difference = currentSeconds - incidentSeconds;
+            const hours = Math.floor(difference / secondsInHour);
+            const minutes = Math.floor(difference % secondsInHour / secondsInMinute);
+            const seconds = Math.floor(difference % secondsInHour % secondsInMinute);
+
+            return {
+                "hours": hours,
+                "minutes": minutes,
+                "seconds": seconds,
+            };
         },
 
-        haversineCalculation(lat1, lon1, lat2, lon2){ // distance between two points on a sfeer. crd.: geeksforgeeks.org -> haversine
+        calculateDistance(incident) {
+            if (this.location){
+                const lat = incident["latitude"];
+                const long = incident["longitude"];
+                return (this.haversineCalculation(lat, long, this.location.coords.latitude, this.location.coords.longitude)).toFixed(2);
+            }
+        },
+
+        haversineCalculation(lat1, lon1, lat2, lon2) { // distance between two points on a sfeer. crd.: geeksforgeeks.org -> haversine
             const degreesHalfCircle = 180;
             const radiusEarth = 6371;
             const dLat = (lat2 - lat1) * Math.PI / degreesHalfCircle;
@@ -80,11 +106,16 @@ createApp({
             return radiusEarth * 2 * Math.asin(Math.sqrt(x));
         },
 
-        storeIncident(incident){
-          localStorage.setItem("incident-route", JSON.stringify(incident));
+        storeIncident(incident) {
+            localStorage.setItem("incident-route", JSON.stringify(incident));
         }
     },
-    async mounted(){
+    async mounted() {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(location => {
+                this.location = location;
+            });
+        }
         await this.displayNotifications();
         this.incidentsReady = true;
     },
