@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", loadConfig);
 
 function init() {
     if (!localStorage.getItem("userId")){
+        console.log("hi");
         localStorage.setItem("userId", "1989-01-28_AL");
     }
 }
