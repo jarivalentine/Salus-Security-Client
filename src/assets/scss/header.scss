@@ -8,13 +8,17 @@ header {
     box-sizing: border-box;
     justify-content: space-between;
 
-    > div > div{
+    #menu {
         background-image: url('../img/default.png');
         background-position: left center;
         background-repeat: no-repeat;
         background-size: 4rem;
         padding-left: 5rem;
         margin-left: 1.5rem;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     .hidden {
@@ -55,7 +59,6 @@ header {
             width: 100%;
             font-size: 1.5rem;
             font-family: constraints.$default-font;
-            padding: 0.75rem 0;
             border-bottom: 0.0625rem solid white;
             text-align: center;
 
@@ -64,7 +67,9 @@ header {
             }
 
             a {
+                display: block;
                 width: 100%;
+                padding: 0.75rem 0;
                 text-decoration: none;
                 color: white;
             }
