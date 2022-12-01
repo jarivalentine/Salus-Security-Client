@@ -73,7 +73,7 @@ createApp({
                     datasets: [{
                         label: 'Percentage',
                         data: [fraction, 100-fraction],
-                        backgroundColor: ["Lightgrey", "Darkgrey"],
+                        backgroundColor: ["#5B37DB", "#a599d0"],
                     }]
                 },
             });
@@ -99,7 +99,8 @@ createApp({
                     datasets: [{
                         label: 'Amount: ',
                         data: amountOfHelpedIncidents,
-                        borderWidth: 2
+                        borderWidth: 2,
+                        backgroundColor: '#5B37DB'
                     }]
                 },
                 options: {
