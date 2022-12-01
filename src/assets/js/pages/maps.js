@@ -80,7 +80,7 @@ createApp({
             const startLat = this.myLocation.coords.latitude;
             const endLong = incident.latitude;
             const endLat = incident.longitude;
-            await getRoute(startLong, startLat, endLong, endLat).then(route => {
+            getRoute(startLong, startLat, endLong, endLat).then(route => {
                 this.map.removeLayer(this.routeLayer);
                 const polyline = route.geometry.coordinates.map(el => ol.proj.fromLonLat(el));
                 this.routeLayer = new ol.layer.Vector({

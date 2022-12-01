@@ -22,10 +22,6 @@
     "type-incident additional-information"
     "bystanders aggressors";
 
-    section {
-      @include constraints.box;
-    }
-
     .type-incident {
       grid-area: type-incident;
     }
@@ -41,6 +37,11 @@
     .aggressors {
       grid-area: aggressors;
     }
+
+    section {
+      @include constraints.box;
+    }
+
   }
 }
 

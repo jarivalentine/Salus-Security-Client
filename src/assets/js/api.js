@@ -1,14 +1,12 @@
 "use strict";
 
 const URL = "https://project-ii.ti.howest.be/mars-11";
-const OPEN_ROUTE_BASE_URL = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=`;
+const API_KEY = "5b3ce3597851110001cf6248904fbdec39724aebbac4826fabeb415a";
+const OPEN_ROUTE_BASE_URL = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${API_KEY}`;
 
 async function getRoute(startlong, startlat, endlong, endlat) {
-    const fetched = await fetch("config.json");
-    const configJson = await fetched.json();
-
     try {
-        const response = await fetch(`${OPEN_ROUTE_BASE_URL}${configJson.mapsApiKey}&start=${startlong},${startlat}&end=${endlong},${endlat}`);
+        const response = await fetch(`${OPEN_ROUTE_BASE_URL}&start=${startlong},${startlat}&end=${endlong},${endlat}`);
         const result = await response.json();
         return result.features[0];
     } catch (e) {
