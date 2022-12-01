@@ -373,6 +373,42 @@ nav ul .doorlock {
   padding: 1rem;
 }
 
+.flag div.recording-dot {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: red;
+  border: 0.1rem solid black;
+}
+.flag .container {
+  margin-top: 10rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 2rem 2rem;
+  grid-template-areas: "type-incident additional-information" "bystanders aggressors";
+}
+.flag .container section {
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.flag .container .type-incident {
+  grid-area: type-incident;
+}
+.flag .container .additional-information {
+  grid-area: additional-information;
+}
+.flag .container .bystanders {
+  grid-area: bystanders;
+}
+.flag .container .aggressors {
+  grid-area: aggressors;
+}
+
 main {
   display: flex;
   justify-content: space-between;
