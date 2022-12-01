@@ -2,13 +2,10 @@ let api;
 
 document.addEventListener("DOMContentLoaded", loadConfig);
 
-// Entry point for the JS code.
 function init() {
     if (!localStorage.getItem("userId")){
         localStorage.setItem("userId", "1989-01-28_AL");
     }
-    // Very small proof of concept.
-    //poc();
 }
 
 function loadConfig() {
@@ -17,9 +14,10 @@ function loadConfig() {
         .then(config => {
             api = `${config.host ? config.host + '/': ''}${config.group ? config.group + '/' : ''}api/`;
         });
+    init();
 }
 
-async function login(userId){
+async function login(userId){ // will be used in the console to change user
     const invalid = "userId not recognized";
     const valid = `logged is as user: ${userId}`;
     if (!await validUserId(userId)){
