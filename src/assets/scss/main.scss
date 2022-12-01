@@ -3,6 +3,8 @@
 @use 'pages/history';
 @use 'pages/maps';
 @use 'pages/flag';
+@use 'pages/settings';
+@use 'pages/statistics';
 
 main {
     display: flex;

@@ -8,23 +8,43 @@ createApp({
     data() {
         return {
             message: 'Charts page',
-            incidentsReady: false,
             pieReady: false,
             barTypesReady: false,
             barBystandersReady: false,
         };
     },
     methods: {
-        async allIncidentsThisYear(){
+        async frequencyOfTypes(){
             const allIncidents = await getAllIncidents();
-
-            const incidentsCurrentYear = allIncidents.filter(index => {
-                return new Date().getFullYear() === new Date(index.datetime).getFullYear();
+            const countedTypes = {};
+            allIncidents.map(index => {
+                countedTypes[index.type] = (countedTypes[index.type] || 0) + 1 ;
             });
-
-            this.$refs.totalIncidents.innerHTML = incidentsCurrentYear.length;
+            this.displayBarChartTypes(Object.keys(countedTypes), Object.values(countedTypes));
         },
 
+        displayBarChartTypes(types, amount){
+            const ctx = document.querySelector("#bar-chart-types").getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: types,
+                    datasets: [{
+                        label: 'Amount: ',
+                        data: amount,
+                        borderWidth: 2,
+                        backgroundColor: '#5B37DB'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                },
+            });
+        },
         async percentageOfBystanders(){
             const allIncidents = await getAllIncidents();
             const incidentsWithBystanders = [];
@@ -53,52 +73,19 @@ createApp({
                     datasets: [{
                         label: 'Percentage',
                         data: [fraction, 100-fraction],
-                        backgroundColor: ["Lightgrey", "Darkgrey"],
+                        backgroundColor: ["#5B37DB", "#a599d0"],
                     }]
-                },
-            });
-        },
-
-        async frequencyOfTypes(){
-            const allIncidents = await getAllIncidents();
-            const countedTypes = {};
-            allIncidents.map(index => {
-                countedTypes[index.type] = (countedTypes[index.type] || 0) + 1 ;
-            });
-            this.displayBarChartTypes(Object.keys(countedTypes), Object.values(countedTypes));
-        },
-
-        displayBarChartTypes(types, amount){
-            const ctx = document.querySelector("#bar-chart-types").getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: types,
-                    datasets: [{
-                        label: 'Amount: ',
-                        data: amount,
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
                 },
             });
         },
         async bestBystanders(){
             const amountOfHelpedIncidents = [];
-            const userIds = [];
             const listOfBystanders = [];
             const users = await getAllUsers();
-            users.map(index => userIds.push(index.id));
-            for (const user of userIds) {
-                const helpedIncidents = await getAllHelpedIncidentsFromUser(user);
+            for (const user of users) {
+                const helpedIncidents = await getAllHelpedIncidentsFromUser(user.id);
                 amountOfHelpedIncidents.push(helpedIncidents.length);
-                listOfBystanders.push(user);
+                listOfBystanders.push(user.firstname + " " + user.lastname);
             }
             this.displayBarChartBystanders(listOfBystanders, amountOfHelpedIncidents);
         },
@@ -112,7 +99,8 @@ createApp({
                     datasets: [{
                         label: 'Amount: ',
                         data: amountOfHelpedIncidents,
-                        borderWidth: 2
+                        borderWidth: 2,
+                        backgroundColor: '#5B37DB'
                     }]
                 },
                 options: {
@@ -123,17 +111,31 @@ createApp({
                     }
                 },
             });
+        },
+
+        toggleTypes() {
+            this.pieReady = false;
+            this.barTypesReady = true;
+            this.barBystandersReady = false;
+        },
+
+        togglePie() {
+            this.pieReady = true;
+            this.barTypesReady = false;
+            this.barBystandersReady = false;
+        },
+
+        toggleBystanders() {
+            this.pieReady = false;
+            this.barTypesReady = false;
+            this.barBystandersReady = true;
         }
     },
     async mounted() {
-        await this.allIncidentsThisYear();
-        this.incidentsReady = true;
         await this.percentageOfBystanders();
-        this.pieReady = true;
         await this.frequencyOfTypes();
-        this.barTypesReady = true;
         await this.bestBystanders();
-        this.barBystandersReady = true;
+        this.barTypesReady = true;
     },
     components: {
         headerComponent,

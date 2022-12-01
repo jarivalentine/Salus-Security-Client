@@ -59,11 +59,12 @@
 
             input[type="range"] {
                 width: 100%;
+                max-width: 16rem;
                 accent-color: constraints.$yellow;
             }
 
             select {
-                width: 9rem;
+                width: fit-content;
                 background-color: constraints.$yellow;
                 border: none;
                 height: 1.5rem;
