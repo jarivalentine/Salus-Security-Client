@@ -1,4 +1,4 @@
-const { createApp } = Vue;
+const {createApp} = Vue;
 import headerComponent from '../components/header.js';
 import navComponent from '../components/nav.js';
 
@@ -19,12 +19,12 @@ createApp({
             const center = ol.proj.fromLonLat([location.coords.longitude, location.coords.latitude]);
             this.map = new ol.Map({
                 target: 'incidents-map',
-                layers : [
+                layers: [
                     new ol.layer.Tile({
                         source: new ol.source.OSM()
                     })
                 ],
-                view : new ol.View({
+                view: new ol.View({
                     center: center,
                     zoom: 12
                 })
@@ -42,8 +42,7 @@ createApp({
                 $marker.classList.add('flag');
                 $marker.addEventListener('click', this.clickFlag);
                 $marker.dataset.id = incidentId;
-            }
-            else {
+            } else {
                 $marker.classList.add('marker');
             }
             document.querySelector('#container').appendChild($marker);
@@ -52,7 +51,7 @@ createApp({
                 element: $marker,
                 positioning: "bottom-center"
             });
-        } ,
+        },
         locationDenied() {
             this.showError = true;
         },
@@ -84,8 +83,8 @@ createApp({
                 this.map.removeLayer(this.routeLayer);
                 const polyline = route.geometry.coordinates.map(el => ol.proj.fromLonLat(el));
                 this.routeLayer = new ol.layer.Vector({
-                    source:  new ol.source.Vector({
-                        features: [ new ol.Feature({
+                    source: new ol.source.Vector({
+                        features: [new ol.Feature({
                             type: 'route',
                             geometry: new ol.geom.LineString(polyline)
                         })]
