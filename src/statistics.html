@@ -12,27 +12,33 @@
     <script src="assets/js/pages/statistics.js" type="module"></script>
 </head>
 <body>
-<div id="app">
+<div id="app" v-cloak>
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
         <div class="statistics">
-            <section v-show="incidentsReady">
-                <h2> This year there are <span ref="totalIncidents"></span> reported incidents </h2>
-            </section>
-
-            <section v-show="pieReady">
-                <h2> Frequency of types </h2>
-                <canvas id="bar-chart-types"></canvas>
-            </section>
+            <ul>
+                <li :class="{ 'active' : barTypesReady}" @click="toggleTypes">Frequency of types</li>
+                <li :class="{ 'active' : pieReady}" @click="togglePie">Incidents with bystanders</li>
+                <li :class="{ 'active' : barBystandersReady}" @click="toggleBystanders">Best bystanders</li>
+            </ul>
             <section v-show="barTypesReady">
-                <h2>Incidents with bystanders</h2>
-                <canvas id="pie-chart-bystanders"></canvas>
+                <h2>Frequency of types</h2>
+                <div>
+                    <canvas id="bar-chart-types"></canvas>
+                </div>
             </section>
-
+            <section v-show="pieReady">
+                <h2>Incidents with bystanders</h2>
+                <div>
+                    <canvas id="pie-chart-bystanders"></canvas>
+                </div>
+            </section>
             <section v-show="barBystandersReady">
                 <h2>Best bystanders</h2>
-                <canvas id="bar-chart-bystanders"></canvas>
+                <div>
+                    <canvas id="bar-chart-bystanders"></canvas>
+                </div>
             </section>
         </div>
     </main>
