@@ -49,7 +49,9 @@ createApp({
         async finishRecording(){
             const incidentId = JSON.parse(localStorage.getItem("incident")).id;
             const incident = await getIncident(incidentId);
-            if (incident.state !== "ACTIVE") {return;}
+            if (incident.state !== "ACTIVE") {
+                return;
+            }
             await validateIncident(incidentId);
             this.incidentFinished = true;
             window.location.href = 'index.html';

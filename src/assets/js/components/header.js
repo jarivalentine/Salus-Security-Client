@@ -12,7 +12,7 @@ export default {
         },
         async changeName(){
             const user = await getOneUser(localStorage.getItem("userId"));
-            this.firstname = user.firstname + " " + user.lastname;
+            this.firstname = `${user.firstname} ${user.lastname}`;
         }
     },
     async mounted() {

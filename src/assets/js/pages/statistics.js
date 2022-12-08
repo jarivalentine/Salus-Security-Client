@@ -88,7 +88,7 @@ createApp({
             for (const user of users) {
                 const helpedIncidents = await getAllHelpedIncidentsFromUser(user.id);
                 amountOfHelpedIncidents.push(helpedIncidents.length);
-                listOfBystanders.push(user.firstname + " " + user.lastname);
+                listOfBystanders.push(`${user.firstname} ${user.lastname}`);
             }
             this.displayBarChartBystanders(listOfBystanders, amountOfHelpedIncidents);
         },
@@ -122,10 +122,16 @@ createApp({
             let totalDeclinedIncidents = 0;
             let totalActiveIncidents = 0;
 
-            allIncidents.map(incident => {
-                if (incident.state === "CONFIRMED"){totalConfirmedIncidents += 1}
-                if (incident.state === "DECLINED"){totalDeclinedIncidents += 1}
-                if (incident.state === "ACTIVE"){totalActiveIncidents += 1}
+            allIncidents.map(incident => { //sonar doesn't approve of one-liners (Common Sonar L)
+                if (incident.state === "CONFIRMED"){
+                    totalConfirmedIncidents += 1;
+                }
+                if (incident.state === "DECLINED"){
+                    totalDeclinedIncidents += 1;
+                }
+                if (incident.state === "ACTIVE"){
+                    totalActiveIncidents += 1;
+                }
             });
 
             this.displayValidationDoughnutChart([totalConfirmedIncidents, totalDeclinedIncidents, totalActiveIncidents],["CONFIRMED", "DECLINED", "ACTIVE"]);
