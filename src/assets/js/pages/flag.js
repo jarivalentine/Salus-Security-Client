@@ -27,7 +27,6 @@ createApp({
             this.incidentLabels = this.incident["labels"];
             const bystanders = await getAllBystandersFromIncident(this.incident["id"]);
             const aggressors = await getAllAggressorsFromIncident(this.incident["id"]);
-            console.log(this.incident);
             this.incidentBystanders = this.presentUsers(bystanders);
             this.incidentAggressors = this.presentUsers(aggressors);
 

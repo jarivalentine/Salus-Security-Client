@@ -409,6 +409,31 @@ nav ul .doorlock-nav {
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
+.flag button {
+  background-color: #F0E25D;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  margin-top: 10%;
+  margin-left: 45%;
+  border: solid white 0.125rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border-radius: 1.5rem;
+}
+.flag button:hover {
+  background-color: #F0E25D;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: black;
+  border: solid black 0.125rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border-radius: 1.5rem;
+}
 
 .settings .container {
   display: grid;

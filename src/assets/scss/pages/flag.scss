@@ -43,6 +43,25 @@
     }
 
   }
+
+  button {
+    @include constraints.button;
+    cursor: pointer;
+    margin-top: 10%;
+    margin-left: 45%;
+    border: solid white 0.125rem;
+    font-family: constraints.$header-font;
+    font-weight: bold;
+    border-radius: 1.5rem;
+  }
+
+  button:hover {
+    @include constraints.button;
+    border: solid black 0.125rem;
+    font-family: constraints.$header-font;
+    font-weight: bold;
+    border-radius: 1.5rem;
+  }
 }
 
 
