@@ -11,9 +11,8 @@ createApp({
             pieReady: false,
             barTypesReady: false,
             barBystandersReady: false,
-            pieValidationReady: false,
-            chartTypes: ["pieReady", "barTypesReady", "barBystandersReady", "pieValidationReady"],
-            temp: ["this.pieReady"]
+            doughnutValidationReady: false,
+            allIncidentsLength: null,
         };
     },
     methods: {
@@ -24,6 +23,7 @@ createApp({
                 countedTypes[index.type] = (countedTypes[index.type] || 0) + 1 ;
             });
             this.displayBarChartTypes(Object.keys(countedTypes), Object.values(countedTypes));
+            this.allIncidentsLength = allIncidents.length;
         },
 
         displayBarChartTypes(types, amount){
@@ -128,13 +128,13 @@ createApp({
                 if (incident.state === "ACTIVE"){totalActiveIncidents += 1}
             });
 
-            this.displayValidationPieChart([totalConfirmedIncidents, totalDeclinedIncidents, totalActiveIncidents],["CONFIRMED", "DECLINED", "ACTIVE"]);
+            this.displayValidationDoughnutChart([totalConfirmedIncidents, totalDeclinedIncidents, totalActiveIncidents],["CONFIRMED", "DECLINED", "ACTIVE"]);
         },
 
-        displayValidationPieChart(listOfFrequency, listOfStates) {
-            const ctx = document.querySelector("#pie-chart-validation").getContext('2d');
+        displayValidationDoughnutChart(listOfFrequency, listOfStates) {
+            const ctx = document.querySelector("#doughnut-chart-validation").getContext('2d');
             new Chart(ctx, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: listOfStates,
                     datasets: [{
@@ -150,28 +150,28 @@ createApp({
             this.pieReady = false;
             this.barTypesReady = true;
             this.barBystandersReady = false;
-            this.pieValidationReady = false;
+            this.doughnutValidationReady = false;
         },
 
         togglePie() {
             this.pieReady = true;
             this.barTypesReady = false;
             this.barBystandersReady = false;
-            this.pieValidationReady = false;
+            this.doughnutValidationReady = false;
         },
 
         toggleBystanders() {
             this.pieReady = false;
             this.barTypesReady = false;
             this.barBystandersReady = true;
-            this.pieValidationReady = false;
+            this.doughnutValidationReady = false;
         },
 
-        toggleValidationPie() {
+        toggleValidationDoughnut() {
             this.pieReady = false;
             this.barTypesReady = false;
             this.barBystandersReady = false;
-            this.pieValidationReady = true;
+            this.doughnutValidationReady = true;
         },
     },
     async mounted() {
