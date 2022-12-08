@@ -52,13 +52,7 @@ createApp({
 
         async displayNotifications() {
             this.allIncidents = await getAllIncidents();
-            this.allIncidents.filter(incident => {
-                const currentDate = new Date();
-                const incidentDate = new Date(incident["datetime"]);
-                if (incidentDate.getDay() - currentDate.getDay() === 0) {
-                    return incident;
-                }
-            });
+            this.allIncidents.filter(incident => new Date(incident["datetime"]).getDay() - new Date().getDay() === 0);
             console.log(this.allIncidents);
             this.allIncidents.reverse();
         },
@@ -85,11 +79,12 @@ createApp({
         },
 
         calculateDistance(incident) {
-            if (this.location){
-                const lat = incident["latitude"];
-                const long = incident["longitude"];
-                return (this.haversineCalculation(lat, long, this.location.coords.latitude, this.location.coords.longitude)).toFixed(2);
+            if (!this.location){
+               return null;
             }
+            const lat = incident["latitude"];
+            const long = incident["longitude"];
+            return (this.haversineCalculation(lat, long, this.location.coords.latitude, this.location.coords.longitude)).toFixed(2);
         },
 
         haversineCalculation(lat1, lon1, lat2, lon2) { // distance between two points on a sfeer. crd.: geeksforgeeks.org -> haversine

@@ -11,6 +11,8 @@ createApp({
             pieReady: false,
             barTypesReady: false,
             barBystandersReady: false,
+            doughnutValidationReady: false,
+            allIncidentsLength: null,
         };
     },
     methods: {
@@ -21,6 +23,7 @@ createApp({
                 countedTypes[index.type] = (countedTypes[index.type] || 0) + 1 ;
             });
             this.displayBarChartTypes(Object.keys(countedTypes), Object.values(countedTypes));
+            this.allIncidentsLength = allIncidents.length;
         },
 
         displayBarChartTypes(types, amount){
@@ -85,7 +88,7 @@ createApp({
             for (const user of users) {
                 const helpedIncidents = await getAllHelpedIncidentsFromUser(user.id);
                 amountOfHelpedIncidents.push(helpedIncidents.length);
-                listOfBystanders.push(user.firstname + " " + user.lastname);
+                listOfBystanders.push(`${user.firstname} ${user.lastname}`);
             }
             this.displayBarChartBystanders(listOfBystanders, amountOfHelpedIncidents);
         },
@@ -113,29 +116,76 @@ createApp({
             });
         },
 
+        async validationFrequency(){
+            const allIncidents = await getAllIncidents();
+            let totalConfirmedIncidents = 0;
+            let totalDeclinedIncidents = 0;
+            let totalActiveIncidents = 0;
+
+            allIncidents.map(incident => { //sonar doesn't approve of one-liners (Common Sonar L)
+                if (incident.state === "CONFIRMED"){
+                    totalConfirmedIncidents += 1;
+                }
+                if (incident.state === "DECLINED"){
+                    totalDeclinedIncidents += 1;
+                }
+                if (incident.state === "ACTIVE"){
+                    totalActiveIncidents += 1;
+                }
+            });
+
+            this.displayValidationDoughnutChart([totalConfirmedIncidents, totalDeclinedIncidents, totalActiveIncidents],["CONFIRMED", "DECLINED", "ACTIVE"]);
+        },
+
+        displayValidationDoughnutChart(listOfFrequency, listOfStates) {
+            const ctx = document.querySelector("#doughnut-chart-validation").getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: listOfStates,
+                    datasets: [{
+                        label: 'Percentage',
+                        data: listOfFrequency,
+                        backgroundColor: ["#5B37DB", "#a599d0", "#F0E25D"],
+                    }]
+                },
+            });
+        },
+
         toggleTypes() {
             this.pieReady = false;
             this.barTypesReady = true;
             this.barBystandersReady = false;
+            this.doughnutValidationReady = false;
         },
 
         togglePie() {
             this.pieReady = true;
             this.barTypesReady = false;
             this.barBystandersReady = false;
+            this.doughnutValidationReady = false;
         },
 
         toggleBystanders() {
             this.pieReady = false;
             this.barTypesReady = false;
             this.barBystandersReady = true;
-        }
+            this.doughnutValidationReady = false;
+        },
+
+        toggleValidationDoughnut() {
+            this.pieReady = false;
+            this.barTypesReady = false;
+            this.barBystandersReady = false;
+            this.doughnutValidationReady = true;
+        },
     },
     async mounted() {
         await this.percentageOfBystanders();
         await this.frequencyOfTypes();
         await this.bestBystanders();
-        this.barTypesReady = true;
+        await this.validationFrequency();
+        this.toggleTypes();
     },
     components: {
         headerComponent,
