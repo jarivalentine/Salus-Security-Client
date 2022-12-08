@@ -23,8 +23,8 @@
                         <div>
                             <h3>{{incident.type}}</h3>
                             <em class="label" v-for="label in incident.labels">{{label}}</em>
-                            <em v-if="incident.validated" class="label">Valid</em>
-                            <em v-else class="label">Invalid</em>
+                            <em v-if="incident.state === 'CONFIRMED'" class="label">Confirmed</em>
+                            <em v-else class="label">Declined</em>
                         </div>
                         <div>
                             <p>{{new Date(incident.datetime).toLocaleDateString()}}</p>
