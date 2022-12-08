@@ -451,6 +451,12 @@ nav ul .doorlock-nav {
 .statistics ul {
   margin-bottom: 1rem;
 }
+.statistics ul .statistics-nav {
+  cursor: pointer;
+}
+.statistics ul .statistics-nav:hover {
+  background-color: #898989;
+}
 .statistics ul li {
   background-color: #F0E25D;
   padding: 0.4rem;

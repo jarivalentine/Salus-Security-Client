@@ -3,6 +3,14 @@
 .statistics {
 
     ul {
+        .statistics-nav {
+            cursor: pointer;
+        }
+
+        .statistics-nav:hover {
+            background-color: #898989;
+        }
+
         li {
             @include constraints.button;
             width: fit-content;

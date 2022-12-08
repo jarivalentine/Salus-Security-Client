@@ -18,9 +18,10 @@
         <nav-component></nav-component>
         <div class="statistics">
             <ul>
-                <li :class="{ 'active' : barTypesReady}" @click="toggleTypes">Frequency of types</li>
-                <li :class="{ 'active' : pieReady}" @click="togglePie">Incidents with bystanders</li>
-                <li :class="{ 'active' : barBystandersReady}" @click="toggleBystanders">Best bystanders</li>
+                <li class="statistics-nav" :class="{ 'active' : barTypesReady}" @click="toggleTypes">Frequency of types</li>
+                <li class="statistics-nav" :class="{ 'active' : pieReady}" @click="togglePie">Incidents with bystanders</li>
+                <li class="statistics-nav" :class="{ 'active' : barBystandersReady}" @click="toggleBystanders">Best bystanders</li>
+                <li class="statistics-nav" :class="{ 'active' : pieValidationReady}" @click="toggleValidationPie">Validation frequency</li>
             </ul>
             <section v-show="barTypesReady">
                 <h2>Frequency of types</h2>
@@ -38,6 +39,12 @@
                 <h2>Best bystanders</h2>
                 <div>
                     <canvas id="bar-chart-bystanders"></canvas>
+                </div>
+            </section>
+            <section v-show="pieValidationReady">
+                <h2>Frequency validation</h2>
+                <div>
+                    <canvas id="pie-chart-validation"></canvas>
                 </div>
             </section>
         </div>

@@ -53,7 +53,6 @@ async function unSubscribeUser(userId) {
     return post(`${URL}/api/users/${userId}/unsubscribe`, options);
 }
 
-
 async function getIncident(incidentId) {
     return get(`${URL}/api/incidents/${incidentId}`);
 }
