@@ -421,7 +421,6 @@ nav ul .doorlock-nav {
   border: solid white 0.125rem;
   font-family: "Lexend", Arial, Helvetica, sans-serif;
   font-weight: bold;
-  border-radius: 1.5rem;
 }
 .flag button:hover {
   background-color: #F0E25D;
@@ -432,7 +431,6 @@ nav ul .doorlock-nav {
   border: solid black 0.125rem;
   font-family: "Lexend", Arial, Helvetica, sans-serif;
   font-weight: bold;
-  border-radius: 1.5rem;
 }
 
 .settings .container {
@@ -490,7 +488,6 @@ nav ul .doorlock-nav {
   color: black;
   width: fit-content;
   display: inline-block;
-  padding: 0.75rem;
   margin-right: 1rem;
 }
 .statistics ul .active {
@@ -559,12 +556,15 @@ main h2 {
   color: #898989;
   padding: 0.75rem;
   border-radius: 0.5rem;
-  margin: 0.75rem;
-  margin-left: auto;
+  margin: 0.75rem 0.75rem 0.75rem auto;
   text-align: center;
   font-size: 1.75rem;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   text-decoration: none;
+}
+
+.hidden {
+  display: none;
 }
 
 [v-cloak] {

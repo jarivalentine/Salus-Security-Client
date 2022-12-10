@@ -1,6 +1,7 @@
 const { createApp } = Vue;
 import headerComponent from '../components/header.js';
 import navComponent from '../components/nav.js';
+import subscriptionComponent from '../components/subscription-lock.js';
 
 createApp({
     data() {
@@ -10,6 +11,7 @@ createApp({
     },
     components: {
         headerComponent,
-        navComponent
+        navComponent,
+        subscriptionComponent
     }
 }).mount('#app');
