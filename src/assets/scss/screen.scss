@@ -1,7 +1,7 @@
 @use 'header';
 @use 'nav';
 @use 'main';
-@use 'subscriptionLock';
+@use 'subscription-lock';
 @use 'constraints';
 
 [v-cloak] {
@@ -23,4 +23,9 @@ body {
 
 .tag {
     @include constraints.tag;
+}
+
+.locked {
+    filter: blur(0.25rem);
+    pointer-events: none;
 }

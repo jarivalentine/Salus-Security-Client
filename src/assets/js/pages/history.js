@@ -1,6 +1,7 @@
 const { createApp } = Vue;
 import headerComponent from '../components/header.js';
 import navComponent from '../components/nav.js';
+import subscriptionComponent from "../components/subscription-lock.js";
 
 createApp({
     data() {
@@ -23,6 +24,7 @@ createApp({
         },
     },
     async mounted() {
+        await applyOrRemoveLockedMechanism('div.history');
         await this.dataFromIncidentHelped();
         this.helpedIncidentsReady = true;
         await this.dataFromIncidents();
@@ -30,6 +32,7 @@ createApp({
     },
     components: {
         headerComponent,
-        navComponent
+        navComponent,
+        subscriptionComponent
     }
 }).mount('#app');

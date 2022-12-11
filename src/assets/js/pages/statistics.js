@@ -3,6 +3,7 @@
 const { createApp } = Vue;
 import headerComponent from '../components/header.js';
 import navComponent from '../components/nav.js';
+import subscriptionComponent from '../components/subscription-lock.js';
 
 createApp({
     data() {
@@ -181,6 +182,7 @@ createApp({
         },
     },
     async mounted() {
+        await applyOrRemoveLockedMechanism('div.statistics');
         await this.percentageOfBystanders();
         await this.frequencyOfTypes();
         await this.bestBystanders();
@@ -189,6 +191,7 @@ createApp({
     },
     components: {
         headerComponent,
-        navComponent
+        navComponent,
+        subscriptionComponent
     }
 }).mount('#app');

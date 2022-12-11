@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script defer src="assets/js/api.js"></script>
-    <script src="assets/js/main.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script defer src="assets/js/api.js"></script>
     <script src="assets/js/pages/statistics.js" type="module"></script>
 </head>
 <body>
@@ -16,6 +16,7 @@
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
+        <subscription-component></subscription-component>
         <div class="statistics">
             <ul>
                 <li class="statistics-nav" :class="{ 'active' : barTypesReady}" @click="toggleTypes">Frequency of types</li>
