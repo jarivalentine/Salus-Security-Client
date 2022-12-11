@@ -24,6 +24,7 @@ createApp({
         },
     },
     async mounted() {
+        await applyOrRemoveLockedMechanism('div.history');
         await this.dataFromIncidentHelped();
         this.helpedIncidentsReady = true;
         await this.dataFromIncidents();

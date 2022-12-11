@@ -9,6 +9,9 @@ createApp({
             message: 'Doorlock page'
         };
     },
+    async mounted(){
+        await applyOrRemoveLockedMechanism('div.doorlock');
+    },
     components: {
         headerComponent,
         navComponent,

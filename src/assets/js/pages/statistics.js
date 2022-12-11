@@ -182,6 +182,7 @@ createApp({
         },
     },
     async mounted() {
+        await applyOrRemoveLockedMechanism('div.statistics');
         await this.percentageOfBystanders();
         await this.frequencyOfTypes();
         await this.bestBystanders();

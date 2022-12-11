@@ -24,3 +24,8 @@ body {
 .tag {
     @include constraints.tag;
 }
+
+.locked {
+    filter: blur(0.25rem);
+    pointer-events: none;
+}

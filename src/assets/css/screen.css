@@ -594,4 +594,9 @@ body {
   width: fit-content;
 }
 
+.locked {
+  filter: blur(0.25rem);
+  pointer-events: none;
+}
+
 /*# sourceMappingURL=screen.css.map */

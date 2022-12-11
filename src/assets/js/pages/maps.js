@@ -101,7 +101,8 @@ createApp({
             });
         }
     },
-    mounted() {
+    async mounted() {
+        await applyOrRemoveLockedMechanism('div.maps');
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((location) => getAllIncidents().then(incidents => this.loadMap(incidents, location)), this.locationDenied);
         }
