@@ -43,7 +43,7 @@ async function applyOrRemoveLockedMechanism(domElement){
         return;
     }
     if (user.subscribed){
-        blurDomElement.classList.add("locked");
+        blurDomElement.classList.remove("locked");
         return;
     }
 
