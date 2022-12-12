@@ -11,6 +11,7 @@ createApp({
             helpedIncidents: [],
             flaggedIncidentsReady: false,
             helpedIncidentsReady: false,
+            allTypes: {},
         };
     },
     methods: {
@@ -22,6 +23,15 @@ createApp({
             const userId = localStorage.getItem("userId");
             this.helpedIncidents = await getAllHelpedIncidentsFromUser(userId);
         },
+        async filterByType(event){
+            if (event.target.value === "None"){
+                await this.dataFromIncidents();
+                return;
+            }
+            const userId = localStorage.getItem("userId");
+            const allUserIncidents = await getAllIncidentsFromUser(userId);
+            this.flaggedIncidents = allUserIncidents.filter(incident => incident.type === event.target.value);
+        }
     },
     async mounted() {
         await applyOrRemoveLockedMechanism('div.history');
@@ -30,6 +40,7 @@ createApp({
         await this.dataFromIncidents();
         this.flaggedIncidentsReady = true;
     },
+
     components: {
         headerComponent,
         navComponent,
