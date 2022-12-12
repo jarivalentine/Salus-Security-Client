@@ -51,10 +51,15 @@ createApp({
         // notifications section
 
         async displayNotifications() {
-            this.allIncidents = await getAllIncidents();
-            this.allIncidents.filter(incident => new Date(incident["datetime"]).getDay() - new Date().getDay() === 0);
-            console.log(this.allIncidents);
-            this.allIncidents.reverse();
+            const allIncidents = await getAllIncidents();
+            const hoursInDay = 24;
+            const minutesInHour = 60;
+            const secondsInMinute = 60;
+            const incidentsOneDay = allIncidents.filter(incident => this.calculateDates(incident)["hours"] <= hoursInDay - 1 && this.calculateDates(incident)["minutes"] <= minutesInHour - 1 && this.calculateDates(incident)["seconds"] <= secondsInMinute);
+            incidentsOneDay.filter(incident => new Date(incident["datetime"]).getDay() - new Date().getDay() === 0);
+            console.log(incidentsOneDay);
+            incidentsOneDay.reverse();
+            this.allIncidents = incidentsOneDay;
         },
 
         calculateDates(incident) {
