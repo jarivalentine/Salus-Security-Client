@@ -68,9 +68,11 @@ createApp({
             });
             $popup.innerHTML = `
                 <p>${incident.type}</p>
-                <ul>${labels}</ul>`;
-            $popup.style.right = '0px';
-            $popup.style.top = '0px';
+                <ul>${labels}</ul>
+                <a href="./route.html">View route</a>`;
+            $popup.style.right = '0';
+            $popup.style.top = '0';
+            localStorage.setItem('incident', JSON.stringify(incident));
             document.querySelector('#container').appendChild($popup);
             await this.drawRoute(incident);
         },

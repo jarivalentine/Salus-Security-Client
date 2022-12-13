@@ -17,6 +17,7 @@
         width: 100%;
         height: calc(100% - 3rem);
         @include constraints.box;
+        padding: 0;
         position: relative;
 
         .map {
@@ -55,9 +56,17 @@
                 margin-bottom: 0.2rem;
             }
 
-            li {
-                @include constraints.label;
-                margin: 0 0.2rem 0.2rem 0;
+            ul {
+                li {
+                    @include constraints.label;
+                    margin: 0 0.2rem 0.2rem 0;
+                }
+                
+                margin-bottom: 1rem;
+            }
+
+            a {
+                @include constraints.button;
             }
         }
 
