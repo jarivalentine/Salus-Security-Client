@@ -1,6 +1,7 @@
 const {createApp} = Vue;
 import headerComponent from '../components/header.js';
 import navComponent from '../components/nav.js';
+import subscriptionComponent from "../components/subscription-lock.js";
 
 createApp({
     data() {
@@ -102,13 +103,15 @@ createApp({
             });
         }
     },
-    mounted() {
+    async mounted() {
+        await applyOrRemoveLockedMechanism('div.maps');
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((location) => getAllIncidents().then(incidents => this.loadMap(incidents, location)), this.locationDenied);
         }
     },
     components: {
         headerComponent,
-        navComponent
+        navComponent,
+        subscriptionComponent
     }
 }).mount('#app');

@@ -35,3 +35,17 @@ async function validUserId(userId) {
     users.map(index => userIds.push(index.id));
     return userIds.includes(userId);
 }
+
+async function applyOrRemoveLockedMechanism(domElement){
+    const user = await getOneUser(localStorage.getItem("userId"));
+    const blurDomElement = document.querySelector(domElement);
+    if (blurDomElement === null){
+        return;
+    }
+    if (user.subscribed){
+        blurDomElement.classList.remove("locked");
+        return;
+    }
+
+    blurDomElement.classList.add("locked");
+}

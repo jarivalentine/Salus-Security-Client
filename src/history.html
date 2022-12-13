@@ -15,16 +15,26 @@
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
+        <subscription-component></subscription-component>
         <div class="history">
             <article v-show="flaggedIncidentsReady">
-                <h2>Incidents you flagged</h2>
+                <p> Filter by: </p>
+                <select @change="filterByTypeFlagged($event)">
+                    <option value="None"> None </option>
+                    <option value="Assault"> Assault </option>
+                    <option value="Murder"> Murder </option>
+                    <option value="Theft"> Theft </option>
+                    <option value="Vandalism"> Vandalism </option>
+                </select>
+                <h2>Incidents you flagged </h2>
                 <ul>
-                    <li v-for="incident in flaggedIncidents">
+                    <li v-if="flaggedIncidents.length === 0"><h3> No incidents flagged yet with this type </h3></li>
+                    <li v-else v-for="incident in flaggedIncidents">
                         <div>
                             <h3>{{incident.type}}</h3>
                             <em class="label" v-for="label in incident.labels">{{label}}</em>
-                            <em v-if="incident.validated" class="label">Valid</em>
-                            <em v-else class="label">Invalid</em>
+                            <em v-if="incident.state === 'CONFIRMED'" class="label">Confirmed</em>
+                            <em v-else class="label">Declined</em>
                         </div>
                         <div>
                             <p>{{new Date(incident.datetime).toLocaleDateString()}}</p>
@@ -35,9 +45,18 @@
             </article>
 
             <article v-show="helpedIncidentsReady">
+                <p> Filter by: </p>
+                <select @change="filterByTypeHelped($event)">
+                    <option value="None"> None </option>
+                    <option value="Assault"> Assault </option>
+                    <option value="Murder"> Murder </option>
+                    <option value="Theft"> Theft </option>
+                    <option value="Vandalism"> Vandalism </option>
+                </select>
                 <h2>Incidents you helped</h2>
                 <ul>
-                    <li v-for="incident in helpedIncidents">
+                    <li v-if="helpedIncidents.length === 0"> <h3> No people helped yet with this type </h3> </li>
+                    <li v-else v-for="incident in helpedIncidents">
                         <h4>You've helped: {{incident.reporterId}} </h4>
                         <div>
                             <h3>{{incident.type}}</h3>

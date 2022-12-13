@@ -1,6 +1,8 @@
 const { createApp } = Vue;
 import headerComponent from '../components/header.js';
 import navComponent from '../components/nav.js';
+import subscriptionLock from "../components/subscription-lock.js";
+
 
 createApp({
     data() {
@@ -15,6 +17,7 @@ createApp({
             incidentDatetime: null,
             incidentValidated: null,
             informationReady: false,
+            incidentFinished: false,
         };
     },
     methods: {
@@ -27,7 +30,6 @@ createApp({
             this.incidentLabels = this.incident["labels"];
             const bystanders = await getAllBystandersFromIncident(this.incident["id"]);
             const aggressors = await getAllAggressorsFromIncident(this.incident["id"]);
-            console.log(this.incident);
             this.incidentBystanders = this.presentUsers(bystanders);
             this.incidentAggressors = this.presentUsers(aggressors);
 
@@ -45,6 +47,17 @@ createApp({
             });
             return listOfUsers;
         },
+
+        async finishRecording(){
+            const incidentId = JSON.parse(localStorage.getItem("incident")).id;
+            const incident = await getIncident(incidentId);
+            if (incident.state !== "ACTIVE") {
+                return;
+            }
+            await validateIncident(incidentId);
+            this.incidentFinished = true;
+            window.location.href = 'index.html';
+        }
     },
     async mounted() {
         await this.displayItems();
@@ -52,6 +65,7 @@ createApp({
     },
     components: {
         headerComponent,
-        navComponent
+        navComponent,
+        subscriptionLock
     }
 }).mount('#app');

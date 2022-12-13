@@ -15,6 +15,7 @@
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
+        <subscription-component></subscription-component>
         <div class="flag">
             <div class="recording-dot"></div>
             <h1>Auto recorded by Salus Security AI &#169;</h1>
@@ -43,11 +44,11 @@
                 <section v-show="informationReady" class="additional-information">
                     <h2> Additional Information </h2>
                     <ul>
-                        <li><span>{{incidentValidated}} &#169;</span></li>
                         <li><span>Date: {{incidentDatetime}}</span></li>
                     </ul>
                 </section>
             </div>
+            <button type="button" @click="finishRecording"> Finish Recording </button>
         </div>
     </main>
 </div>

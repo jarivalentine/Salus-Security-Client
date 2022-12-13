@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            firstname: 'Jarne Van Parys',
+            firstname: null,
             tag: 'Gardian Angel',
             isActive: false
         };
@@ -9,14 +9,19 @@ export default {
     methods: {
         toggleMenu() {
             this.isActive = !this.isActive;
+        },
+        async changeName(){
+            const user = await getOneUser(localStorage.getItem("userId"));
+            this.firstname = `${user.firstname} ${user.lastname}`;
         }
     },
-    mounted() {
+    async mounted() {
         document.querySelector('body').addEventListener('click', (e) => {
             if (this.isActive && e.target.id !== 'menu' && e.target.parentNode.id !== 'menu') {
                 this.isActive = false;
             }
         });
+        await this.changeName();
     },
     template: `
         <header>
