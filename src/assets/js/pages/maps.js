@@ -30,7 +30,6 @@ createApp({
                     zoom: 12
                 })
             });
-            this.map.addOverlay(this.createMarker(center));
             incidents.forEach(incident => {
                 const currentLocation = ol.proj.fromLonLat([incident.latitude, incident.longitude]);
                 this.map.addOverlay(this.createMarker(currentLocation, incident.id));
@@ -65,42 +64,16 @@ createApp({
             $popup.classList.add('popup');
             let labels = '';
             incident.labels.forEach(label => {
-                labels += `<li>${label}</span>`;
+                labels += `<li>${label}</li>`;
             });
             $popup.innerHTML = `
                 <p>${incident.type}</p>
                 <ul>${labels}</ul>
                 <a href="./route.html">View route</a>`;
-            $popup.style.right = '0';
-            $popup.style.top = '0';
+            $popup.style.left = e.clientX - 95 + 'px';
+            $popup.style.top = e.clientY - 130 - (incident.labels.length * 20) + 'px';
             localStorage.setItem('incident', JSON.stringify(incident));
             document.querySelector('#container').appendChild($popup);
-            await this.drawRoute(incident);
-        },
-        async drawRoute(incident) {
-            const startLong = this.myLocation.coords.longitude;
-            const startLat = this.myLocation.coords.latitude;
-            const endLong = incident.latitude;
-            const endLat = incident.longitude;
-            getRoute(startLong, startLat, endLong, endLat).then(route => {
-                this.map.removeLayer(this.routeLayer);
-                const polyline = route.geometry.coordinates.map(el => ol.proj.fromLonLat(el));
-                this.routeLayer = new ol.layer.Vector({
-                    source: new ol.source.Vector({
-                        features: [new ol.Feature({
-                            type: 'route',
-                            geometry: new ol.geom.LineString(polyline)
-                        })]
-                    }),
-                    style: new ol.style.Style({
-                        stroke: new ol.style.Stroke({
-                            width: 6,
-                            color: [91, 55, 219, 0.5]
-                        })
-                    })
-                });
-                this.map.addLayer(this.routeLayer);
-            });
         }
     },
     async mounted() {
