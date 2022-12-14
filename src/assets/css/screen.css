@@ -523,8 +523,13 @@ nav ul .doorlock-nav {
   display: inline-block;
   margin-bottom: 1rem;
 }
-.route label {
-  font-size: 1.5rem;
+.route h1 + a {
+  background-color: #F0E25D;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: black;
+  margin-left: 1rem;
 }
 .route #container {
   width: 100%;
@@ -548,51 +553,6 @@ nav ul .doorlock-nav {
   background-size: 2rem;
   height: 2rem;
   width: 2rem;
-}
-.route #container .flag {
-  background-image: url("../img/svg-flag.svg");
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: 1.5rem;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-.route #container .flag:hover {
-  cursor: pointer;
-}
-.route #container .popup {
-  width: 12rem;
-  position: absolute;
-  background-color: #F9F9F9;
-  border-radius: 0.75rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  padding: 1rem;
-  box-sizing: border-box;
-  padding-bottom: 1.5rem;
-}
-.route #container .popup p {
-  font-size: 1.2rem;
-  margin-bottom: 0.2rem;
-}
-.route #container .popup ul {
-  margin-bottom: 1.5rem;
-}
-.route #container .popup ul li {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-size: 0.85rem;
-  color: white;
-  background-color: #5B37DB;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  width: fit-content;
-  margin: 0 0.2rem 0.2rem 0;
-}
-.route #container .popup a {
-  background-color: #F0E25D;
-  padding: 0.4rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  color: black;
 }
 .route #container .error {
   font-size: 1.5rem;

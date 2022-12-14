@@ -7,10 +7,11 @@
         font-family: constraints.$header-font;
         display: inline-block;
         margin-bottom: 1rem;
-    }
 
-    label {
-        font-size: 1.5rem;
+        + a {
+            @include constraints.button;
+            margin-left: 1rem;
+        }
     }
 
     #container {
@@ -32,42 +33,6 @@
             background-size: 2rem;
             height: 2rem;
             width: 2rem;
-        }
-
-        .flag {
-            background-image: url('../img/svg-flag.svg');
-            background-position: center bottom;
-            background-repeat: no-repeat;
-            background-size: 1.5rem;
-            height: 1.5rem;
-            width: 1.5rem;
-
-            &:hover {
-                cursor: pointer;
-            }
-        }
-
-        .popup {
-            @include constraints.popup;
-            padding-bottom: 1.5rem;
-
-            p {
-                font-size: 1.2rem;
-                margin-bottom: 0.2rem;
-            }
-
-            ul {
-                li {
-                    @include constraints.label;
-                    margin: 0 0.2rem 0.2rem 0;
-                }
-                
-                margin-bottom: 1.5rem;
-            }
-
-            a {
-                @include constraints.button;
-            }
         }
 
         .error {
