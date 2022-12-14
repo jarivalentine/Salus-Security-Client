@@ -1,0 +1,45 @@
+@use '../constraints';
+
+.route {
+
+    h1 {
+        font-size: 2rem;
+        font-family: constraints.$header-font;
+        display: inline-block;
+        margin-bottom: 1rem;
+
+        + a {
+            @include constraints.button;
+            margin-left: 1rem;
+        }
+    }
+
+    #container {
+        width: 100%;
+        height: calc(100% - 3rem);
+        @include constraints.box;
+        padding: 0;
+
+        .map {
+            height: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .marker {
+            background-image: url('../img/pin.svg');
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-size: 2rem;
+            height: 2rem;
+            width: 2rem;
+        }
+
+        .error {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: red;
+            padding: 1rem;
+        }
+    }
+}

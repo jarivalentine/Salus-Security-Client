@@ -318,7 +318,7 @@ nav ul .doorlock-nav {
   padding: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  position: relative;
+  padding: 0;
 }
 .maps #container .map {
   height: 100%;
@@ -352,12 +352,16 @@ nav ul .doorlock-nav {
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   padding: 1rem;
   box-sizing: border-box;
+  padding-bottom: 1.5rem;
 }
 .maps #container .popup p {
   font-size: 1.2rem;
   margin-bottom: 0.2rem;
 }
-.maps #container .popup li {
+.maps #container .popup ul {
+  margin-bottom: 1.5rem;
+}
+.maps #container .popup ul li {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 0.85rem;
   color: white;
@@ -366,6 +370,13 @@ nav ul .doorlock-nav {
   border-radius: 0.5rem;
   width: fit-content;
   margin: 0 0.2rem 0.2rem 0;
+}
+.maps #container .popup a {
+  background-color: #F0E25D;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: black;
 }
 .maps #container .error {
   font-size: 1.5rem;
@@ -504,6 +515,50 @@ nav ul .doorlock-nav {
 }
 .statistics section div {
   height: calc(100% - 3rem);
+}
+
+.route h1 {
+  font-size: 2rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.route h1 + a {
+  background-color: #F0E25D;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: black;
+  margin-left: 1rem;
+}
+.route #container {
+  width: 100%;
+  height: calc(100% - 3rem);
+  background-color: #F9F9F9;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 0;
+}
+.route #container .map {
+  height: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.route #container .marker {
+  background-image: url("../img/pin.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 2rem;
+  height: 2rem;
+  width: 2rem;
+}
+.route #container .error {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: red;
+  padding: 1rem;
 }
 
 main {

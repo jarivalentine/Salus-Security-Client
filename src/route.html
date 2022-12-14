@@ -5,26 +5,27 @@
     <title>Route</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.1.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.1.0/ol.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="assets/js/main.js"></script>
     <script defer src="assets/js/api.js"></script>
     <script src="assets/js/pages/route.js" type="module"></script>
 </head>
 <body>
-<div id="app">
+<div id="app" v-cloak>
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
-        <div>
-            <h1>Assault</h1>
-            <ul>
-                <li><em></em></li>
-            </ul>
-            <ul>
-                <li></li>
-            </ul>
-            <div></div>
-            <p></p>
+        <div class="route">
+            <div>
+                <h1>Route</h1>
+                <a href="./flag.html">Help incident</a>
+            </div>
+            <div id="container">
+                <p v-if="showError" class="error">Share your location to view the map</p>
+                <div id="incidents-map" class="map"></div>
+            </div>
         </div>
     </main>
 </div>

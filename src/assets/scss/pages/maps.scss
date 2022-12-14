@@ -17,7 +17,7 @@
         width: 100%;
         height: calc(100% - 3rem);
         @include constraints.box;
-        position: relative;
+        padding: 0;
 
         .map {
             height: 100%;
@@ -49,15 +49,24 @@
 
         .popup {
             @include constraints.popup;
+            padding-bottom: 1.5rem;
 
             p {
                 font-size: 1.2rem;
                 margin-bottom: 0.2rem;
             }
 
-            li {
-                @include constraints.label;
-                margin: 0 0.2rem 0.2rem 0;
+            ul {
+                li {
+                    @include constraints.label;
+                    margin: 0 0.2rem 0.2rem 0;
+                }
+                
+                margin-bottom: 1.5rem;
+            }
+
+            a {
+                @include constraints.button;
             }
         }
 
