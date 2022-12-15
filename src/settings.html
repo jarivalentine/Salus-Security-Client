@@ -29,7 +29,7 @@
                                 </label>
                             </div>
                         </li>
-                        <li>"In Your Area" notification
+                        <li><div>"In Your Area" notification<span class="question"></span></div>
                             <div class="container">
                                 <label class="switch" for="checkbox2">
                                   <input type="checkbox" id="checkbox2" checked/>
@@ -52,44 +52,34 @@
             <article class="subscription">
                 <h2>Subscriptions</h2>
                 <div>
-                    <section v-if="premium">
-                        <h3>Basic plan</h3>
-                        <p>M 0.00 / Month</p>
-                        <button @click="unSubscribeUser()">Unsubscribe</button>
+                    <section class="basic">
+                        <div>
+                            <div>
+                                <h3>Basic plan</h3>
+                                <p>M 0.00 / Month</p>
+                            </div>
+                            <button v-if="premium" @click="unSubscribeUser()">Unsubscribe</button>
+                            <p v-else>Current plan</p>
+                        </div>
                         <ul>
-                            <li>Flag Incidents</li>
-                            <li> - View History</li>
-                            <li> - Maps, Statistics, Doorlock</li>
+                            <li class="check">Flag Incidents</li>
+                            <li class="cross">View History</li>
+                            <li class="cross">Maps, Statistics, Doorlock</li>
                         </ul>
                     </section>
-                    <section v-if="basic">
-                        <h3>Basic plan</h3>
-                        <p>Current plan</p>
-                        <p>M 0.00 / Month</p>
+                    <section class="premium">
+                        <div>
+                            <div>
+                                <h3>Premium plan </h3>
+                                <p>M 3.99 / Month</p>
+                            </div>
+                            <button v-if="basic" @click="subscribeUser()">Subscribe</button>
+                            <p v-else>current plan</p>
+                        </div>
                         <ul>
-                            <li>Flag Incidents</li>
-                            <li> - View History</li>
-                            <li> - Maps, Statistics, Doorlock</li>
-                        </ul>
-                    </section>
-                    <section v-if="premium">
-                        <h3>Premium plan </h3>
-                        <p>current plan</p>
-                        <p>M 3.99 / Month</p>
-                        <ul>
-                            <li>Flag Incidents</li>
-                            <li> + View History</li>
-                            <li> + Maps, Statistics, Doorlock</li>
-                        </ul>
-                    </section>
-                    <section v-if="basic">
-                        <h3>Premium plan </h3>
-                        <p>M 3.99 / Month</p>
-                        <button @click="subscribeUser()">Subscribe</button>
-                        <ul>
-                            <li>Flag Incidents</li>
-                            <li> + View History</li>
-                            <li> + Maps, Statistics, Doorlock</li>
+                            <li class="check">Flag Incidents</li>
+                            <li class="check">View History</li>
+                            <li class="check">Maps, Statistics, Doorlock</li>
                         </ul>
                     </section>
                 </div>
