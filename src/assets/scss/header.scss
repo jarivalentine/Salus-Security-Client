@@ -9,16 +9,35 @@ header {
     justify-content: space-between;
 
     #menu {
-        background-image: url('../img/default.png');
+        display: flex;
+        justify-content: space-between;
         background-position: left center;
         background-repeat: no-repeat;
         background-size: 4rem;
-        padding-left: 5rem;
         margin-left: 1.5rem;
-
         &:hover {
             cursor: pointer;
         }
+    }
+
+    img {
+        border: 0.1rem solid black;
+        max-width: 4rem;
+        margin-right: 1rem;
+        border-radius: 1rem;
+    }
+
+    .name-and-tag {
+        cursor: auto; //remove the pointer, because cannot click on name
+    }
+
+    .non-poc-menu {
+        color: black;
+    }
+
+    .poc-menu:hover {
+        background-color: lightgrey;
+        border-radius: 1rem;
     }
 
     .hidden {
