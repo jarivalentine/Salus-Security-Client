@@ -3,7 +3,7 @@
 .settings {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 1fr;
     gap: 1rem;
     grid-template-areas:
     "notifications ."
@@ -11,6 +11,7 @@
 
     h2 {
         font-family: constraints.$header-font;
+        margin-bottom: 1rem;
     }
 
     article section {
@@ -18,7 +19,7 @@
         height: calc(100% - 4rem);
 
         h3 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-family: constraints.$header-font;
         }
     }
@@ -27,6 +28,7 @@
         grid-area: notifications;
 
         ul {
+            margin-top: 0.5rem;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -91,10 +93,10 @@
 
                     li {
                         background-repeat: no-repeat;
-                        background-size: 1.75rem;
+                        background-size: 1.5rem;
                         background-position: left center;
                         padding: 0.5rem 0 0.5rem 2rem;
-                        font-size: 1.25rem;
+                        font-size: 1rem;
                     }
 
                     .cross {

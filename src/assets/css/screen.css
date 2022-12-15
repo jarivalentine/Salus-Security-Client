@@ -447,12 +447,13 @@ nav ul .doorlock-nav {
 .settings {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: 1fr 1fr;
   gap: 1rem;
   grid-template-areas: "notifications ." "subscription subscription";
 }
 .settings h2 {
   font-family: "Lexend", Arial, Helvetica, sans-serif;
+  margin-bottom: 1rem;
 }
 .settings article section {
   background-color: #F9F9F9;
@@ -463,13 +464,14 @@ nav ul .doorlock-nav {
   height: calc(100% - 4rem);
 }
 .settings article section h3 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-family: "Lexend", Arial, Helvetica, sans-serif;
 }
 .settings .notifications {
   grid-area: notifications;
 }
 .settings .notifications ul {
+  margin-top: 0.5rem;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -609,10 +611,10 @@ nav ul .doorlock-nav {
 }
 .settings .subscription > div section ul li {
   background-repeat: no-repeat;
-  background-size: 1.75rem;
+  background-size: 1.5rem;
   background-position: left center;
   padding: 0.5rem 0 0.5rem 2rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 .settings .subscription > div section ul .cross {
   background-image: url("../img/svg-cross.svg");
