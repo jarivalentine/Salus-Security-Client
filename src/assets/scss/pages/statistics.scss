@@ -7,10 +7,6 @@
             cursor: pointer;
         }
 
-        .statistics-nav:hover {
-            background-color: #898989;
-        }
-
         li {
             @include constraints.button;
             width: fit-content;
@@ -30,10 +26,13 @@
 
         @include constraints.box;
         height: calc(100% - 3rem); // minus font height and margin bottom
-        width: fit-content;
 
         div {
             height: calc(100% - 3rem); // minus font height and margin bottom
+
+            &:first-of-type {
+                height: calc(100% - 4.25rem);
+            }
         }
     }
 }
