@@ -21,6 +21,15 @@ header {
         }
     }
 
+    .non-poc-menu {
+        color: black;
+    }
+
+    .poc-menu:hover {
+        background-color: lightgrey;
+        border-radius: 1rem;
+    }
+
     .hidden {
         display: none;
     }
