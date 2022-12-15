@@ -35,9 +35,14 @@ $blue: #5B37DB;
     margin-bottom: 0.25rem;
 
     div:first-of-type {
-        width: 40%;
+        width: auto;
         display: flex;
         flex-wrap: wrap;
+    }
+
+    div:last-of-type {
+        display: flex;
+        align-items: baseline;
     }
 
     &:last-child {
@@ -67,6 +72,10 @@ $blue: #5B37DB;
         background-repeat: no-repeat;
         background-size: 1.2rem;	
         opacity: 0.5;
+    }
+
+    a {
+        text-align: center;
     }
 }
 

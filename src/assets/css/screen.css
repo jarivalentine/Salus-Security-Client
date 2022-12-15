@@ -154,18 +154,61 @@ nav ul .doorlock-nav {
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-.home div article > div label {
+.home div article > div .switch {
+  display: inline-block;
+  height: 1.8rem;
+  position: relative;
+  width: 3.25rem;
+}
+.home div article > div .switch input {
+  display: none;
+}
+.home div article > div .slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+.home div article > div .slider:before {
+  background-color: #fff;
+  bottom: 0.25rem;
+  content: "";
+  height: 1.35rem;
+  left: 0.25rem;
+  position: absolute;
+  transition: 0.4s;
+  width: 1.35rem;
+}
+.home div article > div input:checked + .slider {
+  background-color: #F0E25D;
+}
+.home div article > div input:checked + .slider:before {
+  transform: translateX(1.45rem);
+}
+.home div article > div .slider.round {
+  border-radius: 1.35rem;
+}
+.home div article > div .slider.round:before {
+  border-radius: 50%;
+}
+.home div article > div label, .home div article > div p {
   font-size: 1.4rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.home div article > div .container {
+  display: inline-block;
+  margin-right: 1rem;
 }
 .home div article > div input[type=checkbox] {
   accent-color: #F0E25D;
 }
-.home div article > div input[id=notify], .home div article > div label[for=gestures] {
-  margin-right: 1rem;
-}
 .home div article > div input[type=range] {
   width: 100%;
-  max-width: 16rem;
   accent-color: #F0E25D;
 }
 .home div article > div select {
@@ -177,6 +220,18 @@ nav ul .doorlock-nav {
 }
 .home div article > div select:focus {
   outline: none;
+}
+.home div article > div .gestures {
+  display: flex;
+  justify-content: space-between;
+}
+.home div article > div .range div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.home div article > div .range div p {
+  font-size: 1rem;
 }
 .home > article {
   height: calc(100% - 13.5rem);
@@ -198,9 +253,13 @@ nav ul .doorlock-nav {
   margin-bottom: 0.25rem;
 }
 .home > article ul li div:first-of-type {
-  width: 40%;
+  width: auto;
   display: flex;
   flex-wrap: wrap;
+}
+.home > article ul li div:last-of-type {
+  display: flex;
+  align-items: baseline;
 }
 .home > article ul li:last-child {
   border-bottom: none;
@@ -231,6 +290,9 @@ nav ul .doorlock-nav {
   background-repeat: no-repeat;
   background-size: 1.2rem;
   opacity: 0.5;
+}
+.home > article ul li a {
+  text-align: center;
 }
 .home > article ul li p:first-of-type {
   background-image: url("../img/svg-cronometer.svg");
@@ -276,9 +338,13 @@ nav ul .doorlock-nav {
   margin-bottom: 0.25rem;
 }
 .history article ul li div:first-of-type {
-  width: 40%;
+  width: auto;
   display: flex;
   flex-wrap: wrap;
+}
+.history article ul li div:last-of-type {
+  display: flex;
+  align-items: baseline;
 }
 .history article ul li:last-child {
   border-bottom: none;
@@ -309,6 +375,9 @@ nav ul .doorlock-nav {
   background-repeat: no-repeat;
   background-size: 1.2rem;
   opacity: 0.5;
+}
+.history article ul li a {
+  text-align: center;
 }
 
 .maps h1 {
@@ -497,9 +566,13 @@ nav ul .doorlock-nav {
   font-size: 1.25rem;
 }
 .settings .notifications ul li div:first-of-type {
-  width: 40%;
+  width: auto;
   display: flex;
   flex-wrap: wrap;
+}
+.settings .notifications ul li div:last-of-type {
+  display: flex;
+  align-items: baseline;
 }
 .settings .notifications ul li:last-child {
   border-bottom: none;
@@ -530,6 +603,9 @@ nav ul .doorlock-nav {
   background-repeat: no-repeat;
   background-size: 1.2rem;
   opacity: 0.5;
+}
+.settings .notifications ul li a {
+  text-align: center;
 }
 .settings .notifications ul li .switch {
   display: inline-block;
