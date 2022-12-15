@@ -2,7 +2,7 @@ export default {
     data() {
         return {
             firstname: null,
-            tag: 'Gardian Angel',
+            tag: 'Guardian Angel',
             isActive: false
         };
     },
@@ -12,6 +12,9 @@ export default {
         },
         async changeName(){
             const user = await getOneUser(localStorage.getItem("userId"));
+            if (user.firstname === undefined || user.lastname === undefined){
+                this.firstname = "Firstname Lastname";
+            }
             this.firstname = `${user.firstname} ${user.lastname}`;
         }
     },
@@ -31,10 +34,10 @@ export default {
                     <p class="tag">{{ tag }}</p>
                 </div>
                 <ul :class="{ hidden: !isActive }">
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="./history.html">History</a></li>
-                    <li><a href="#">Give feedback</a></li>
-                    <li><a href="#">Report a bug</a></li>
+                    <li><a class="non-poc-menu" href="#">Profile</a></li>
+                    <li><a class="poc-menu" href="./history.html">History</a></li>
+                    <li><a class="non-poc-menu" href="#">Give feedback</a></li>
+                    <li><a class="non-poc-menu" href="#">Report a bug</a></li>
                 </ul>
             </div>
             <a href="./settings.html"></a>

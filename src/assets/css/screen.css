@@ -654,4 +654,13 @@ body {
   pointer-events: none;
 }
 
+.non-poc-menu {
+  color: black;
+}
+
+.poc-menu:hover {
+  background-color: lightgrey;
+  border-radius: 1rem;
+}
+
 /*# sourceMappingURL=screen.css.map */
