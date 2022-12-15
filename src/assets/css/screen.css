@@ -444,30 +444,127 @@ nav ul .doorlock-nav {
   font-weight: bold;
 }
 
-.settings .container {
+.settings {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  gap: 1rem 1rem;
-  grid-auto-flow: row;
-  grid-template-areas: "notifications ." "basic premium";
+  gap: 1rem;
+  grid-template-areas: "notifications ." "subscription subscription";
 }
-.settings .container .notifications {
-  grid-area: notifications;
+.settings h2 {
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
 }
-.settings .container .basic {
-  grid-area: basic;
-}
-.settings .container .premium {
-  grid-area: premium;
-}
-.settings section {
+.settings article section {
   background-color: #F9F9F9;
   border-radius: 1.5rem;
   padding: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  margin: 1rem;
+  height: calc(100% - 4rem);
+}
+.settings article section h3 {
+  font-size: 1.25rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+}
+.settings .notifications {
+  grid-area: notifications;
+}
+.settings .notifications ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.settings .notifications ul li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.0625rem solid black;
+  padding: 0.75rem 0;
+  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+}
+.settings .notifications ul li:last-child {
+  border-bottom: none;
+}
+.settings .notifications ul li h3, .settings .notifications ul li p {
+  display: inline;
+}
+.settings .notifications ul li h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.settings .notifications ul li em {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin-right: 0.5rem;
+}
+.settings .notifications ul li p {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  padding-left: 1.65rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+  opacity: 0.5;
+}
+.settings .notifications ul li .switch {
+  display: inline-block;
+  height: 1.8rem;
+  position: relative;
+  width: 3.25rem;
+}
+.settings .notifications ul li .switch input {
+  display: none;
+}
+.settings .notifications ul li .slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+.settings .notifications ul li .slider:before {
+  background-color: #fff;
+  bottom: 0.25rem;
+  content: "";
+  height: 1.35rem;
+  left: 0.25rem;
+  position: absolute;
+  transition: 0.4s;
+  width: 1.35rem;
+}
+.settings .notifications ul li input:checked + .slider {
+  background-color: #F0E25D;
+}
+.settings .notifications ul li input:checked + .slider:before {
+  transform: translateX(1.45rem);
+}
+.settings .notifications ul li .slider.round {
+  border-radius: 1.35rem;
+}
+.settings .notifications ul li .slider.round:before {
+  border-radius: 50%;
+}
+.settings .subscription {
+  grid-area: subscription;
+}
+.settings .subscription div {
+  display: flex;
+  gap: 2rem;
+  height: 100%;
+}
+.settings .subscription div section {
+  width: 50%;
+  height: calc(100% - 3rem);
 }
 .settings button {
   background-color: #F0E25D;

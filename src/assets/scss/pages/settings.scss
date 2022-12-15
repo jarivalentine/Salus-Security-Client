@@ -1,42 +1,68 @@
 @use '../constraints';
 
 .settings {
-  .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    gap: 1rem 1rem;
-    grid-auto-flow: row;
+    gap: 1rem;
     grid-template-areas:
     "notifications ."
-    "basic premium";
+    "subscription subscription";
+
+    h2 {
+        font-family: constraints.$header-font;
+    }
+
+    article section {
+        @include constraints.box;
+        height: calc(100% - 4rem);
+
+        h3 {
+            font-size: 1.25rem;
+            font-family: constraints.$header-font;
+        }
+    }
 
     .notifications {
-      grid-area: notifications;
+        grid-area: notifications;
+
+        ul {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            li {
+                @include constraints.list-item;
+                font-size: 1.25rem;
+                @include constraints.slider;
+            }
+        }
     }
 
-    .basic {
-      grid-area: basic;
+    .subscription {
+        grid-area: subscription;
+    
+        div {
+            display: flex;
+            gap: 2rem;
+            height: 100%;
+
+            section {
+                width: 50%;
+                height: calc(100% - 3rem);
+            }
+        }
     }
 
-    .premium {
-      grid-area: premium;
+    button {
+        @include constraints.button;
+        font-weight: bold;
+        cursor: pointer;
     }
-  }
 
-  section {
-    @include constraints.box;
-    margin: 1rem;
-  }
-
-  button {
-    @include constraints.button;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #F5B25D;
-  }
+    button:hover {
+        background-color: #F5B25D;
+    }
 
 }
