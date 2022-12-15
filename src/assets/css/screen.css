@@ -197,6 +197,11 @@ nav ul .doorlock-nav {
   padding: 0.75rem 0;
   margin-bottom: 0.25rem;
 }
+.home > article ul li div:first-of-type {
+  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+}
 .home > article ul li:last-child {
   border-bottom: none;
 }
@@ -216,7 +221,7 @@ nav ul .doorlock-nav {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
-  margin-right: 0.5rem;
+  margin: 0 0.5rem 0.25rem 0;
 }
 .home > article ul li p {
   font-size: 1.2rem;
@@ -270,6 +275,11 @@ nav ul .doorlock-nav {
   padding: 0.75rem 0;
   margin-bottom: 0.25rem;
 }
+.history article ul li div:first-of-type {
+  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+}
 .history article ul li:last-child {
   border-bottom: none;
 }
@@ -289,7 +299,7 @@ nav ul .doorlock-nav {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
-  margin-right: 0.5rem;
+  margin: 0 0.5rem 0.25rem 0;
 }
 .history article ul li p {
   font-size: 1.2rem;
@@ -486,6 +496,11 @@ nav ul .doorlock-nav {
   padding: 0.25rem;
   font-size: 1.25rem;
 }
+.settings .notifications ul li div:first-of-type {
+  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+}
 .settings .notifications ul li:last-child {
   border-bottom: none;
 }
@@ -505,7 +520,7 @@ nav ul .doorlock-nav {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
-  margin-right: 0.5rem;
+  margin: 0 0.5rem 0.25rem 0;
 }
 .settings .notifications ul li p {
   font-size: 1.2rem;
