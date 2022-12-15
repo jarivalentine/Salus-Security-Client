@@ -9,14 +9,24 @@ header {
   justify-content: space-between;
 }
 header #menu {
+  display: flex;
+  justify-content: space-between;
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 4rem;
-  padding-left: 5rem;
   margin-left: 1.5rem;
 }
 header #menu:hover {
   cursor: pointer;
+}
+header img {
+  border: 0.1rem solid black;
+  max-width: 4rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+}
+header .name-and-tag {
+  cursor: auto;
 }
 header .non-poc-menu {
   color: black;
@@ -336,7 +346,6 @@ nav ul .doorlock-nav:hover {
   padding: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  padding: 0;
 }
 .maps #container .map {
   height: 100%;
@@ -557,7 +566,6 @@ nav ul .doorlock-nav:hover {
   padding: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  padding: 0;
 }
 .route #container .map {
   height: 100%;
