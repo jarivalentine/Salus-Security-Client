@@ -12,10 +12,12 @@ export default {
         },
         async changeName(){
             const user = await getOneUser(localStorage.getItem("userId"));
-            if (user.firstname === undefined || user.lastname === undefined){
-                this.firstname = "Firstname Lastname";
-            }
             this.firstname = `${user.firstname} ${user.lastname}`;
+        },
+        changePicture(){
+            const menu = document.querySelector("#menu");
+            const userId = localStorage.getItem("userId");
+            menu.style.backgroundImage = `url("assets/img/avatars/${userId}.jpg")`;
         }
     },
     async mounted() {
@@ -25,6 +27,7 @@ export default {
             }
         });
         await this.changeName();
+        this.changePicture();
     },
     template: `
         <header>

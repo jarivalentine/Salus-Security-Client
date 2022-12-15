@@ -9,7 +9,6 @@ header {
   justify-content: space-between;
 }
 header #menu {
-  background-image: url("../img/default.png");
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 4rem;
@@ -107,23 +106,23 @@ nav ul .active {
 nav ul .home-nav {
   background-image: url("../img/svg-home.svg");
 }
-nav ul .map-nav {
-  background-image: url("../img/svg-map-pinpoint.svg");
-}
-nav ul .statistics-nav {
-  background-image: url("../img/svg-statistics.svg");
-}
-nav ul .doorlock-nav {
-  background-image: url("../img/svg-door.svg");
-}
 nav ul .home-nav:hover {
   opacity: 0.7;
+}
+nav ul .map-nav {
+  background-image: url("../img/svg-map-pinpoint.svg");
 }
 nav ul .map-nav:hover {
   opacity: 0.7;
 }
+nav ul .statistics-nav {
+  background-image: url("../img/svg-statistics.svg");
+}
 nav ul .statistics-nav:hover {
   opacity: 0.7;
+}
+nav ul .doorlock-nav {
+  background-image: url("../img/svg-door.svg");
 }
 nav ul .doorlock-nav:hover {
   opacity: 0.7;
