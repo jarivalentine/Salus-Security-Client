@@ -30,6 +30,7 @@
 
         @include constraints.box;
         height: calc(100% - 3rem); // minus font height and margin bottom
+        width: fit-content;
 
         div {
             height: calc(100% - 3rem); // minus font height and margin bottom
