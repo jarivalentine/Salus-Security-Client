@@ -2,64 +2,61 @@
 
 .flag {
 
-
-  div.recording-dot {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background-color: red;
-    border: 0.1rem solid black;
-  }
-
-  .container {
-    margin-top: 10rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 2rem 2rem;
-    grid-template-areas:
-    "type-incident additional-information"
-    "bystanders aggressors";
-
-    .type-incident {
-      grid-area: type-incident;
+    div.recording-dot {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: red;
+        border: 0.1rem solid black;
     }
 
-    .additional-information {
-      grid-area: additional-information;
+    .container {
+        margin-top: 10rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 2rem 2rem;
+        grid-template-areas:
+        "type-incident additional-information"
+        "bystanders aggressors";
+
+        .type-incident {
+            grid-area: type-incident;
+        }
+
+        .additional-information {
+            grid-area: additional-information;
+        }
+
+        .bystanders {
+            grid-area: bystanders;
+        }
+
+        .aggressors {
+            grid-area: aggressors;
+        }
+
+        section {
+            @include constraints.box;
+        }
+
     }
 
-    .bystanders {
-      grid-area: bystanders;
+    button {
+        @include constraints.button;
+        cursor: pointer;
+        border: solid white 0.125rem;
+        font-family: constraints.$header-font;
+        font-weight: bold;
     }
 
-    .aggressors {
-      grid-area: aggressors;
+    button:hover {
+        @include constraints.button;
+        border: solid black 0.125rem;
+        font-family: constraints.$header-font;
+        font-weight: bold;
     }
-
-    section {
-      @include constraints.box;
-    }
-
-  }
-
-  button {
-    @include constraints.button;
-    cursor: pointer;
-    margin-top: 10%;
-    margin-left: 45%;
-    border: solid white 0.125rem;
-    font-family: constraints.$header-font;
-    font-weight: bold;
-  }
-
-  button:hover {
-    @include constraints.button;
-    border: solid black 0.125rem;
-    font-family: constraints.$header-font;
-    font-weight: bold;
-  }
 }
 
 
