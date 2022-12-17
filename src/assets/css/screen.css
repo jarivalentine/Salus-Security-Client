@@ -431,6 +431,7 @@ nav ul .doorlock-nav:hover {
   padding: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 0;
 }
 .maps #container .map {
   height: 100%;
@@ -565,7 +566,7 @@ nav ul .doorlock-nav:hover {
   font-family: "Lexend", Arial, Helvetica, sans-serif;
   margin-bottom: 1rem;
 }
-.settings article section {
+.settings .subscription section, .settings .notifications > div {
   background-color: #F9F9F9;
   border-radius: 1.5rem;
   padding: 1.5rem;
@@ -573,7 +574,7 @@ nav ul .doorlock-nav:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   height: calc(100% - 4rem);
 }
-.settings article section h3 {
+.settings .subscription section h3, .settings .notifications > div h3 {
   font-size: 1.15rem;
   font-family: "Lexend", Arial, Helvetica, sans-serif;
 }
@@ -814,6 +815,7 @@ nav ul .doorlock-nav:hover {
   padding: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 0;
 }
 .route #container .map {
   height: 100%;

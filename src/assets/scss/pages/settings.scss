@@ -14,7 +14,7 @@
         margin-bottom: 1rem;
     }
 
-    article section {
+    .subscription section, .notifications > div {
         @include constraints.box;
         height: calc(100% - 4rem);
 
