@@ -46,6 +46,12 @@
             @include constraints.box;
             @include constraints.slider;
 
+            .notify {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
             label, p {
                 font-size: 1.4rem;
                 display: inline-block;
@@ -54,7 +60,6 @@
 
             .container { 
                 display: inline-block;
-                margin-right: 1rem;
             }
 
             input[type="checkbox"] {

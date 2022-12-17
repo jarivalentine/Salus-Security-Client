@@ -195,6 +195,11 @@ nav ul .doorlock-nav {
 .home div article > div .slider.round:before {
   border-radius: 50%;
 }
+.home div article > div .notify {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .home div article > div label, .home div article > div p {
   font-size: 1.4rem;
   display: inline-block;
@@ -202,7 +207,6 @@ nav ul .doorlock-nav {
 }
 .home div article > div .container {
   display: inline-block;
-  margin-right: 1rem;
 }
 .home div article > div input[type=checkbox] {
   accent-color: #F0E25D;
@@ -256,6 +260,7 @@ nav ul .doorlock-nav {
   width: auto;
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
 }
 .home > article ul li div:last-of-type {
   display: flex;
@@ -341,6 +346,7 @@ nav ul .doorlock-nav {
   width: auto;
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
 }
 .history article ul li div:last-of-type {
   display: flex;
@@ -567,6 +573,7 @@ nav ul .doorlock-nav {
   width: auto;
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
 }
 .settings .notifications ul li div:last-of-type {
   display: flex;
