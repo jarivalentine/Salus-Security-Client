@@ -34,18 +34,35 @@ nav {
 
         .home-nav {
             background-image: url('../img/svg-home.svg');
+
+            &:hover {
+                opacity: 0.7;
+            }
         }
 
         .map-nav {
             background-image: url('../img/svg-map-pinpoint.svg');
+
+            &:hover {
+                opacity: 0.7;
+            }
         }
 
         .statistics-nav {
             background-image: url('../img/svg-statistics.svg');
+
+            &:hover {
+                opacity: 0.7;
+            }
         }
 
         .doorlock-nav {
             background-image: url('../img/svg-door.svg');
+
+            &:hover {
+                opacity: 0.7;
+            }
         }
+
     }
 }
