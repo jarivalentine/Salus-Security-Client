@@ -29,6 +29,7 @@
 
         div {
             height: calc(100% - 3rem); // minus font height and margin bottom
+            text-align: center;
 
             &:first-of-type {
                 height: calc(100% - 4.25rem);

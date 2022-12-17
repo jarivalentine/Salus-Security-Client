@@ -788,6 +788,7 @@ nav ul .doorlock-nav:hover {
 }
 .statistics section div {
   height: calc(100% - 3rem);
+  text-align: center;
 }
 .statistics section div:first-of-type {
   height: calc(100% - 4.25rem);
