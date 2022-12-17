@@ -29,7 +29,7 @@ header .name-and-tag {
   cursor: auto;
 }
 header .non-poc-menu {
-  color: black;
+  opacity: 0.5;
 }
 header .poc-menu:hover {
   background-color: lightgrey;
@@ -348,8 +348,30 @@ nav ul .doorlock-nav:hover {
 .history article:first-of-type {
   margin-bottom: 1.5rem;
 }
-.history article h2 {
+.history article > div {
+  display: flex;
+  justify-content: space-between;
+}
+.history article label {
+  background-image: url("../img/svg-filter.svg");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  vertical-align: middle;
+  padding-left: 0.5rem;
   display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.history article select {
+  width: fit-content;
+  background-color: #F0E25D;
+  border: none;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+}
+.history article select:focus {
+  outline: none;
 }
 .history article input {
   margin-left: auto;
