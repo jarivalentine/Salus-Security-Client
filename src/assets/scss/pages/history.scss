@@ -26,6 +26,14 @@
             width: 1.5rem;
         }
 
+        .confirmed {
+            background-color: green;
+        }
+
+        .declined {
+            background-color: red;
+        }
+
         select {
             width: fit-content;
             background-color: constraints.$yellow;

@@ -313,7 +313,8 @@ nav ul .doorlock-nav:hover {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
-  margin: 0 0.5rem 0.25rem 0;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  font-style: normal;
 }
 .home > article ul li p {
   font-size: 1.2rem;
@@ -362,6 +363,12 @@ nav ul .doorlock-nav:hover {
   display: inline-block;
   height: 1.5rem;
   width: 1.5rem;
+}
+.history article .confirmed {
+  background-color: green;
+}
+.history article .declined {
+  background-color: red;
 }
 .history article select {
   width: fit-content;
@@ -422,7 +429,8 @@ nav ul .doorlock-nav:hover {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
-  margin: 0 0.5rem 0.25rem 0;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  font-style: normal;
 }
 .history article ul li p {
   font-size: 1.2rem;
@@ -614,7 +622,8 @@ nav ul .doorlock-nav:hover {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
-  margin: 0 0.5rem 0.25rem 0;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  font-style: normal;
 }
 .flag .container li p {
   font-size: 1.2rem;
@@ -728,7 +737,8 @@ nav ul .doorlock-nav:hover {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
-  margin: 0 0.5rem 0.25rem 0;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  font-style: normal;
 }
 .settings .notifications ul li p {
   font-size: 1.2rem;
