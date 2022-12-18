@@ -8,18 +8,18 @@ export default {
     },
     methods: {
         toggleMenu(e) {
-            if (e.target.closest("#menu") !== null || e.target.closest(".name-and-tag") !== null){
+            if (e.target.closest("#menu") !== null) {
                 this.isActive = !this.isActive;
             }
         },
-        async changeName(){
+        async changeName() {
             const user = await getOneUser(localStorage.getItem("userId"));
             this.firstname = `${user.firstname} ${user.lastname}`;
         },
-        changePicture(){
+        changePicture() {
             const userId = localStorage.getItem("userId");
-            const avatar = document.querySelector("#menu img");
-            avatar.src = `assets/img/avatars/${userId}.jpg`;
+            const avatar = document.querySelector("#menu");
+            avatar.style.backgroundImage = `url('assets/img/avatars/${userId}.jpg')`;
         }
     },
     async mounted() {
@@ -32,23 +32,20 @@ export default {
         this.changePicture();
     },
     template: `
-        <header>
-            <div>
+      <header>
+          <div>
                 <div id="menu" @click="toggleMenu">
-                    <img src="assets/img/avatars/1989-01-28_AL.jpg" alt="avatar" title="avatar">
-                  <div class="name-and-tag">
-                    <p>{{ firstname }}</p>
-                    <p class="tag">{{ tag }}</p>
-                  </div>
+                  <p>{{ firstname }}</p>
+                  <p class="tag">{{ tag }}</p>
                 </div>
                 <ul :class="{ hidden: !isActive }">
-                    <li><a class="non-poc-menu" href="#">Profile</a></li>
-                    <li><a class="poc-menu" href="./history.html">History</a></li>
-                    <li><a class="non-poc-menu" href="#">Give feedback</a></li>
-                    <li><a class="non-poc-menu" href="#">Report a bug</a></li>
+                  <li><a class="non-poc-menu" href="#">Profile</a></li>
+                  <li><a class="poc-menu" href="./history.html">History</a></li>
+                  <li><a class="non-poc-menu" href="#">Give feedback</a></li>
+                  <li><a class="non-poc-menu" href="#">Report a bug</a></li>
                 </ul>
-            </div>
-            <a href="./settings.html"></a>
-        </header>
+              </div>
+          <a href="./settings.html"></a>
+      </header>
     `
 };
