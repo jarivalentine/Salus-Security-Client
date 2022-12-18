@@ -9,35 +9,22 @@ header {
     justify-content: space-between;
 
     #menu {
-        display: flex;
-        justify-content: space-between;
         background-position: left center;
         background-repeat: no-repeat;
         background-size: 4rem;
         margin-left: 1.5rem;
+        padding-left: 5rem;
         &:hover {
             cursor: pointer;
         }
     }
 
-    img {
-        border: 0.1rem solid black;
-        max-width: 4rem;
-        margin-right: 1rem;
-        border-radius: 1rem;
-    }
-
-    .name-and-tag {
-        cursor: auto; //remove the pointer, because cannot click on name
+    .poc-menu:hover {
+        color: black;
     }
 
     .non-poc-menu {
         opacity: 0.5;
-    }
-
-    .poc-menu:hover {
-        background-color: lightgrey;
-        border-radius: 1rem;
     }
 
     .hidden {

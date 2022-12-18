@@ -9,31 +9,20 @@ header {
   justify-content: space-between;
 }
 header #menu {
-  display: flex;
-  justify-content: space-between;
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 4rem;
   margin-left: 1.5rem;
+  padding-left: 5rem;
 }
 header #menu:hover {
   cursor: pointer;
 }
-header img {
-  border: 0.1rem solid black;
-  max-width: 4rem;
-  margin-right: 1rem;
-  border-radius: 1rem;
-}
-header .name-and-tag {
-  cursor: auto;
+header .poc-menu:hover {
+  color: black;
 }
 header .non-poc-menu {
   opacity: 0.5;
-}
-header .poc-menu:hover {
-  background-color: lightgrey;
-  border-radius: 1rem;
 }
 header .hidden {
   display: none;
