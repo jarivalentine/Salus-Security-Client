@@ -44,22 +44,30 @@
             justify-content: space-between;
             height: calc(100% - 3rem); // minus font height and margin bottom
             @include constraints.box;
+            @include constraints.slider;
 
-            label {
+            .notify {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            label, p {
                 font-size: 1.4rem;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .container { 
+                display: inline-block;
             }
 
             input[type="checkbox"] {
                 accent-color: constraints.$yellow;
             }
 
-            input[id="notify"], label[for="gestures"] {
-                margin-right: 1rem;
-            }
-
             input[type="range"] {
                 width: 100%;
-                max-width: 16rem;
                 accent-color: constraints.$yellow;
             }
 
@@ -72,6 +80,21 @@
 
                 &:focus {
                     outline: none;
+                }
+            }
+
+            .gestures {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .range div {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.5rem;
+
+                p {
+                    font-size: 1rem;
                 }
             }
         }

@@ -18,6 +18,7 @@
         width: 100%;
         height: calc(100% - 3rem);
         @include constraints.box;
+        padding: 0;
 
         .map {
             height: 100%;

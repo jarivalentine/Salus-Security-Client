@@ -88,7 +88,7 @@ createApp({
             }
             const lat = incident["latitude"];
             const long = incident["longitude"];
-            return (this.haversineCalculation(lat, long, this.location.coords.latitude, this.location.coords.longitude)).toFixed(2);
+            return Math.round(this.haversineCalculation(lat, long, this.location.coords.latitude, this.location.coords.longitude));
         },
 
         haversineCalculation(lat1, lon1, lat2, lon2) { // distance between two points on a sfeer. crd.: geeksforgeeks.org -> haversine

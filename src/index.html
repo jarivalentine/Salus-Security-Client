@@ -22,19 +22,27 @@
                 <article>
                     <h2>Incident settings</h2>
                     <div>
-                        <div>
-                            <input id="notify" name="notify" type="checkbox" checked>
-                            <label for="notify">Notify people in range</label>
+                        <div class="notify">
+                            <p>Notify people in range</p>
+                            <div class="container">
+                                <label class="switch" for="checkbox1">
+                                  <input type="checkbox" id="checkbox1" checked/>
+                                  <span class="slider round"></span>
+                                </label>
+                            </div>                            
                         </div>
-                        <div>
+                        <div class="range">
                             <datalist id="list">
                                 <option value="0" label="10m"></option>
                                 <option value="100" label="1000m"></option>
                             </datalist>
                             <input id="range" name="range" type="range" list="list">
+                            <div>
+                                <p>0m</p><p>1000m</p>
+                            </div>
                         </div>
-                        <div>
-                            <label for="gestures">Gestures</label>
+                        <div class="gestures">
+                            <label for="gestures">Flag Incident</label>
                             <select id="gestures">
                                 <option value="flick wrist"> Flick Wrist </option>
                                 <option value="shake wrist"> Shake Wrist </option>
@@ -47,7 +55,7 @@
             </div>
             <p v-if="showError" class="error">Share your location to view the map</p>
             <article v-show="incidentsReady">
-                <h2>Notifications</h2>
+                <h2>Incidents</h2>
                 <ul>
                     <li v-for="incident in allIncidents">
                         <div>

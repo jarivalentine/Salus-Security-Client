@@ -180,6 +180,13 @@ createApp({
             this.barBystandersReady = false;
             this.doughnutValidationReady = true;
         },
+
+        canvasStyle() {
+            const canvas = document.querySelectorAll('canvas');
+            canvas.forEach(canvas => {
+                canvas.style.display = 'inline-block';
+            });
+        }
     },
     async mounted() {
         await applyOrRemoveLockedMechanism('div.statistics');
@@ -188,6 +195,7 @@ createApp({
         await this.bestBystanders();
         await this.validationFrequency();
         this.toggleTypes();
+        this.canvasStyle();
     },
     components: {
         headerComponent,

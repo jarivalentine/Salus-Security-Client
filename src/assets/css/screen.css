@@ -29,7 +29,7 @@ header .name-and-tag {
   cursor: auto;
 }
 header .non-poc-menu {
-  color: black;
+  opacity: 0.5;
 }
 header .poc-menu:hover {
   background-color: lightgrey;
@@ -182,18 +182,65 @@ nav ul .doorlock-nav:hover {
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-.home div article > div label {
+.home div article > div .switch {
+  display: inline-block;
+  height: 1.8rem;
+  position: relative;
+  width: 3.25rem;
+}
+.home div article > div .switch input {
+  display: none;
+}
+.home div article > div .slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+.home div article > div .slider:before {
+  background-color: #fff;
+  bottom: 0.25rem;
+  content: "";
+  height: 1.35rem;
+  left: 0.25rem;
+  position: absolute;
+  transition: 0.4s;
+  width: 1.35rem;
+}
+.home div article > div input:checked + .slider {
+  background-color: #F0E25D;
+}
+.home div article > div input:checked + .slider:before {
+  transform: translateX(1.45rem);
+}
+.home div article > div .slider.round {
+  border-radius: 1.35rem;
+}
+.home div article > div .slider.round:before {
+  border-radius: 50%;
+}
+.home div article > div .notify {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home div article > div label, .home div article > div p {
   font-size: 1.4rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.home div article > div .container {
+  display: inline-block;
 }
 .home div article > div input[type=checkbox] {
   accent-color: #F0E25D;
 }
-.home div article > div input[id=notify], .home div article > div label[for=gestures] {
-  margin-right: 1rem;
-}
 .home div article > div input[type=range] {
   width: 100%;
-  max-width: 16rem;
   accent-color: #F0E25D;
 }
 .home div article > div select {
@@ -205,6 +252,18 @@ nav ul .doorlock-nav:hover {
 }
 .home div article > div select:focus {
   outline: none;
+}
+.home div article > div .gestures {
+  display: flex;
+  justify-content: space-between;
+}
+.home div article > div .range div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.home div article > div .range div p {
+  font-size: 1rem;
 }
 .home > article {
   height: calc(100% - 13.5rem);
@@ -225,6 +284,16 @@ nav ul .doorlock-nav:hover {
   padding: 0.75rem 0;
   margin-bottom: 0.25rem;
 }
+.home > article ul li div:first-of-type {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.home > article ul li div:last-of-type {
+  display: flex;
+  align-items: baseline;
+}
 .home > article ul li:last-child {
   border-bottom: none;
 }
@@ -244,7 +313,8 @@ nav ul .doorlock-nav:hover {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
-  margin-right: 0.5rem;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  font-style: normal;
 }
 .home > article ul li p {
   font-size: 1.2rem;
@@ -255,6 +325,9 @@ nav ul .doorlock-nav:hover {
   background-size: 1.2rem;
   opacity: 0.5;
 }
+.home > article ul li a {
+  text-align: center;
+}
 .home > article ul li p:first-of-type {
   background-image: url("../img/svg-cronometer.svg");
 }
@@ -263,6 +336,7 @@ nav ul .doorlock-nav:hover {
 }
 .home > article ul li a {
   background-color: #F0E25D;
+  font-size: 1rem;
   padding: 0.4rem;
   border-radius: 0.5rem;
   text-decoration: none;
@@ -275,8 +349,36 @@ nav ul .doorlock-nav:hover {
 .history article:first-of-type {
   margin-bottom: 1.5rem;
 }
-.history article h2 {
+.history article > div {
+  display: flex;
+  justify-content: space-between;
+}
+.history article label {
+  background-image: url("../img/svg-filter.svg");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  vertical-align: middle;
+  padding-left: 0.5rem;
   display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.history article .confirmed {
+  background-color: green;
+}
+.history article .declined {
+  background-color: red;
+}
+.history article select {
+  width: fit-content;
+  background-color: #F0E25D;
+  border: none;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+}
+.history article select:focus {
+  outline: none;
 }
 .history article input {
   margin-left: auto;
@@ -298,6 +400,16 @@ nav ul .doorlock-nav:hover {
   padding: 0.75rem 0;
   margin-bottom: 0.25rem;
 }
+.history article ul li div:first-of-type {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.history article ul li div:last-of-type {
+  display: flex;
+  align-items: baseline;
+}
 .history article ul li:last-child {
   border-bottom: none;
 }
@@ -317,7 +429,8 @@ nav ul .doorlock-nav:hover {
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
-  margin-right: 0.5rem;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  font-style: normal;
 }
 .history article ul li p {
   font-size: 1.2rem;
@@ -327,6 +440,9 @@ nav ul .doorlock-nav:hover {
   background-repeat: no-repeat;
   background-size: 1.2rem;
   opacity: 0.5;
+}
+.history article ul li a {
+  text-align: center;
 }
 
 .maps h1 {
@@ -346,6 +462,7 @@ nav ul .doorlock-nav:hover {
   padding: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 0;
 }
 .maps #container .map {
   height: 100%;
@@ -400,6 +517,7 @@ nav ul .doorlock-nav:hover {
 }
 .maps #container .popup a {
   background-color: #F0E25D;
+  font-size: 1rem;
   padding: 0.4rem;
   border-radius: 0.5rem;
   text-decoration: none;
@@ -414,22 +532,110 @@ nav ul .doorlock-nav:hover {
 
 .flag div.recording-dot {
   display: inline-block;
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
-  background-color: red;
-  border: 0.1rem solid black;
+  background-color: #dd3021;
+  margin-right: 0.5rem;
+}
+.flag section {
+  margin-bottom: 1.5rem;
+}
+.flag h1 {
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  display: inline;
+  margin-right: 1rem;
 }
 .flag .container {
-  margin-top: 10rem;
+  height: calc(100% - 3.5rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   gap: 2rem 2rem;
   grid-template-areas: "type-incident additional-information" "bystanders aggressors";
 }
+.flag .container h2 {
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.flag .container p {
+  font-size: 1.1rem;
+  opacity: 0.625;
+}
 .flag .container .type-incident {
   grid-area: type-incident;
+}
+.flag .container .type-incident ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flag .container .type-incident ul li {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+}
+.flag .container .type-incident h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.flag .container li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.0625rem solid black;
+  padding: 0.75rem 0;
+  margin-bottom: 0.25rem;
+}
+.flag .container li div:first-of-type {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.flag .container li div:last-of-type {
+  display: flex;
+  align-items: baseline;
+}
+.flag .container li:last-child {
+  border-bottom: none;
+}
+.flag .container li h3, .flag .container li p {
+  display: inline;
+}
+.flag .container li h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.flag .container li em {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  font-style: normal;
+}
+.flag .container li p {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  padding-left: 1.65rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+  opacity: 0.5;
+}
+.flag .container li a {
+  text-align: center;
 }
 .flag .container .additional-information {
   grid-area: additional-information;
@@ -446,67 +652,223 @@ nav ul .doorlock-nav:hover {
   padding: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  margin-bottom: 0;
+  overflow: scroll;
 }
 .flag button {
   background-color: #F0E25D;
+  font-size: 1rem;
   padding: 0.4rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
   cursor: pointer;
-  margin-top: 10%;
-  margin-left: 45%;
-  border: solid white 0.125rem;
-  font-family: "Lexend", Arial, Helvetica, sans-serif;
-  font-weight: bold;
-}
-.flag button:hover {
-  background-color: #F0E25D;
-  padding: 0.4rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  color: black;
-  border: solid black 0.125rem;
-  font-family: "Lexend", Arial, Helvetica, sans-serif;
-  font-weight: bold;
+  border: none;
 }
 
-.settings .container {
+.settings {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  gap: 1rem 1rem;
-  grid-auto-flow: row;
-  grid-template-areas: "notifications ." "basic premium";
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  grid-template-areas: "notifications ." "subscription subscription";
 }
-.settings .container .notifications {
-  grid-area: notifications;
+.settings h2 {
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+  margin-bottom: 1rem;
 }
-.settings .container .basic {
-  grid-area: basic;
-}
-.settings .container .premium {
-  grid-area: premium;
-}
-.settings section {
+.settings .subscription section, .settings .notifications > div {
   background-color: #F9F9F9;
   border-radius: 1.5rem;
   padding: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  margin: 1rem;
+  height: calc(100% - 4rem);
+}
+.settings .subscription section h3, .settings .notifications > div h3 {
+  font-size: 1.15rem;
+  font-family: "Lexend", Arial, Helvetica, sans-serif;
+}
+.settings .notifications {
+  grid-area: notifications;
+}
+.settings .notifications ul {
+  margin-top: 0.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.settings .notifications ul li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.0625rem solid black;
+  padding: 0.75rem 0;
+  margin-bottom: 0.25rem;
+  padding: 0.25rem;
+  font-size: 1.25rem;
+}
+.settings .notifications ul li div:first-of-type {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.settings .notifications ul li div:last-of-type {
+  display: flex;
+  align-items: baseline;
+}
+.settings .notifications ul li:last-child {
+  border-bottom: none;
+}
+.settings .notifications ul li h3, .settings .notifications ul li p {
+  display: inline;
+}
+.settings .notifications ul li h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.settings .notifications ul li em {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  font-style: normal;
+}
+.settings .notifications ul li p {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  padding-left: 1.65rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 1.2rem;
+  opacity: 0.5;
+}
+.settings .notifications ul li a {
+  text-align: center;
+}
+.settings .notifications ul li .switch {
+  display: inline-block;
+  height: 1.8rem;
+  position: relative;
+  width: 3.25rem;
+}
+.settings .notifications ul li .switch input {
+  display: none;
+}
+.settings .notifications ul li .slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+.settings .notifications ul li .slider:before {
+  background-color: #fff;
+  bottom: 0.25rem;
+  content: "";
+  height: 1.35rem;
+  left: 0.25rem;
+  position: absolute;
+  transition: 0.4s;
+  width: 1.35rem;
+}
+.settings .notifications ul li input:checked + .slider {
+  background-color: #F0E25D;
+}
+.settings .notifications ul li input:checked + .slider:before {
+  transform: translateX(1.45rem);
+}
+.settings .notifications ul li .slider.round {
+  border-radius: 1.35rem;
+}
+.settings .notifications ul li .slider.round:before {
+  border-radius: 50%;
+}
+.settings .notifications ul li .question {
+  background-image: url("../img/svg-question.svg");
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  background-position: right;
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding-right: 0.5rem;
+}
+.settings .notifications ul li .question:hover {
+  cursor: pointer;
+}
+.settings .subscription {
+  grid-area: subscription;
+}
+.settings .subscription > div {
+  display: flex;
+  gap: 2rem;
+  height: 100%;
+}
+.settings .subscription > div section {
+  width: 50%;
+  height: calc(100% - 3rem);
+}
+.settings .subscription > div section > div {
+  display: flex;
+  justify-content: space-between;
+}
+.settings .subscription > div section > div h3 {
+  margin-bottom: 0.5rem;
+}
+.settings .subscription > div section > div > p {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+  height: fit-content;
+}
+.settings .subscription > div section > div div p {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: white;
+  background-color: #5B37DB;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin-bottom: 0.5rem;
+}
+.settings .subscription > div section ul li {
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  background-position: left center;
+  padding: 0.5rem 0 0.5rem 2rem;
+  font-size: 1rem;
+}
+.settings .subscription > div section ul .cross {
+  background-image: url("../img/svg-cross.svg");
+}
+.settings .subscription > div section ul .check {
+  background-image: url("../img/svg-checkmark.svg");
 }
 .settings button {
   background-color: #F0E25D;
+  font-size: 1rem;
   padding: 0.4rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1.25rem;
   font-weight: bold;
+  border: none;
   cursor: pointer;
-}
-.settings button:hover {
-  background-color: #F5B25D;
 }
 
 .statistics ul {
@@ -515,11 +877,9 @@ nav ul .doorlock-nav:hover {
 .statistics ul .statistics-nav {
   cursor: pointer;
 }
-.statistics ul .statistics-nav:hover {
-  background-color: #898989;
-}
 .statistics ul li {
   background-color: #F0E25D;
+  font-size: 1rem;
   padding: 0.4rem;
   border-radius: 0.5rem;
   text-decoration: none;
@@ -542,6 +902,10 @@ nav ul .doorlock-nav:hover {
 }
 .statistics section div {
   height: calc(100% - 3rem);
+  text-align: center;
+}
+.statistics section div:first-of-type {
+  height: calc(100% - 4.25rem);
 }
 
 .route h1 {
@@ -552,6 +916,7 @@ nav ul .doorlock-nav:hover {
 }
 .route h1 + a {
   background-color: #F0E25D;
+  font-size: 1rem;
   padding: 0.4rem;
   border-radius: 0.5rem;
   text-decoration: none;
@@ -566,6 +931,7 @@ nav ul .doorlock-nav:hover {
   padding: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 0;
 }
 .route #container .map {
   height: 100%;

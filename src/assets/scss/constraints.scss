@@ -34,6 +34,18 @@ $blue: #5B37DB;
     padding: 0.75rem 0;
     margin-bottom: 0.25rem;
 
+    div:first-of-type {
+        width: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+    }
+
+    div:last-of-type {
+        display: flex;
+        align-items: baseline;
+    }
+
     &:last-child {
         border-bottom: none;
     }
@@ -50,7 +62,8 @@ $blue: #5B37DB;
 
     em {
         @include label;
-        margin-right: 0.5rem;
+        margin: 0.25rem 0.5rem 0.25rem 0;
+        font-style: normal;
     }
 
     p {
@@ -61,6 +74,10 @@ $blue: #5B37DB;
         background-repeat: no-repeat;
         background-size: 1.2rem;	
         opacity: 0.5;
+    }
+
+    a {
+        text-align: center;
     }
 }
 
@@ -86,8 +103,60 @@ $blue: #5B37DB;
 
 @mixin button {
     background-color: $yellow;
+    font-size: 1rem;
     padding: 0.4rem;
     border-radius: 0.5rem;
     text-decoration: none;
     color: black;
+}
+
+@mixin slider {
+    .switch {
+        display: inline-block;
+        height: 1.8rem;
+        position: relative;
+        width: 3.25rem;
+    }
+      
+    .switch input {
+        display: none;
+    }
+      
+    .slider {
+        background-color: #ccc;
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: .4s;
+    }
+      
+    .slider:before {
+        background-color: #fff;
+        bottom: 0.25rem;
+        content: "";
+        height: 1.35rem;
+        left: 0.25rem;
+        position: absolute;
+        transition: .4s;
+        width: 1.35rem;
+    }
+      
+    input:checked + .slider {
+        background-color: $yellow;
+    }
+      
+    input:checked + .slider:before {
+        transform: translateX(1.45rem);
+    }
+     
+    .slider.round {
+        border-radius: 1.35rem;
+    }
+      
+    .slider.round:before {
+        border-radius: 50%;
+    }
 }

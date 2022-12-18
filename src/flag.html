@@ -17,38 +17,42 @@
         <nav-component></nav-component>
         <subscription-component></subscription-component>
         <div class="flag">
-            <div class="recording-dot"></div>
-            <h1>Auto recorded by Salus Security AI &#169;</h1>
+            <section>
+                <div class="recording-dot"></div>
+                <h1>REC Auto by Salus Security AI &#169;</h1>
+                <button type="button" @click="finishRecording"> Finish Recording </button>
+            </section>
             <div class="container">
                 <section class="type-incident">
+                    <p>Generated type:</p>
                     <h2>{{incidentType}}</h2>
-                    <div v-for="label in incidentLabels">
-                        <p>{{label}} </p>
-                    </div>
+                    <p>Genrated labels:</p>
+                    <ul id="label-list">
+                        <li v-for="label in incidentLabels">{{label}} </li>
+                    </ul>
                 </section>
 
                 <section v-show="informationReady" class="bystanders">
                     <h2>Bystanders</h2>
-                    <ul v-for="bystander in incidentBystanders">
-                        <li><span>{{bystander}}</span></li>
+                    <ul>
+                        <li v-for="bystander in incidentBystanders">{{bystander}}</li>
                     </ul>
                 </section>
 
                 <section v-show="informationReady" class="aggressors">
                     <h2>Aggressors</h2>
-                    <ul  v-for="aggressor in incidentAggressors">
-                        <li><span>{{aggressor}}</span></li>
+                    <ul>
+                        <li v-for="aggressor in incidentAggressors">{{aggressor}}</li>
                     </ul>
                 </section>
 
                 <section v-show="informationReady" class="additional-information">
                     <h2> Additional Information </h2>
                     <ul>
-                        <li><span>Date: {{incidentDatetime}}</span></li>
+                        <li><p>Date:</p><h3>{{incidentDatetime}}</h3></li>
                     </ul>
                 </section>
             </div>
-            <button type="button" @click="finishRecording"> Finish Recording </button>
         </div>
     </main>
 </div>
