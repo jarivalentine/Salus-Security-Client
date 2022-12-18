@@ -56,9 +56,11 @@ createApp({
             const minutesInHour = 60;
             const secondsInMinute = 60;
             const incidentsOneDay = allIncidents.filter(incident => this.calculateDates(incident)["hours"] <= hoursInDay - 1 && this.calculateDates(incident)["minutes"] <= minutesInHour - 1 && this.calculateDates(incident)["seconds"] <= secondsInMinute);
-            incidentsOneDay.filter(incident => new Date(incident["datetime"]).getDay() - new Date().getDay() === 0);
-            incidentsOneDay.reverse();
-            this.allIncidents = incidentsOneDay;
+            const incidentsOneDayActive = incidentsOneDay.filter(incident => incident.state === "ACTIVE");
+            incidentsOneDayActive.filter(incident => new Date(incident["datetime"]).getDay() - new Date().getDay() === 0);
+            incidentsOneDayActive.reverse();
+            console.log(incidentsOneDayActive);
+            this.allIncidents = incidentsOneDayActive;
         },
 
         calculateDates(incident) {
