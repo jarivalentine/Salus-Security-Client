@@ -14,6 +14,7 @@ createApp({
     },
     methods: {
         loadMap(incidents, location) {
+            const incidentsActive = incidents.filter(incident => incident.state === "ACTIVE");
             this.myLocation = location;
             const center = ol.proj.fromLonLat([location.coords.longitude, location.coords.latitude]);
             this.map = new ol.Map({
@@ -29,7 +30,7 @@ createApp({
                 })
             });
             this.map.addOverlay(this.createMarker(center));
-            incidents.forEach(incident => {
+            incidentsActive.forEach(incident => {
                 const currentLocation = ol.proj.fromLonLat([incident.longitude, incident.latitude]);
                 this.map.addOverlay(this.createMarker(currentLocation, incident.id));
             });
