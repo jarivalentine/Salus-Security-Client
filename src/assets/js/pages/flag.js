@@ -48,7 +48,7 @@ createApp({
             return listOfUsers;
         },
 
-        async finishRecording(){
+        async finishRecording() {
             const incidentId = JSON.parse(localStorage.getItem("incident")).id;
             const incident = await getIncident(incidentId);
             if (incident.state !== "ACTIVE") {

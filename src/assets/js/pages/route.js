@@ -37,7 +37,6 @@ createApp({
         },
         createMarker(position, isFlag) {
             const $marker = document.createElement('div');
-            console.log(position, isFlag);
             if (isFlag) $marker.classList.add('flag');
             else $marker.classList.add('marker')
             document.querySelector('#container').appendChild($marker);
@@ -74,6 +73,12 @@ createApp({
                 });
                 this.map.addLayer(this.routeLayer);
             });
+        },
+        async helpIncident() {
+            const incidentId = JSON.parse(localStorage.getItem('incident')).id;
+            const userId = localStorage.getItem('userId');
+            await helpIncident(userId, incidentId);
+            window.location.href = 'flag.html';
         }
     },
     async mounted() {
