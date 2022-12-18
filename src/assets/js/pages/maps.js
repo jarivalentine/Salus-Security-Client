@@ -6,12 +6,10 @@ import subscriptionComponent from "../components/subscription-lock.js";
 createApp({
     data() {
         return {
-            message: 'Maps page',
             showError: false,
             map: null,
             loaded: false,
             myLocation: null,
-            routeLayer: null
         };
     },
     methods: {
@@ -30,8 +28,9 @@ createApp({
                     zoom: 12
                 })
             });
+            this.map.addOverlay(this.createMarker(center));
             incidents.forEach(incident => {
-                const currentLocation = ol.proj.fromLonLat([incident.latitude, incident.longitude]);
+                const currentLocation = ol.proj.fromLonLat([incident.longitude, incident.latitude]);
                 this.map.addOverlay(this.createMarker(currentLocation, incident.id));
             });
             this.loaded = true;
@@ -42,9 +41,7 @@ createApp({
                 $marker.classList.add('flag');
                 $marker.addEventListener('click', this.clickFlag);
                 $marker.dataset.id = incidentId;
-            } else {
-                $marker.classList.add('marker');
-            }
+            } else $marker.classList.add('marker');
             document.querySelector('#container').appendChild($marker);
             return new ol.Overlay({
                 position: position,

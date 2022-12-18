@@ -5,7 +5,6 @@ import navComponent from '../components/nav.js';
 createApp({
     data() {
         return {
-            message: 'Route page',
             showError: false,
             map: null,
             loaded: false,
@@ -18,7 +17,7 @@ createApp({
             const incident = JSON.parse(localStorage.getItem('incident'));
             this.myLocation = location;
             const center = ol.proj.fromLonLat([location.coords.longitude, location.coords.latitude]);
-            const incidentLocation = ol.proj.fromLonLat([incident.latitude, incident.longitude]);
+            const incidentLocation = ol.proj.fromLonLat([incident.longitude, incident.latitude]);
             this.map = new ol.Map({
                 target: 'incidents-map',
                 layers: [
@@ -31,19 +30,16 @@ createApp({
                     zoom: 12
                 })
             });
-            this.map.addOverlay(this.createMarker(incidentLocation));
+            this.map.addOverlay(this.createMarker(incidentLocation, true));
+            this.map.addOverlay(this.createMarker(center, false));
             this.loaded = true;
             await this.drawRoute(incident);
         },
-        createMarker(position, incidentId) {
+        createMarker(position, isFlag) {
             const $marker = document.createElement('div');
-            if (incidentId) {
-                $marker.classList.add('flag');
-                $marker.addEventListener('click', this.clickFlag);
-                $marker.dataset.id = incidentId;
-            } else {
-                $marker.classList.add('marker');
-            }
+            console.log(position, isFlag);
+            if (isFlag) $marker.classList.add('flag');
+            else $marker.classList.add('marker')
             document.querySelector('#container').appendChild($marker);
             return new ol.Overlay({
                 position: position,
@@ -57,8 +53,8 @@ createApp({
         async drawRoute(incident) {
             const startLong = this.myLocation.coords.longitude;
             const startLat = this.myLocation.coords.latitude;
-            const endLong = incident.latitude;
-            const endLat = incident.longitude;
+            const endLong = incident.longitude;
+            const endLat = incident.latitude;
             getRoute(startLong, startLat, endLong, endLat).then(route => {
                 this.map.removeLayer(this.routeLayer);
                 const polyline = route.geometry.coordinates.map(el => ol.proj.fromLonLat(el));
