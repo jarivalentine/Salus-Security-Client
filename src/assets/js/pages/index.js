@@ -59,7 +59,6 @@ createApp({
             const incidentsOneDayActive = incidentsOneDay.filter(incident => incident.state === "ACTIVE");
             incidentsOneDayActive.filter(incident => new Date(incident["datetime"]).getDay() - new Date().getDay() === 0);
             incidentsOneDayActive.reverse();
-            console.log(incidentsOneDayActive);
             this.allIncidents = incidentsOneDayActive;
         },
 
