@@ -4,6 +4,8 @@ export default {
             firstname: null,
             tag: null,
             isActive: false,
+            colors: ["purple", "red", "orange", "blue", "legendary"],
+            currentColorClass: "purple",
         };
     },
     methods: {
@@ -15,7 +17,6 @@ export default {
         async changeName() {
             const user = await getOneUser(localStorage.getItem("userId"));
             this.firstname = `${user.firstname} ${user.lastname}`;
-
         },
         changePicture() {
             const userId = localStorage.getItem("userId");
@@ -25,24 +26,34 @@ export default {
         async getTagName(){
             const user = await getOneUser(localStorage.getItem("userId"));
             const assists = await getAllHelpedIncidentsFromUser(user.id);
-            
-            if(assists.length<1){
+            const tag = document.querySelector("#menu .tag");
+            if(assists.length === 0){
                 this.tag = 'Bad Savior';
+                this.currentColorClass = "red";
             }
-            if(1<=assists.length&&assists.length<10){
+            if(1 <= assists.length && assists.length <= 2){
                 this.tag = 'Noob Savior';
+                this.currentColorClass = "orange";
             }
-            if(10<=assists.length&&assists.length<50){
+            if(3 <= assists.length && assists.length <= 6){
                 this.tag = 'Great Savior';
+                this.currentColorClass = "blue";
             }
-            if(50<=assists.length&&assists.length<100){
+            if(7 <= assists.length && assists.length <= 9){
                 this.tag = 'Heroic Savior';
+                this.currentColorClass = "purple";
             }
-            if(assists.length>=100){
+            if(assists.length >= 8){
                 this.tag = 'Legendary Savior';
+                this.currentColorClass = "legendary";
             }
-            
-            return this.tag;
+            this.changeTagColor(tag);
+        },
+        changeTagColor(tag){
+            this.colors.forEach(color => {
+               tag.classList.remove(color);
+            });
+            tag.classList.add(this.currentColorClass);
         }
     },
     async mounted() {
