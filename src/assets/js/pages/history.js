@@ -17,10 +17,12 @@ createApp({
         async dataFromIncidents(){
             const userId = localStorage.getItem("userId");
             this.flaggedIncidents = await getAllIncidentsFromUser(userId);
+            this.flaggedIncidents.reverse();
         },
         async dataFromIncidentHelped(){
             const userId = localStorage.getItem("userId");
             this.helpedIncidents = await getAllHelpedIncidentsFromUser(userId);
+            this.helpedIncidents.reverse();
         },
         async filterByTypeFlagged(event){
             if (event.target.value === "None"){
