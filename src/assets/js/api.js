@@ -35,6 +35,11 @@ async function post(url, options) {
     return null;
 }
 
+async function postSubscription(body) {
+    const options = createOptions(body, 'POST');
+    return post(`${URL}/api/subscribe`, options);
+}
+
 async function getAllUsers() {
     return get(`${URL}/api/users`);
 }

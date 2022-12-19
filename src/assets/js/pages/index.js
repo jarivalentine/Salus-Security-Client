@@ -19,7 +19,7 @@ createApp({
             const long = positions[1];
             const incident = await createIncident(user, lat, long);
             localStorage.setItem("incident", JSON.stringify(incident));
-            window.location.href = 'flag.html';
+            //window.location.href = 'flag.html';
         },
         generateRandomLocation(location) {
             const tempLat = parseFloat(location.coords.latitude.toFixed(1));
