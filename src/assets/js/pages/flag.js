@@ -21,7 +21,7 @@ createApp({
         };
     },
     methods: {
-        async displayItems(){
+        async displayItems() {
             if (this.incident === null) {
                 return;
             }
@@ -48,7 +48,7 @@ createApp({
             return listOfUsers;
         },
 
-        async finishRecording(){
+        async finishRecording() {
             const incidentId = JSON.parse(localStorage.getItem("incident")).id;
             const incident = await getIncident(incidentId);
             if (incident.state !== "ACTIVE") {
@@ -57,6 +57,10 @@ createApp({
             await validateIncident(incidentId);
             this.incidentFinished = true;
             window.location.href = 'index.html';
+        },
+
+        isReporter() {
+            return this.incident.reporterId == localStorage.getItem("userId")
         }
     },
     async mounted() {

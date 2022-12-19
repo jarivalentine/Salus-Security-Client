@@ -15,12 +15,11 @@
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
-        <subscription-component></subscription-component>
         <div class="flag">
             <section>
                 <div class="recording-dot"></div>
                 <h1>REC Auto by Salus Security AI &#169;</h1>
-                <button type="button" @click="finishRecording"> Finish Recording </button>
+                <button v-if="isReporter()" type="button" @click="finishRecording"> Finish Recording </button>
             </section>
             <div class="container">
                 <section class="type-incident">

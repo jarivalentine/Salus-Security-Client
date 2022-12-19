@@ -6,16 +6,15 @@ import subscriptionComponent from "../components/subscription-lock.js";
 createApp({
     data() {
         return {
-            message: 'Maps page',
             showError: false,
             map: null,
             loaded: false,
             myLocation: null,
-            routeLayer: null
         };
     },
     methods: {
         loadMap(incidents, location) {
+            const incidentsActive = incidents.filter(incident => incident.state === "ACTIVE");
             this.myLocation = location;
             const center = ol.proj.fromLonLat([location.coords.longitude, location.coords.latitude]);
             this.map = new ol.Map({
@@ -30,8 +29,9 @@ createApp({
                     zoom: 12
                 })
             });
-            incidents.forEach(incident => {
-                const currentLocation = ol.proj.fromLonLat([incident.latitude, incident.longitude]);
+            this.map.addOverlay(this.createMarker(center));
+            incidentsActive.forEach(incident => {
+                const currentLocation = ol.proj.fromLonLat([incident.longitude, incident.latitude]);
                 this.map.addOverlay(this.createMarker(currentLocation, incident.id));
             });
             this.loaded = true;
@@ -42,9 +42,7 @@ createApp({
                 $marker.classList.add('flag');
                 $marker.addEventListener('click', this.clickFlag);
                 $marker.dataset.id = incidentId;
-            } else {
-                $marker.classList.add('marker');
-            }
+            } else $marker.classList.add('marker');
             document.querySelector('#container').appendChild($marker);
             return new ol.Overlay({
                 position: position,

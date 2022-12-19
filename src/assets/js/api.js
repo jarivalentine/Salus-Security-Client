@@ -53,6 +53,11 @@ async function unSubscribeUser(userId) {
     return post(`${URL}/api/users/${userId}/unsubscribe`, options);
 }
 
+async function helpIncident(userId, incidentId) {
+    const options = createOptions(null, 'POST');
+    return post(`${URL}/api/users/${userId}/incidents/${incidentId}/help`, options);
+}
+
 async function validateIncident(incidentId) {
     const options = createOptions(null, 'PUT');
     return post(`${URL}/api/incidents/${incidentId}/validate`, options);
