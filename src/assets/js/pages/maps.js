@@ -54,9 +54,8 @@ createApp({
             this.showError = true;
         },
         async clickFlag(e) {
-            document.querySelectorAll('.popup').forEach(box => {
-                box.remove();
-            });
+            const $prev = document.querySelector('.popup');
+            if ($prev) $prev.remove();
             const incident = await getIncident(e.target.dataset.id);
             const $popup = document.createElement('div');
             $popup.classList.add('popup');
@@ -79,6 +78,10 @@ createApp({
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((location) => getAllIncidents().then(incidents => this.loadMap(incidents, location)), this.locationDenied);
         }
+        document.querySelector('body').addEventListener('click', (e) => {
+            const $popup = document.querySelector('.popup');
+            if ($popup) $popup.remove();
+        });
     },
     components: {
         headerComponent,
