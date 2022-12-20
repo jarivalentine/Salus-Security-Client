@@ -359,6 +359,9 @@ nav ul .doorlock-nav:hover {
 .history article .declined {
   background-color: red;
 }
+.history article .active {
+  background-color: orange;
+}
 .history article select {
   width: fit-content;
   background-color: #F0E25D;
