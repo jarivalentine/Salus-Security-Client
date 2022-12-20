@@ -20,6 +20,27 @@
         margin-bottom: 1rem;
     }
 
+    #fullscreen-toggle {
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-image: url("../img/svg-fullscreen.svg");
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        bottom: 6rem;
+        right: 6rem;
+        margin: 0 1rem 1rem 0;
+        z-index: 2;
+    }
+
+    #fullscreen-toggle.active {
+        cursor: pointer;
+        background-image: url("../img/svg-out-of-fullscreen.svg");
+        bottom: 1rem;
+        right: 1rem;
+    }
+
     #title-fullscreen-container button {
         @include constraints.button;
         font-weight: bold;

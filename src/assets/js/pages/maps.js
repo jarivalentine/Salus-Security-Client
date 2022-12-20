@@ -70,16 +70,18 @@ createApp({
             $popup.style.left = e.clientX - 95 + 'px';
             $popup.style.top = e.clientY - 130 - (incident.labels.length * 20) + 'px';
             localStorage.setItem('incident', JSON.stringify(incident));
-            document.querySelector('#container').appendChild($popup);
-        }
-    },
-
-    fullScreen(){
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen();
-        } else if (document.exitFullscreen) {
-            document.exitFullscreen();
-        }
+            document.querySelector('#incidents-map').appendChild($popup);
+        },
+        toggleFullScreen(){
+            const fullscreenSelector = document.querySelector("#fullscreen-toggle");
+            if (!document.fullscreenElement) {
+                document.querySelector("#incidents-map").requestFullscreen();
+                fullscreenSelector.classList.add("active");
+            } else if (document.exitFullscreen) {
+                document.exitFullscreen();
+                fullscreenSelector.classList.remove("active");
+            }
+        },
     },
     async mounted() {
         await applyOrRemoveLockedMechanism('div.maps');
