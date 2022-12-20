@@ -91,12 +91,14 @@ createApp({
                 dataObject[(`${user.firstname} ${user.lastname}`)] = helpedIncidents.length;
                 amountOfHelpedIncidents.push(helpedIncidents.length);
             }
-
-            this.displayBarChartBystanders(this.sortObjectByValue(dataObject), amountOfHelpedIncidents.sort());
+            const sortedAmount = amountOfHelpedIncidents.sort();
+            this.displayBarChartBystanders(this.sortObjectByValue(dataObject), sortedAmount);
         },
 
         sortObjectByValue(obj){
-            return Object.keys(obj).sort(function(a, b) { return obj[a] - obj[b] });
+            return Object.keys(obj).sort(function(a, b) {
+                return obj[a] - obj[b];
+            });
         },
         displayBarChartBystanders(listOfBystanders, amountOfHelpedIncidents) {
             const ctx = document.querySelector("#bar-chart-bystanders").getContext('2d');

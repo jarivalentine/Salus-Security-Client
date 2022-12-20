@@ -31,7 +31,7 @@ createApp({
             const aggressors = await getAllAggressorsFromIncident(this.incident["id"]);
             this.incidentBystanders = this.presentUsers(bystanders);
             this.incidentAggressors = this.presentUsers(aggressors);
-            this.incidentValidated = this.incident["validated"] ? "This incident is deemed valid by the Salus Security AI" : "This incident is deemed invalid by the Salus Security AI";
+            this.incidentValidated = this.incident["validated"] ? "Incident deemed valid by the Salus Security AI" : "Incident deemed invalid by the Salus Security AI";
             this.incidentDatetime = `${new Date(this.incident["datetime"]).toLocaleDateString()} at ${new Date(this.incident["datetime"]).toLocaleTimeString()}`;
         },
         presentUsers(users){

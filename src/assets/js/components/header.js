@@ -1,5 +1,5 @@
 export default {
-    data() {   
+    data() {
         return {
             firstname: null,
             tag: null,
@@ -24,12 +24,17 @@ export default {
             avatar.style.backgroundImage = `url('assets/img/avatars/${userId}.jpg')`;
         },
         async getTagName(){
-            if (!localStorage.getItem("assists-user-amount")){
+            const getAssistUserAmount = localStorage.getItem("assists-user-amount");
+            if (!getAssistUserAmount){
                 localStorage.setItem("assists-user-amount", JSON.stringify(await getAllHelpedIncidentsFromUser(localStorage.getItem("userId"))));
             }
 
-            const assists = JSON.parse(localStorage.getItem("assists-user-amount"));
+            const assists = JSON.parse(getAssistUserAmount);
             const tag = document.querySelector("#menu .tag");
+            this.checkInBetweenInterval(assists);
+            this.changeTagColor(tag);
+        },
+        checkInBetweenInterval(assists){
             if(assists.length === 0){
                 this.tag = "Bad Savior";
                 this.currentColorClass = "red";
@@ -50,7 +55,6 @@ export default {
                 this.tag = "Legendary Savior";
                 this.currentColorClass = "legendary";
             }
-            this.changeTagColor(tag);
         },
         changeTagColor(tag){
             this.colors.forEach(color => {
@@ -68,7 +72,6 @@ export default {
         await this.changeName();
         await this.getTagName();
         this.changePicture();
-        
     },
     template: `
       <header>
