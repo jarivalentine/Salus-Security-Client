@@ -74,7 +74,7 @@ createApp({
         }
     },
     async mounted() {
-        await applyOrRemoveLockedMechanism('div.maps');
+        await applyLockedMechanism('div.maps');
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((location) => getAllIncidents().then(incidents => this.loadMap(incidents, location)), this.locationDenied);
         }

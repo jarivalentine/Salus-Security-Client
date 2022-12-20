@@ -10,7 +10,7 @@ createApp({
         };
     },
     async mounted(){
-        await applyOrRemoveLockedMechanism('div.doorlock');
+        await applyLockedMechanism('div.doorlock');
     },
     components: {
         headerComponent,
