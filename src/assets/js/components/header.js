@@ -42,11 +42,11 @@ export default {
                 this.tag = "Great Savior";
                 this.currentColorClass = "blue";
             }
-            if(7 <= assists.length && assists.length <= 9){
+            if(7 <= assists.length && assists.length <= 8){
                 this.tag = "Heroic Savior";
                 this.currentColorClass = "purple";
             }
-            if(assists.length >= 8){
+            if(assists.length >= 9){
                 this.tag = "Legendary Savior";
                 this.currentColorClass = "legendary";
             }
