@@ -911,6 +911,7 @@ nav ul .doorlock-nav:hover {
   text-decoration: none;
   color: black;
   margin-left: 1rem;
+  cursor: pointer;
 }
 .route #container {
   width: 100%;
