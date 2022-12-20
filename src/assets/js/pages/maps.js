@@ -57,7 +57,9 @@ createApp({
         },
         async clickFlag(e) {
             const $prev = document.querySelector('.popup');
-            if ($prev) $prev.remove();
+            if ($prev) {
+                $prev.remove();
+            }
             const incident = await getIncident(e.target.dataset.id);
             const $popup = document.createElement('div');
             $popup.classList.add('popup');

@@ -91,8 +91,8 @@ createApp({
                 dataObject[(`${user.firstname} ${user.lastname}`)] = helpedIncidents.length;
                 amountOfHelpedIncidents.push(helpedIncidents.length);
             }
-            const sortedAmount = amountOfHelpedIncidents.sort();
-            this.displayBarChartBystanders(this.sortObjectByValue(dataObject), sortedAmount);
+            amountOfHelpedIncidents.sort();
+            this.displayBarChartBystanders(this.sortObjectByValue(dataObject), amountOfHelpedIncidents);
         },
 
         sortObjectByValue(obj){
