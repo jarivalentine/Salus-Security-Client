@@ -24,7 +24,7 @@ export default {
             avatar.style.backgroundImage = `url('assets/img/avatars/${userId}.jpg')`;
         },
         async getTagName(){
-            if (localStorage.getItem("assists-user-amount") === null){
+            if (!localStorage.getItem("assists-user-amount")){
                 localStorage.setItem("assists-user-amount", JSON.stringify(await getAllHelpedIncidentsFromUser(localStorage.getItem("userId"))));
             }
 
