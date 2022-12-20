@@ -42,7 +42,9 @@ createApp({
                 $marker.classList.add('flag');
                 $marker.addEventListener('click', this.clickFlag);
                 $marker.dataset.id = incidentId;
-            } else $marker.classList.add('marker');
+            } else {
+                $marker.classList.add('marker');
+            }
             document.querySelector('#container').appendChild($marker);
             return new ol.Overlay({
                 position: position,
@@ -55,7 +57,9 @@ createApp({
         },
         async clickFlag(e) {
             const $prev = document.querySelector('.popup');
-            if ($prev) $prev.remove();
+            if ($prev) {
+                $prev.remove();
+            }
             const incident = await getIncident(e.target.dataset.id);
             const $popup = document.createElement('div');
             $popup.classList.add('popup');
@@ -67,11 +71,21 @@ createApp({
                 <p>${incident.type}</p>
                 <ul>${labels}</ul>
                 <a href="./route.html">View route</a>`;
-            $popup.style.left = e.clientX - 95 + 'px';
-            $popup.style.top = e.clientY - 130 - (incident.labels.length * 20) + 'px';
+            $popup.style.left = `${e.clientX - 95}px`;
+            $popup.style.top = `${e.clientY - 130 - (incident.labels.length * 20)}px`;
             localStorage.setItem('incident', JSON.stringify(incident));
-            document.querySelector('#container').appendChild($popup);
-        }
+            document.querySelector('#incidents-map').appendChild($popup);
+        },
+        toggleFullScreen(){
+            const fullscreenSelector = document.querySelector("#fullscreen-toggle");
+            if (!document.fullscreenElement) {
+                document.querySelector("#incidents-map").requestFullscreen();
+                fullscreenSelector.classList.add("active");
+            } else if (document.exitFullscreen) {
+                document.exitFullscreen();
+                fullscreenSelector.classList.remove("active");
+            }
+        },
     },
     async mounted() {
         await applyOrRemoveLockedMechanism('div.maps');
@@ -80,7 +94,9 @@ createApp({
         }
         document.querySelector('body').addEventListener('click', (e) => {
             const $popup = document.querySelector('.popup');
-            if ($popup) $popup.remove();
+            if ($popup) {
+                $popup.remove();
+            }
         });
     },
     components: {

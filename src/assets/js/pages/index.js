@@ -55,7 +55,7 @@ createApp({
             const hoursInDay = 24;
             const minutesInHour = 60;
             const secondsInMinute = 60;
-            const incidentsOneDay = allIncidents.filter(incident => this.calculateDates(incident)["hours"] <= hoursInDay - 1 && this.calculateDates(incident)["minutes"] <= minutesInHour - 1 && this.calculateDates(incident)["seconds"] <= secondsInMinute);
+            const incidentsOneDay = allIncidents.filter(incident => this.calculateDates(incident)["hours"] <= hoursInDay - 1 && this.calculateDates(incident)["minutes"] <= minutesInHour - 1 && this.calculateDates(incident)["seconds"] <= secondsInMinute); //NOSONAR
             const incidentsOneDayActive = incidentsOneDay.filter(incident => incident.state === "ACTIVE");
             incidentsOneDayActive.filter(incident => new Date(incident["datetime"]).getDay() - new Date().getDay() === 0);
             incidentsOneDayActive.reverse();
@@ -92,7 +92,7 @@ createApp({
             return (this.haversineCalculation(lat, long, this.location.coords.latitude, this.location.coords.longitude)).toFixed(2);
         },
 
-        haversineCalculation(lat1, lon1, lat2, lon2) { // distance between two points on a sfeer. crd.: geeksforgeeks.org -> haversine
+        haversineCalculation(lat1, lon1, lat2, lon2) { // distance between two points on a sphere. crd.: geeksforgeeks.org -> haversine
             const degreesHalfCircle = 180;
             const radiusEarth = 6371;
             const dLat = (lat2 - lat1) * Math.PI / degreesHalfCircle;

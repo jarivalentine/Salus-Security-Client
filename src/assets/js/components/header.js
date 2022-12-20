@@ -1,5 +1,5 @@
 export default {
-    data() {   
+    data() {
         return {
             firstname: null,
             tag: null,
@@ -24,30 +24,37 @@ export default {
             avatar.style.backgroundImage = `url('assets/img/avatars/${userId}.jpg')`;
         },
         async getTagName(){
-            const user = await getOneUser(localStorage.getItem("userId"));
-            const assists = await getAllHelpedIncidentsFromUser(user.id);
+            const getAssistUserAmount = localStorage.getItem("assists-user-amount");
+            if (!getAssistUserAmount){
+                localStorage.setItem("assists-user-amount", JSON.stringify(await getAllHelpedIncidentsFromUser(localStorage.getItem("userId"))));
+            }
+
+            const assists = JSON.parse(getAssistUserAmount);
             const tag = document.querySelector("#menu .tag");
+            this.checkInBetweenInterval(assists);
+            this.changeTagColor(tag);
+        },
+        checkInBetweenInterval(assists){
             if(assists.length === 0){
-                this.tag = 'Bad Savior';
+                this.tag = "Bad Savior";
                 this.currentColorClass = "red";
             }
             if(1 <= assists.length && assists.length <= 2){
-                this.tag = 'Noob Savior';
+                this.tag = "Noob Savior";
                 this.currentColorClass = "orange";
             }
             if(3 <= assists.length && assists.length <= 6){
-                this.tag = 'Great Savior';
+                this.tag = "Great Savior";
                 this.currentColorClass = "blue";
             }
-            if(7 <= assists.length && assists.length <= 9){
-                this.tag = 'Heroic Savior';
+            if(7 <= assists.length && assists.length <= 8){
+                this.tag = "Heroic Savior";
                 this.currentColorClass = "purple";
             }
-            if(assists.length >= 8){
-                this.tag = 'Legendary Savior';
+            if(assists.length >= 9){
+                this.tag = "Legendary Savior";
                 this.currentColorClass = "legendary";
             }
-            this.changeTagColor(tag);
         },
         changeTagColor(tag){
             this.colors.forEach(color => {
@@ -65,7 +72,6 @@ export default {
         await this.changeName();
         await this.getTagName();
         this.changePicture();
-        
     },
     template: `
       <header>

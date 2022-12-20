@@ -1,38 +1,30 @@
 export default {
     data() {
         return {
-            homeActive: false,
-            mapsActive: false,
-            statisticsActive: false,
-            doorlockActive: false,
+            activeLink: {
+                home: false,
+                maps: false,
+                statistics: false,
+                doorlock: false,
+            },
         };
     },
     mounted() {
         const url = window.location.href;
-        switch(true) {
-            case url.includes('index'):
-                this.homeActive = true;
-                break;
-            case url.includes('maps'):
-                this.mapsActive = true;
-                break;
-            case url.includes('statistics'):
-                this.statisticsActive = true;
-                break;
-            case url.includes('doorlock'):
-                this.doorlockActive = true;
-                break;
-            default: this.homeActive = true;
-        }
+        this.activeLink = {
+            home: url.includes("index"),
+            maps: url.includes("maps"),
+            statistics: url.includes("statistics"),
+            doorlock: url.includes("doorlock"),
+        };
     },
     template: `
-        <nav>
-            <ul>
-                <li><a class="home-nav" :class="{ active: homeActive }" href="./index.html">Home</a></li>
-                <li><a class="map-nav" :class="{ active: mapsActive }" href="./maps.html">Map</a></li>
-                <li><a class="statistics-nav" :class="{ active: statisticsActive }" href="./statistics.html">Statistics</a></li>
-                <li><a class="doorlock-nav" :class="{ active: doorlockActive }" href="./doorlock.html">Door Lock™</a></li>
-            </ul>
-        </nav>
-    `
+      <nav>
+      <ul>
+        <li><a class="home-nav" :class="{ active: activeLink.home }" href="./index.html">Home</a></li>
+        <li><a class="map-nav" :class="{ active: activeLink.maps }" href="./maps.html">Map</a></li>
+        <li><a class="statistics-nav" :class="{ active: activeLink.statistics }" href="./statistics.html">Statistics</a></li>
+        <li><a class="doorlock-nav" :class="{ active: activeLink.doorlock }" href="./doorlock.html">Door Lock™</a></li>
+      </ul>
+      </nav>`,
 };

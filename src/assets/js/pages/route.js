@@ -37,8 +37,12 @@ createApp({
         },
         createMarker(position, isFlag) {
             const $marker = document.createElement('div');
-            if (isFlag) $marker.classList.add('flag');
-            else $marker.classList.add('marker')
+            if (isFlag) {
+                $marker.classList.add('flag');
+            }
+            else {
+                $marker.classList.add('marker');
+            }
             document.querySelector('#container').appendChild($marker);
             return new ol.Overlay({
                 position: position,
@@ -75,6 +79,7 @@ createApp({
             });
         },
         async helpIncident() {
+            localStorage.setItem("assists-user-amount", JSON.stringify(await getAllHelpedIncidentsFromUser(localStorage.getItem("userId"))));
             const incidentId = JSON.parse(localStorage.getItem('incident')).id;
             const userId = localStorage.getItem('userId');
             await helpIncident(userId, incidentId);
