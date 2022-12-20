@@ -13,6 +13,20 @@
         font-size: 1.5rem;
     }
 
+    #title-fullscreen-container {
+        display: flex;
+        justify-content: space-between;
+        align-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    #title-fullscreen-container button {
+        @include constraints.button;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+    }
+
     #container {
         width: 100%;
         height: calc(100% - 3rem);
