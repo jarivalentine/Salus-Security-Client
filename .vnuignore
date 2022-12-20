@@ -3,3 +3,4 @@ Attribute “@.*”.*
 Attribute “v-.*”.*
 Attribute “ref”.*
 Attribute “.*:class”.*
+Expected selector ".*" to come before selector ".*"

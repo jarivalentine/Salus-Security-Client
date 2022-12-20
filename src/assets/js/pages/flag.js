@@ -60,7 +60,7 @@ createApp({
         },
 
         isReporter() {
-            return this.incident.reporterId == localStorage.getItem("userId")
+            return this.incident.reporterId === localStorage.getItem("userId");
         }
     },
     async mounted() {
