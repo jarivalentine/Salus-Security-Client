@@ -75,6 +75,7 @@ createApp({
             });
         },
         async helpIncident() {
+            localStorage.setItem("assists-user-amount", JSON.stringify(await getAllHelpedIncidentsFromUser(localStorage.getItem("userId"))));
             const incidentId = JSON.parse(localStorage.getItem('incident')).id;
             const userId = localStorage.getItem('userId');
             await helpIncident(userId, incidentId);
