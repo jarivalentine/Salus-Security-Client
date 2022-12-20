@@ -1,4 +1,4 @@
-self.addEventListener('push', (event) => {
+self.addEventListener('push', (event) => { //NOSONAR
     const title = "Notification";
     const options = {
         body: event.data.text(),
