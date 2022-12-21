@@ -111,6 +111,9 @@ createApp({
         }
     },
     async mounted() {
+        if (localStorage.getItem("active-incident")) {
+            document.querySelector(".home button").setAttribute("disabled", "disabled");
+        }
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(location => {
                 this.location = location;

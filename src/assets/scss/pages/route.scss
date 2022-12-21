@@ -7,13 +7,14 @@
         font-family: constraints.$header-font;
         display: inline-block;
         margin-bottom: 1rem;
+    }
 
-        + a {
-            @include constraints.button;
-            font-size: 1rem;
-            margin-left: 1rem;
-            cursor: pointer;
-        }
+    button {
+        @include constraints.button;
+        font-size: 1rem;
+        margin-left: 1rem;
+        border: none;
+        cursor: pointer;
     }
 
     #container {

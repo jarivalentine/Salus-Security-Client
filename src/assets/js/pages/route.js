@@ -87,6 +87,9 @@ createApp({
         }
     },
     async mounted() {
+        if (localStorage.getItem("active-incident")) {
+            document.querySelector(".route button").setAttribute("disabled", "disabled");
+        }
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((location) => this.loadMap(location), this.locationDenied);
         }

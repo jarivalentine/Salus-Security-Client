@@ -26,6 +26,17 @@
         &:hover {
             cursor: pointer;
         }
+
+        &:disabled {
+            background-color: constraints.$gray;
+            color: black;
+
+            &::after {
+                content: "Finish active incident!";
+                display: block;
+                font-size: 1.25rem;
+            }
+        }
     }
 
     div article {

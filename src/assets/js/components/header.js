@@ -105,7 +105,7 @@ export default {
             </ul>
         </div>
         <aside class="hidden">
-            <h2>Pending Incident currently being recorded</h2>
+            <h2>Active Incident currently being recorded</h2>
             <button @click="viewStatus">View Status</button>
         </aside>
         <a href="./settings.html"></a>

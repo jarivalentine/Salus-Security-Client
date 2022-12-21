@@ -46,6 +46,7 @@ createApp({
             const incidentId = JSON.parse(localStorage.getItem("incident")).id;
             await validateIncident(incidentId, localStorage.getItem("userId"));
             this.incidentFinished = true;
+            localStorage.removeItem("active-incident");
             window.location.href = 'index.html';
         },
 

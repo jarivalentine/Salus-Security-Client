@@ -68,6 +68,10 @@ header aside button {
   align-self: center;
   border: none;
 }
+header aside button:disabled {
+  background-color: #898989;
+  color: black;
+}
 header ul {
   background-color: #898989;
   position: relative;
@@ -176,6 +180,15 @@ nav ul .doorlock-nav:hover {
 }
 .home button:hover {
   cursor: pointer;
+}
+.home button:disabled {
+  background-color: #898989;
+  color: black;
+}
+.home button:disabled::after {
+  content: "Finish active incident!";
+  display: block;
+  font-size: 1.25rem;
 }
 .home div article {
   height: 12rem;
@@ -358,6 +371,10 @@ nav ul .doorlock-nav:hover {
   color: black;
   font-size: 1rem;
 }
+.home > article ul li a:disabled {
+  background-color: #898989;
+  color: black;
+}
 
 .history article {
   height: calc(50% - 0.75rem);
@@ -510,6 +527,10 @@ nav ul .doorlock-nav:hover {
   border: none;
   cursor: pointer;
 }
+.maps #title-fullscreen-container button:disabled {
+  background-color: #898989;
+  color: black;
+}
 .maps #container {
   width: 100%;
   height: calc(100% - 3rem);
@@ -578,6 +599,10 @@ nav ul .doorlock-nav:hover {
   text-decoration: none;
   color: black;
   font-size: 1rem;
+}
+.maps #container .popup a:disabled {
+  background-color: #898989;
+  color: black;
 }
 .maps #container .error {
   font-size: 1.5rem;
@@ -721,6 +746,10 @@ nav ul .doorlock-nav:hover {
   font-size: 1rem;
   cursor: pointer;
   border: none;
+}
+.flag button:disabled {
+  background-color: #898989;
+  color: black;
 }
 
 .settings {
@@ -926,6 +955,10 @@ nav ul .doorlock-nav:hover {
   border: none;
   cursor: pointer;
 }
+.settings button:disabled {
+  background-color: #898989;
+  color: black;
+}
 
 .statistics ul {
   margin-bottom: 1rem;
@@ -944,6 +977,10 @@ nav ul .doorlock-nav:hover {
   width: fit-content;
   display: inline-block;
   margin-right: 1rem;
+}
+.statistics ul li:disabled {
+  background-color: #898989;
+  color: black;
 }
 .statistics ul .active {
   background-color: black;
@@ -971,7 +1008,7 @@ nav ul .doorlock-nav:hover {
   display: inline-block;
   margin-bottom: 1rem;
 }
-.route h1 + a {
+.route button {
   background-color: #F0E25D;
   padding: 0.4rem;
   font-size: 1rem;
@@ -980,7 +1017,12 @@ nav ul .doorlock-nav:hover {
   color: black;
   font-size: 1rem;
   margin-left: 1rem;
+  border: none;
   cursor: pointer;
+}
+.route button:disabled {
+  background-color: #898989;
+  color: black;
 }
 .route #container {
   width: 100%;
