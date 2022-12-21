@@ -24,10 +24,7 @@
                         <label></label>
                         <select @change="filterByTypeFlagged($event)">
                             <option value="None"> None </option>
-                            <option value="Assault"> Assault </option>
-                            <option value="Murder"> Murder </option>
-                            <option value="Theft"> Theft </option>
-                            <option value="Vandalism"> Vandalism </option>
+                            <option v-for="incidentType in incidentTypes" :value="incidentType">{{incidentType}}</option>
                         </select>
                     </div>
                 </div>
@@ -56,10 +53,7 @@
                         <label></label>
                         <select @change="filterByTypeHelped($event)">
                             <option value="None"> None </option>
-                            <option value="Assault"> Assault </option>
-                            <option value="Murder"> Murder </option>
-                            <option value="Theft"> Theft </option>
-                            <option value="Vandalism"> Vandalism </option>
+                            <option v-for="incidentType in incidentTypes" :value="incidentType">{{incidentType}}</option>
                         </select>
                     </div>
                 </div>

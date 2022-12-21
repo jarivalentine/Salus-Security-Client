@@ -11,6 +11,7 @@ createApp({
             helpedIncidents: [],
             flaggedIncidentsReady: false,
             helpedIncidentsReady: false,
+            incidentTypes: []
         };
     },
     methods: {
@@ -42,6 +43,15 @@ createApp({
             const allUserIncidents = await getAllHelpedIncidentsFromUser(userId);
             this.helpedIncidents = allUserIncidents.filter(incident => incident.type === event.target.value);
         },
+
+        async getTypesFromIncidents(){
+            const allIncidents = await getAllIncidents();
+            allIncidents.map(incident => {
+                if (!this.incidentTypes.includes(incident.type)){
+                    this.incidentTypes.push(incident.type);
+                }
+            });
+        }
     },
     async mounted() {
         await applyLockedMechanism('div.history');
@@ -49,6 +59,7 @@ createApp({
         this.helpedIncidentsReady = true;
         await this.dataFromIncidents();
         this.flaggedIncidentsReady = true;
+        await this.getTypesFromIncidents();
     },
 
     components: {
