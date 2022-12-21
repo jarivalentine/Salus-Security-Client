@@ -56,7 +56,7 @@
             <p v-if="showError" class="error">Share your location to view the map</p>
             <article v-show="incidentsReady">
                 <h2>Incidents</h2>
-                <ul>
+                <ul v-if="allIncidents.length !== 0">
                     <li v-for="incident in allIncidents">
                         <div>
                             <h3>{{incident.type}}</h3>
@@ -68,6 +68,10 @@
                             <a @click="storeIncident(incident)" href="./route.html">View Route</a>
                         </div>
                     </li>
+                </ul>
+
+                <ul v-else>
+                    <li> There are no active incident at this moment! </li>
                 </ul>
             </article>
         </div>

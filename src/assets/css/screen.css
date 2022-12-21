@@ -53,7 +53,7 @@ header > a {
   width: 4.25rem;
 }
 header aside {
-  width: 50%;
+  width: 55%;
   height: calc(100% - 1rem);
   background-color: #5B37DB;
   border-radius: 1rem;
