@@ -80,22 +80,29 @@ createApp({
             });
         },
         async bestBystanders(){
-            const dataObject = {};
+            let dataObject = {};
             const amountOfHelpedIncidents = [];
+            const usersInOrder = [];
             const users = await getAllUsers();
             for (const user of users) {
                 const helpedIncidents = await getAllHelpedIncidentsFromUser(user.id);
                 dataObject[(`${user.firstname} ${user.lastname}`)] = helpedIncidents.length;
-                amountOfHelpedIncidents.push(helpedIncidents.length);
             }
-            amountOfHelpedIncidents.sort();
-            this.displayBarChartBystanders(this.sortObjectByValue(dataObject), amountOfHelpedIncidents);
+
+            dataObject = this.sortObjectByValue(dataObject);
+
+            for (const key in dataObject) {
+                if (dataObject.hasOwnProperty(key)) {
+                    usersInOrder.push(key);
+                    amountOfHelpedIncidents.push(dataObject[key]);
+                }
+            }
+            this.displayBarChartBystanders(usersInOrder, amountOfHelpedIncidents);
         },
 
         sortObjectByValue(obj){
-            return Object.keys(obj).sort(function(a, b) {
-                return obj[a] - obj[b];
-            });
+            const entries = Object.entries(obj).sort(([, a], [, b]) => b - a);
+            return Object.fromEntries(entries);
         },
         displayBarChartBystanders(listOfBystanders, amountOfHelpedIncidents) {
             const ctx = document.querySelector("#bar-chart-bystanders").getContext('2d');
@@ -156,28 +163,28 @@ createApp({
             });
         },
 
-        toggleTypes() {
+        async toggleTypes() {
             this.pieReady = false;
             this.barTypesReady = true;
             this.barBystandersReady = false;
             this.doughnutValidationReady = false;
         },
 
-        togglePie() {
+        async togglePie() {
             this.pieReady = true;
             this.barTypesReady = false;
             this.barBystandersReady = false;
             this.doughnutValidationReady = false;
         },
 
-        toggleBystanders() {
+        async toggleBystanders() {
             this.pieReady = false;
             this.barTypesReady = false;
             this.barBystandersReady = true;
             this.doughnutValidationReady = false;
         },
 
-        toggleValidationDoughnut() {
+        async toggleValidationDoughnut() {
             this.pieReady = false;
             this.barTypesReady = false;
             this.barBystandersReady = false;
@@ -189,15 +196,15 @@ createApp({
             allCanvases.forEach(canvas => {
                 canvas.style.display = 'inline-block';
             });
-        }
+        },
     },
     async mounted() {
         await applyLockedMechanism('div.statistics');
-        await this.percentageOfBystanders();
+        await this.toggleTypes();
         await this.frequencyOfTypes();
+        await this.percentageOfBystanders();
         await this.bestBystanders();
         await this.validationFrequency();
-        this.toggleTypes();
         this.canvasStyle();
     },
     components: {
