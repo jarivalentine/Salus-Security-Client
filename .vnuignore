@@ -2,5 +2,6 @@ The “date” input type.*
 Attribute “@.*”.*
 Attribute “v-.*”.*
 Attribute “ref”.*
+Attribute “:.*”.*
 Attribute “.*:class”.*
 Expected selector ".*" to come before selector ".*"
