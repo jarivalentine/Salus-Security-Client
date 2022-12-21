@@ -63,9 +63,9 @@ async function helpIncident(userId, incidentId) {
     return post(`${URL}/api/users/${userId}/incidents/${incidentId}/help`, options);
 }
 
-async function validateIncident(incidentId) {
+async function validateIncident(incidentId, userId) {
     const options = createOptions(null, 'PUT');
-    return post(`${URL}/api/incidents/${incidentId}/validate`, options);
+    return post(`${URL}/api/incidents/${incidentId}/validate/${userId}`, options);
 }
 
 async function getIncident(incidentId) {

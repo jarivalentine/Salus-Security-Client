@@ -20,10 +20,12 @@
         <nav-component></nav-component>
         <subscription-component></subscription-component>
         <div class="maps">
-            <h1>Safety map</h1>
+                <h1>Safety map</h1>
             <div id="container">
                 <p v-if="showError" class="error">Share your location to view the map</p>
-                <div id="incidents-map" class="map"></div>
+                <div id="incidents-map" class="map">
+                    <div id="fullscreen-toggle" @click="toggleFullScreen()"></div>
+                </div>
             </div>
         </div>
     </main>

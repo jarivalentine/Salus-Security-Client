@@ -4,11 +4,6 @@ import navComponent from '../components/nav.js';
 import subscriptionComponent from '../components/subscription-lock.js';
 
 createApp({
-    data() {
-        return {
-            message: 'Doorlock page'
-        };
-    },
     async mounted(){
         await applyLockedMechanism('div.doorlock');
     },

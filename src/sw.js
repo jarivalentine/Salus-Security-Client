@@ -11,6 +11,6 @@ self.addEventListener('push', (event) => { //NOSONAR
             200],
         body: event.data.text(),
         icon: "assets/img/icon.png",
-    }
+    };
     self.registration.showNotification(title, options);
 });

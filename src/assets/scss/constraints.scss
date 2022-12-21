@@ -12,7 +12,6 @@ $blue: #5B37DB;
 @mixin box {
     background-color: $component-color;
     border-radius: 1.5rem;
-    padding: 1.5rem;
     box-sizing: border-box;
     box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
@@ -31,7 +30,6 @@ $blue: #5B37DB;
     display: flex;
     justify-content: space-between;
     border-bottom: 0.0625rem solid black;
-    padding: 0.75rem 0;
     margin-bottom: 0.25rem;
 
     div:first-of-type {
@@ -103,7 +101,6 @@ $blue: #5B37DB;
 
 @mixin button {
     background-color: $yellow;
-    font-size: 1rem;
     padding: 0.4rem;
     border-radius: 0.5rem;
     text-decoration: none;
