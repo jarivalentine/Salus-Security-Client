@@ -41,7 +41,6 @@ export default {
             if (!getAssistUserAmount){
                 localStorage.setItem("assists-user-amount", JSON.stringify(await getAllHelpedIncidentsFromUser(localStorage.getItem("userId"))));
             }
-
             const assists = JSON.parse(getAssistUserAmount);
             this.checkInBetweenInterval(assists);
         },

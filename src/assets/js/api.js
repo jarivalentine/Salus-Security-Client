@@ -148,6 +148,7 @@ async function login(userId){ // console log function: change user
     }
     localStorage.setItem("userId", userId);
     console.log(valid);
+    localStorage.removeItem("assists-user-amount");
 }
 
 async function validUserId(userId) {
