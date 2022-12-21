@@ -38,7 +38,7 @@
                             <h3>{{incident.type}}</h3>
                             <em class="label" v-for="label in incident.labels">{{label}}</em>
                             <em v-if="incident.state === 'CONFIRMED'" class="confirmed">Confirmed</em>
-                            <em v-else-if="incident.state === 'DECLINED'" class="declined">Confirmed</em>
+                            <em v-else-if="incident.state === 'DECLINED'" class="declined">Declined</em>
                             <em v-else class="active">Active</em>
                         </div>
                         <div>
@@ -70,7 +70,7 @@
                             <h3>{{incident.type}}</h3>
                             <em class="label" v-for="label in incident.labels">{{label}}</em>
                             <em v-if="incident.state === 'CONFIRMED'" class="confirmed">Confirmed</em>
-                            <em v-else-if="incident.state === 'DECLINED'" class="declined">Confirmed</em>
+                            <em v-else-if="incident.state === 'DECLINED'" class="declined">Desclined</em>
                             <em v-else class="active">Active</em>
                         </div>
                         <div>

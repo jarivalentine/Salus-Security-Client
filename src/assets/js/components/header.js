@@ -61,7 +61,23 @@ export default {
                tag.classList.remove(color);
             });
             tag.classList.add(this.currentColorClass);
-        }
+        },
+        viewStatus() {
+            localStorage.setItem("incident",  localStorage.getItem("active-incident"));
+            window.location.href = "./flag.html";
+        },
+        async showIfActive() {
+            const incidentsByUser = await getAllIncidentsFromUser(localStorage.getItem("userId"));
+            incidentsByUser.forEach(incident => {
+                if (incident.state === "ACTIVE") {
+                    document.querySelector("aside").classList.remove("hidden");
+                    localStorage.setItem("active-incident", JSON.stringify(incident));
+                }
+            });
+            if (window.location.href.includes("flag")) {
+                document.querySelector("aside").classList.add("hidden");
+            }
+        },
     },
     async mounted() {
         document.querySelector('body').addEventListener('click', (e) => {
@@ -72,6 +88,7 @@ export default {
         await this.changeName();
         await this.getTagName();
         this.changePicture();
+        this.showIfActive();
     },
     template: `
     <header>
@@ -87,9 +104,9 @@ export default {
                 <li><a class="non-poc-menu" href="#">Report a bug</a></li>
             </ul>
         </div>
-        <aside>
+        <aside class="hidden">
             <h2>Pending Incident currently being recorded</h2>
-            <button>View Status</button>
+            <button @click="viewStatus">View Status</button>
         </aside>
         <a href="./settings.html"></a>
     </header>
