@@ -43,27 +43,7 @@ export default {
 
             const assists = JSON.parse(getAssistUserAmount);
             const tag = document.querySelector("#menu .tag");
-
-            if(assists.length === 0){
-                this.tag = 'Bad Savior';
-                this.currentColorClass = "red";
-            }
-            if(1 <= assists.length && assists.length <= 2){
-                this.tag = 'Noob Savior';
-                this.currentColorClass = "orange";
-            }
-            if(3 <= assists.length && assists.length <= 6){
-                this.tag = 'Great Savior';
-                this.currentColorClass = "blue";
-            }
-            if(7 <= assists.length && assists.length <= 9){
-                this.tag = 'Heroic Savior';
-                this.currentColorClass = "purple";
-            }
-            if(assists.length >= 8){
-                this.tag = 'Legendary Savior';
-                this.currentColorClass = "legendary";
-            }
+            this.checkInBetweenInterval(assists);
             this.changeTagColor(tag);
         },
         checkInBetweenInterval(assists){
@@ -100,34 +80,38 @@ export default {
                 this.isActive = false;
             }
         });
-        const loader1 = document.querySelector('.loading-profile')
+        //const loader1 = document.querySelector('.loading-profile')
         const loader2 = document.querySelector('.loading-tags')
-        loader1.style.display = 'block';
+        //loader1.style.display = 'block';
         loader2.style.display = 'block';        
         await this.changeName();
         await this.getTagName();
         this.changePicture();
         this.showIfActive();
-        loader1.style.display = 'none';
+        //loader1.style.display = 'none';
         loader2.style.display = 'none';
     },
     template: `
-      <header>
-            <div>
-                <div class="loading-profile" style="width:63px; height:63px;"></div>
-                <div id="menu" @click="toggleMenu">
-                    <p>{{ firstname }}</p>
+    <header>
+        <div>
+            <div class="loading-profile" style="width:63px; height:63px; display:none"></div>
+            <div id="menu" @click="toggleMenu">
+                <p>{{ firstname }}</p>
                     <p class="loading-tags"></p>
-                    <p class="tag">{{ tag }}</p>
-                </div>
-                <ul :class="{ hidden: !isActive }">
-                    <li><a class="non-poc-menu" href="#">Profile</a></li>
-                    <li><a class="poc-menu" href="./history.html">History</a></li>
-                    <li><a class="non-poc-menu" href="#">Give feedback</a></li>
-                    <li><a class="non-poc-menu" href="#">Report a bug</a></li>
-                </ul>
+                <p class="tag">{{ tag }}</p>
             </div>
-          <a href="./settings.html"></a>
-      </header>
+            <ul :class="{ hidden: !isActive }">
+                <li><a class="non-poc-menu" href="#">Profile</a></li>
+                <li><a class="poc-menu" href="./history.html">History</a></li>
+                <li><a class="non-poc-menu" href="#">Give feedback</a></li>
+                <li><a class="non-poc-menu" href="#">Report a bug</a></li>
+            </ul>
+        </div>
+        <aside class="hidden">
+            <h2>Active Incident currently being recorded</h2>
+            <button @click="viewStatus">View Status</button>
+        </aside>
+        <a href="./settings.html"></a>
+    </header>
     `
 };
