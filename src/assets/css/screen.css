@@ -420,6 +420,8 @@ nav ul .doorlock-nav:hover {
   border: none;
   height: 1.5rem;
   border-radius: 0.25rem;
+  text-align: center;
+  font-weight: bold;
 }
 .history article select:focus {
   outline: none;
