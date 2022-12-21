@@ -89,9 +89,9 @@ export default {
             }
         });
         //const loader1 = document.querySelector('.loading-profile')
-        const loader2 = document.querySelector('.loading-tags')
+        const loader2 = document.querySelector('.loading-tags');
         //loader1.style.display = 'block';
-        loader2.style.display = 'block';        
+        loader2.style.display = 'block';
         await this.changeName();
         await this.getTagName();
         this.changePicture();

@@ -1,6 +1,38 @@
 @use '../constraints';
 
 .home {
+
+    > article {
+        height: calc(100% - 13.5rem); // minus height of buttons and margin bottom
+
+        ul {
+            height: calc(100% - 3rem); // minus font height and margin bottom
+            overflow: scroll;
+            @include constraints.box;
+            padding: 1rem;
+
+            li {
+                @include constraints.list-item;
+                padding: 0.75rem 0;
+
+                p {
+                    &:first-of-type {
+                        background-image: url('../img/svg-cronometer.svg');
+                    }
+
+                    &:last-of-type {
+                        background-image: url('../img/svg-compass.svg');
+                    }
+                }
+
+                a {
+                    @include constraints.button;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
     > div {
         display: flex;
         gap: 1.5rem;
@@ -106,37 +138,6 @@
                 margin-bottom: 0.5rem;
 
                 p {
-                    font-size: 1rem;
-                }
-            }
-        }
-    }
-
-    > article {
-        height: calc(100% - 13.5rem); // minus height of buttons and margin bottom
-
-        ul {
-            height: calc(100% - 3rem); // minus font height and margin bottom    
-            overflow: scroll;
-            @include constraints.box;
-            padding: 1rem;
-
-            li {
-                @include constraints.list-item;
-                padding: 0.75rem 0;
-
-                p {
-                    &:first-of-type {
-                        background-image: url('../img/svg-cronometer.svg');
-                    }
-
-                    &:last-of-type {
-                        background-image: url('../img/svg-compass.svg');
-                    }
-                }
-
-                a {
-                    @include constraints.button;
                     font-size: 1rem;
                 }
             }
