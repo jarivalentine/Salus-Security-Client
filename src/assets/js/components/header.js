@@ -107,7 +107,7 @@ export default {
             </ul>
         </div>
         <aside class="hidden">
-            <h2>Active Incident currently being recorded</h2>
+            <h2>Your last incident is still recording</h2>
             <button @click="viewStatus">View Status</button>
             <button @click="stopRecording">Stop Recording</button>
         </aside>
