@@ -63,9 +63,9 @@ async function helpIncident(userId, incidentId) {
     return post(`${URL}/api/users/${userId}/incidents/${incidentId}/help`, options);
 }
 
-async function validateIncident(incidentId) {
+async function validateIncident(incidentId, userId) {
     const options = createOptions(null, 'PUT');
-    return post(`${URL}/api/incidents/${incidentId}/validate`, options);
+    return post(`${URL}/api/incidents/${incidentId}/validate/${userId}`, options);
 }
 
 async function getIncident(incidentId) {
@@ -153,17 +153,14 @@ async function validUserId(userId) {
     return userIds.includes(userId);
 }
 
-async function applyOrRemoveLockedMechanism(domElement){
+async function applyLockedMechanism(domElement){
     const user = await getOneUser(localStorage.getItem("userId"));
     const blurDomElement = document.querySelector(domElement);
     if (blurDomElement === null){
         return;
     }
-    if (user.subscribed){
-        blurDomElement.classList.remove("locked");
-        return;
+    if (!user.subscribed) {
+        blurDomElement.classList.add("locked");
     }
-
-    blurDomElement.classList.add("locked");
 }
 

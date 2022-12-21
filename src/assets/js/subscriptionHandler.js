@@ -9,14 +9,14 @@ function subscribeToNotifications() {
             return registration.pushManager.subscribe(options);
         })
         .then((subscription) => {
-            let key = subscription.getKey ? subscription.getKey('p256dh') : '';
-            let auth = subscription.getKey ? subscription.getKey('auth') : '';
+            const key = subscription.getKey ? subscription.getKey('p256dh') : '';
+            const auth = subscription.getKey ? subscription.getKey('auth') : '';
 
             postSubscription({
                 endpoint: subscription.endpoint,
                 key: btoa(String.fromCharCode.apply(null, new Uint8Array(key))),
                 auth: btoa(String.fromCharCode.apply(null, new Uint8Array(auth))),
-            })
+            });
         })
         .catch((err) => {
             console.error('Error subscribing to notifications', err);

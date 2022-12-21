@@ -65,6 +65,7 @@
 
         li {
             @include constraints.list-item;
+            padding: 0.75rem 0;
         }
 
         .additional-information {
@@ -81,6 +82,7 @@
 
         section {
             @include constraints.box;
+            padding: 1rem;
             margin-bottom: 0;
             overflow: scroll;
         }
@@ -89,6 +91,7 @@
 
     button {
         @include constraints.button;
+        font-size: 1rem;
         cursor: pointer;
         border: none;
     }

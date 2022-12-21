@@ -1,7 +1,6 @@
 const { createApp } = Vue;
 import headerComponent from '../components/header.js';
 import navComponent from '../components/nav.js';
-import subscriptionLock from "../components/subscription-lock.js";
 
 
 createApp({
@@ -32,12 +31,7 @@ createApp({
             const aggressors = await getAllAggressorsFromIncident(this.incident["id"]);
             this.incidentBystanders = this.presentUsers(bystanders);
             this.incidentAggressors = this.presentUsers(aggressors);
-
-            if (this.incident["validated"]){
-                this.incidentValidated = "This incident is deemed valid by the Salus Security AI";
-            } else {
-                this.incidentValidated = "This incident is deemed invalid by the Salus Security AI";
-            }
+            this.incidentValidated = this.incident["validated"] ? "Incident deemed valid by the Salus Security AI" : "Incident deemed invalid by the Salus Security AI";
             this.incidentDatetime = `${new Date(this.incident["datetime"]).toLocaleDateString()} at ${new Date(this.incident["datetime"]).toLocaleTimeString()}`;
         },
         presentUsers(users){
@@ -50,12 +44,9 @@ createApp({
 
         async finishRecording() {
             const incidentId = JSON.parse(localStorage.getItem("incident")).id;
-            const incident = await getIncident(incidentId);
-            if (incident.state !== "ACTIVE") {
-                return;
-            }
-            await validateIncident(incidentId);
+            await validateIncident(incidentId, localStorage.getItem("userId"));
             this.incidentFinished = true;
+            localStorage.removeItem("active-incident");
             window.location.href = 'index.html';
         },
 
@@ -70,6 +61,5 @@ createApp({
     components: {
         headerComponent,
         navComponent,
-        subscriptionLock
     }
 }).mount('#app');

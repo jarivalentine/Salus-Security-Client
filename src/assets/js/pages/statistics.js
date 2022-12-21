@@ -83,17 +83,23 @@ createApp({
             });
         },
         async bestBystanders(){
+            const dataObject = {};
             const amountOfHelpedIncidents = [];
-            const listOfBystanders = [];
             const users = await getAllUsers();
             for (const user of users) {
                 const helpedIncidents = await getAllHelpedIncidentsFromUser(user.id);
+                dataObject[(`${user.firstname} ${user.lastname}`)] = helpedIncidents.length;
                 amountOfHelpedIncidents.push(helpedIncidents.length);
-                listOfBystanders.push(`${user.firstname} ${user.lastname}`);
             }
-            this.displayBarChartBystanders(listOfBystanders, amountOfHelpedIncidents);
+            amountOfHelpedIncidents.sort();
+            this.displayBarChartBystanders(this.sortObjectByValue(dataObject), amountOfHelpedIncidents);
         },
 
+        sortObjectByValue(obj){
+            return Object.keys(obj).sort(function(a, b) {
+                return obj[a] - obj[b];
+            });
+        },
         displayBarChartBystanders(listOfBystanders, amountOfHelpedIncidents) {
             const ctx = document.querySelector("#bar-chart-bystanders").getContext('2d');
             new Chart(ctx, {
@@ -182,14 +188,14 @@ createApp({
         },
 
         canvasStyle() {
-            const canvas = document.querySelectorAll('canvas');
-            canvas.forEach(canvas => {
+            const allCanvases = document.querySelectorAll('canvas');
+            allCanvases.forEach(canvas => {
                 canvas.style.display = 'inline-block';
             });
         }
     },
     async mounted() {
-        await applyOrRemoveLockedMechanism('div.statistics');
+        await applyLockedMechanism('div.statistics');
         await this.percentageOfBystanders();
         await this.frequencyOfTypes();
         await this.bestBystanders();

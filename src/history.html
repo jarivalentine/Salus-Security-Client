@@ -24,10 +24,7 @@
                         <label></label>
                         <select @change="filterByTypeFlagged($event)">
                             <option value="None"> None </option>
-                            <option value="Assault"> Assault </option>
-                            <option value="Murder"> Murder </option>
-                            <option value="Theft"> Theft </option>
-                            <option value="Vandalism"> Vandalism </option>
+                            <option v-for="incidentType in incidentTypes" :value="incidentType">{{incidentType}}</option>
                         </select>
                     </div>
                 </div>
@@ -38,7 +35,8 @@
                             <h3>{{incident.type}}</h3>
                             <em class="label" v-for="label in incident.labels">{{label}}</em>
                             <em v-if="incident.state === 'CONFIRMED'" class="confirmed">Confirmed</em>
-                            <em v-else class="declined">Declined</em>
+                            <em v-else-if="incident.state === 'DECLINED'" class="declined">Declined</em>
+                            <em v-else class="active">Active</em>
                         </div>
                         <div>
                             <p>{{new Date(incident.datetime).toLocaleDateString()}}</p>
@@ -55,10 +53,7 @@
                         <label></label>
                         <select @change="filterByTypeHelped($event)">
                             <option value="None"> None </option>
-                            <option value="Assault"> Assault </option>
-                            <option value="Murder"> Murder </option>
-                            <option value="Theft"> Theft </option>
-                            <option value="Vandalism"> Vandalism </option>
+                            <option v-for="incidentType in incidentTypes" :value="incidentType">{{incidentType}}</option>
                         </select>
                     </div>
                 </div>
@@ -69,7 +64,8 @@
                             <h3>{{incident.type}}</h3>
                             <em class="label" v-for="label in incident.labels">{{label}}</em>
                             <em v-if="incident.state === 'CONFIRMED'" class="confirmed">Confirmed</em>
-                            <em v-else class="declined">Declined</em>
+                            <em v-else-if="incident.state === 'DECLINED'" class="declined">Desclined</em>
+                            <em v-else class="active">Active</em>
                         </div>
                         <div>
                             <p>{{new Date(incident.datetime).toLocaleDateString()}}</p>
