@@ -153,17 +153,14 @@ async function validUserId(userId) {
     return userIds.includes(userId);
 }
 
-async function applyOrRemoveLockedMechanism(domElement){
+async function applyLockedMechanism(domElement){
     const user = await getOneUser(localStorage.getItem("userId"));
     const blurDomElement = document.querySelector(domElement);
     if (blurDomElement === null){
         return;
     }
-    if (user.subscribed){
-        blurDomElement.classList.remove("locked");
-        return;
+    if (!user.subscribed) {
+        blurDomElement.classList.add("locked");
     }
-
-    blurDomElement.classList.add("locked");
 }
 

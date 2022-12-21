@@ -26,6 +26,17 @@
         &:hover {
             cursor: pointer;
         }
+
+        &:disabled {
+            background-color: constraints.$gray;
+            color: black;
+
+            &::after {
+                content: "Finish active incident!";
+                display: block;
+                font-size: 1.25rem;
+            }
+        }
     }
 
     div article {
@@ -44,6 +55,7 @@
             justify-content: space-between;
             height: calc(100% - 3rem); // minus font height and margin bottom
             @include constraints.box;
+            padding: 1rem;
             @include constraints.slider;
 
             .notify {
@@ -107,9 +119,11 @@
             height: calc(100% - 3rem); // minus font height and margin bottom    
             overflow: scroll;
             @include constraints.box;
+            padding: 1rem;
 
             li {
                 @include constraints.list-item;
+                padding: 0.75rem 0;
 
                 p {
                     &:first-of-type {
@@ -123,6 +137,7 @@
 
                 a {
                     @include constraints.button;
+                    font-size: 1rem;
                 }
             }
         }

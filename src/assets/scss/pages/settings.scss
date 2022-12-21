@@ -16,6 +16,7 @@
 
     .subscription section, .notifications > div {
         @include constraints.box;
+        padding: 1rem;
         height: calc(100% - 4rem);
 
         h3 {

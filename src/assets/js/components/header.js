@@ -6,6 +6,18 @@ export default {
             isActive: false,
             colors: ["purple", "red", "orange", "blue", "legendary"],
             currentColorClass: "purple",
+            tags: {
+                0: { tag: "Bad Savior", colorClass: "red" },
+                1: { tag: "Noob Savior", colorClass: "orange" },
+                2: { tag: "Noob Savior", colorClass: "orange" },
+                3: { tag: "Great Savior", colorClass: "blue" },
+                4: { tag: "Great Savior", colorClass: "blue" },
+                5: { tag: "Great Savior", colorClass: "blue" },
+                6: { tag: "Great Savior", colorClass: "blue" },
+                7: { tag: "Heroic Savior", colorClass: "purple" },
+                8: { tag: "Heroic Savior", colorClass: "purple" },
+                9: { tag: "Legendary Savior", colorClass: "legendary" }
+            }
         };
     },
     methods: {
@@ -35,33 +47,32 @@ export default {
             this.changeTagColor(tag);
         },
         checkInBetweenInterval(assists){
-            if(assists.length === 0){
-                this.tag = "Bad Savior";
-                this.currentColorClass = "red";
-            }
-            if(1 <= assists.length && assists.length <= 2){
-                this.tag = "Noob Savior";
-                this.currentColorClass = "orange";
-            }
-            if(3 <= assists.length && assists.length <= 6){
-                this.tag = "Great Savior";
-                this.currentColorClass = "blue";
-            }
-            if(7 <= assists.length && assists.length <= 8){
-                this.tag = "Heroic Savior";
-                this.currentColorClass = "purple";
-            }
-            if(assists.length >= 9){
-                this.tag = "Legendary Savior";
-                this.currentColorClass = "legendary";
-            }
+            const tagData = this.tags[assists.length] || this.tags[9];
+            this.tag = tagData.tag;
+            this.currentColorClass = tagData.colorClass;
         },
         changeTagColor(tag){
             this.colors.forEach(color => {
                tag.classList.remove(color);
             });
             tag.classList.add(this.currentColorClass);
-        }
+        },
+        viewStatus() {
+            localStorage.setItem("incident",  localStorage.getItem("active-incident"));
+            window.location.href = "./flag.html";
+        },
+        async showIfActive() {
+            const incidentsByUser = await getAllIncidentsFromUser(localStorage.getItem("userId"));
+            incidentsByUser.forEach(incident => {
+                if (incident.state === "ACTIVE") {
+                    document.querySelector("aside").classList.remove("hidden");
+                    localStorage.setItem("active-incident", JSON.stringify(incident));
+                }
+            });
+            if (window.location.href.includes("flag")) {
+                document.querySelector("aside").classList.add("hidden");
+            }
+        },
     },
     async mounted() {
         document.querySelector('body').addEventListener('click', (e) => {
@@ -72,22 +83,27 @@ export default {
         await this.changeName();
         await this.getTagName();
         this.changePicture();
+        this.showIfActive();
     },
     template: `
-      <header>
-          <div>
-                <div id="menu" @click="toggleMenu">
-                  <p>{{ firstname }}</p>
-                  <p class="tag">{{ tag }}</p>
-                </div>
-                <ul :class="{ hidden: !isActive }">
-                  <li><a class="non-poc-menu" href="#">Profile</a></li>
-                  <li><a class="poc-menu" href="./history.html">History</a></li>
-                  <li><a class="non-poc-menu" href="#">Give feedback</a></li>
-                  <li><a class="non-poc-menu" href="#">Report a bug</a></li>
-                </ul>
-              </div>
-          <a href="./settings.html"></a>
-      </header>
+    <header>
+        <div>
+            <div id="menu" @click="toggleMenu">
+                <p>{{ firstname }}</p>
+                <p class="tag">{{ tag }}</p>
+            </div>
+            <ul :class="{ hidden: !isActive }">
+                <li><a class="non-poc-menu" href="#">Profile</a></li>
+                <li><a class="poc-menu" href="./history.html">History</a></li>
+                <li><a class="non-poc-menu" href="#">Give feedback</a></li>
+                <li><a class="non-poc-menu" href="#">Report a bug</a></li>
+            </ul>
+        </div>
+        <aside class="hidden">
+            <h2>Active Incident currently being recorded</h2>
+            <button @click="viewStatus">View Status</button>
+        </aside>
+        <a href="./settings.html"></a>
+    </header>
     `
 };

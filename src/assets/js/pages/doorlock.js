@@ -5,7 +5,7 @@ import subscriptionComponent from '../components/subscription-lock.js';
 
 createApp({
     async mounted(){
-        await applyOrRemoveLockedMechanism('div.doorlock');
+        await applyLockedMechanism('div.doorlock');
     },
     components: {
         headerComponent,

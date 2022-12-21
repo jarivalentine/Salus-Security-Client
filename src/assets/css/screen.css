@@ -42,6 +42,36 @@ header > a {
   height: 4.25rem;
   width: 4.25rem;
 }
+header aside {
+  width: 50%;
+  height: calc(100% - 1rem);
+  background-color: #5B37DB;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+header aside h2 {
+  font-size: 1.25rem;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  color: white;
+  height: 100%;
+  line-height: 3.5rem;
+}
+header aside button {
+  background-color: #F0E25D;
+  padding: 0.4rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+  align-self: center;
+  border: none;
+}
+header aside button:disabled {
+  background-color: #898989;
+  color: black;
+}
 header ul {
   background-color: #898989;
   position: relative;
@@ -151,6 +181,15 @@ nav ul .doorlock-nav:hover {
 .home button:hover {
   cursor: pointer;
 }
+.home button:disabled {
+  background-color: #898989;
+  color: black;
+}
+.home button:disabled::after {
+  content: "Finish active incident!";
+  display: block;
+  font-size: 1.25rem;
+}
 .home div article {
   height: 12rem;
   width: calc(100% - 26rem - 1.5rem);
@@ -169,6 +208,7 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
 }
 .home div article > div .switch {
   display: inline-block;
@@ -263,12 +303,14 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
 }
 .home > article ul li {
   display: flex;
   justify-content: space-between;
   border-bottom: 0.0625rem solid black;
   margin-bottom: 0.25rem;
+  padding: 0.75rem 0;
 }
 .home > article ul li div:first-of-type {
   width: auto;
@@ -323,8 +365,14 @@ nav ul .doorlock-nav:hover {
 .home > article ul li a {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
+  color: black;
+  font-size: 1rem;
+}
+.home > article ul li a:disabled {
+  background-color: #898989;
   color: black;
 }
 
@@ -377,6 +425,7 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
   overflow: scroll;
   height: calc(100% - 3rem);
 }
@@ -385,6 +434,7 @@ nav ul .doorlock-nav:hover {
   justify-content: space-between;
   border-bottom: 0.0625rem solid black;
   margin-bottom: 0.25rem;
+  padding: 0.75rem 0;
 }
 .history article ul li div:first-of-type {
   width: auto;
@@ -468,12 +518,18 @@ nav ul .doorlock-nav:hover {
 .maps #title-fullscreen-container button {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
   font-weight: bold;
   border: none;
   cursor: pointer;
+}
+.maps #title-fullscreen-container button:disabled {
+  background-color: #898989;
+  color: black;
 }
 .maps #container {
   width: 100%;
@@ -538,8 +594,14 @@ nav ul .doorlock-nav:hover {
 .maps #container .popup a {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
+  color: black;
+  font-size: 1rem;
+}
+.maps #container .popup a:disabled {
+  background-color: #898989;
   color: black;
 }
 .maps #container .error {
@@ -610,6 +672,7 @@ nav ul .doorlock-nav:hover {
   justify-content: space-between;
   border-bottom: 0.0625rem solid black;
   margin-bottom: 0.25rem;
+  padding: 0.75rem 0;
 }
 .flag .container li div:first-of-type {
   width: auto;
@@ -669,17 +732,24 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
   margin-bottom: 0;
   overflow: scroll;
 }
 .flag button {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
   cursor: pointer;
   border: none;
+}
+.flag button:disabled {
+  background-color: #898989;
+  color: black;
 }
 
 .settings {
@@ -698,6 +768,7 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
   height: calc(100% - 4rem);
 }
 .settings .subscription section h3, .settings .notifications > div h3 {
@@ -875,6 +946,7 @@ nav ul .doorlock-nav:hover {
 .settings button {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
@@ -882,6 +954,10 @@ nav ul .doorlock-nav:hover {
   font-weight: bold;
   border: none;
   cursor: pointer;
+}
+.settings button:disabled {
+  background-color: #898989;
+  color: black;
 }
 
 .statistics ul {
@@ -893,12 +969,18 @@ nav ul .doorlock-nav:hover {
 .statistics ul li {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
   width: fit-content;
   display: inline-block;
   margin-right: 1rem;
+}
+.statistics ul li:disabled {
+  background-color: #898989;
+  color: black;
 }
 .statistics ul .active {
   background-color: black;
@@ -909,6 +991,7 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
   height: calc(100% - 3rem);
 }
 .statistics section div {
@@ -925,14 +1008,21 @@ nav ul .doorlock-nav:hover {
   display: inline-block;
   margin-bottom: 1rem;
 }
-.route h1 + a {
+.route button {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
   margin-left: 1rem;
+  border: none;
   cursor: pointer;
+}
+.route button:disabled {
+  background-color: #898989;
+  color: black;
 }
 .route #container {
   width: 100%;
