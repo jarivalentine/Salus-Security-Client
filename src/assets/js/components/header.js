@@ -11,6 +11,7 @@ export default {
             greatSavior: "Great Savior",
             heroicSavior: "Heroic Savior",
             legendarySavior: "Legendary Savior",
+            activeIncident: "active-incident",
             tags: {
                 0: { tag: this.badSavior, colorClass: "red" },
                 1: { tag: this.noobSavior, colorClass: "orange" },
@@ -63,7 +64,7 @@ export default {
             tag.classList.add(this.currentColorClass);
         },
         viewStatus() {
-            localStorage.setItem("incident",  localStorage.getItem("active-incident"));
+            localStorage.setItem("incident",  localStorage.getItem(this.activeIncident));
             window.location.href = "./flag.html";
         },
         async showIfActive() {
@@ -71,7 +72,7 @@ export default {
             incidentsByUser.forEach(incident => {
                 if (incident.state === "ACTIVE") {
                     document.querySelector("aside").classList.remove("hidden");
-                    localStorage.setItem("active-incident", JSON.stringify(incident));
+                    localStorage.setItem(this.activeIncident, JSON.stringify(incident));
                 }
             });
             if (window.location.href.includes("flag")) {
@@ -80,9 +81,9 @@ export default {
         },
 
         async stopRecording(){
-            const incidentId = JSON.parse(localStorage.getItem("active-incident")).id;
+            const incidentId = JSON.parse(localStorage.getItem(this.activeIncident)).id;
             await validateIncident(incidentId, localStorage.getItem("userId"));
-            localStorage.removeItem("active-incident");
+            localStorage.removeItem(this.activeIncident);
             window.location.href = 'index.html';
         },
     },

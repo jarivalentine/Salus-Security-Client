@@ -55,7 +55,7 @@ createApp({
             const total = allIncidents.length;
             let amount = 0;
             for (let i = 0; i < total; i++) {
-                incidentsWithBystanders.push({"incident": await getAllBystandersFromIncident(allIncidents[i].id)})
+                incidentsWithBystanders.push({"incident": await getAllBystandersFromIncident(allIncidents[i].id)});
             }
             incidentsWithBystanders.forEach(index => {
                 if (index.incident.length !== 0) {
