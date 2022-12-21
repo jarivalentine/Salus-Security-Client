@@ -6,17 +6,22 @@ export default {
             isActive: false,
             colors: ["purple", "red", "orange", "blue", "legendary"],
             currentColorClass: "purple",
+            badSavior: "Bad Savior",
+            noobSavior: "Noob Savior",
+            greatSavior: "Great Savior",
+            heroicSavior: "Heroic Savior",
+            legendarySavior: "Legendary Savior",
             tags: {
-                0: { tag: "Bad Savior", colorClass: "red" },
-                1: { tag: "Noob Savior", colorClass: "orange" },
-                2: { tag: "Noob Savior", colorClass: "orange" },
-                3: { tag: "Great Savior", colorClass: "blue" },
-                4: { tag: "Great Savior", colorClass: "blue" },
-                5: { tag: "Great Savior", colorClass: "blue" },
-                6: { tag: "Great Savior", colorClass: "blue" },
-                7: { tag: "Heroic Savior", colorClass: "purple" },
-                8: { tag: "Heroic Savior", colorClass: "purple" },
-                9: { tag: "Legendary Savior", colorClass: "legendary" }
+                0: { tag: this.badSavior, colorClass: "red" },
+                1: { tag: this.noobSavior, colorClass: "orange" },
+                2: { tag: this.noobSavior, colorClass: "orange" },
+                3: { tag: this.greatSavior, colorClass: "blue" },
+                4: { tag: this.greatSavior, colorClass: "blue" },
+                5: { tag: this.greatSavior, colorClass: "blue" },
+                6: { tag: this.greatSavior, colorClass: "blue" },
+                7: { tag: this.heroicSavior, colorClass: "purple" },
+                8: { tag: this.heroicSavior, colorClass: "purple" },
+                9: { tag: this.legendarySavior, colorClass: "legendary" }
             }
         };
     },
