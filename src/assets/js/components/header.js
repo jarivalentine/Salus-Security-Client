@@ -73,6 +73,13 @@ export default {
                 document.querySelector("aside").classList.add("hidden");
             }
         },
+
+        async stopRecording(){
+            const incidentId = JSON.parse(localStorage.getItem("active-incident")).id;
+            await validateIncident(incidentId, localStorage.getItem("userId"));
+            localStorage.removeItem("active-incident");
+            window.location.href = 'index.html';
+        },
     },
     async mounted() {
         document.querySelector('body').addEventListener('click', (e) => {
@@ -83,7 +90,7 @@ export default {
         await this.changeName();
         await this.getTagName();
         this.changePicture();
-        this.showIfActive();
+        await this.showIfActive();
     },
     template: `
     <header>
@@ -102,6 +109,7 @@ export default {
         <aside class="hidden">
             <h2>Active Incident currently being recorded</h2>
             <button @click="viewStatus">View Status</button>
+            <button @click="stopRecording">Stop Recording</button>
         </aside>
         <a href="./settings.html"></a>
     </header>
