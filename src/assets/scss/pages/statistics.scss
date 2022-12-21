@@ -23,6 +23,27 @@
         margin-bottom: 1rem;
     }
 
+    .loading-stats{
+        background-image: url(../loading-icons/LoadingBars.svg);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        width: 815px; 
+        height: 419px;
+    }
+    .loading-bars{
+        background-image: url(../loading-icons/LoadingBars.svg);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        width: 815px; 
+        height: 419px;
+    }
+    .loading-pie{
+        background-image: url(../loading-icons/LoadingPie.svg);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        width: 815px; 
+        height: 419px;
+    }
     section {
 
         @include constraints.box;

@@ -24,28 +24,29 @@
                 <li class="statistics-nav" :class="{ 'active' : barBystandersReady}" @click="toggleBystanders">Best bystanders</li>
                 <li class="statistics-nav" :class="{ 'active' : doughnutValidationReady}" @click="toggleValidationDoughnut">Validation frequency</li>
             </ul>
+            <div class="loading-stats"></div>
             <section v-show="barTypesReady">
                 <h2>Frequency of types</h2>
                 <p>There have been <strong>{{allIncidentsLength}}</strong> incidents this year </p>
-                <div>
+                <div class="loading-bars">
                     <canvas id="bar-chart-types"></canvas>
                 </div>
             </section>
             <section v-show="pieReady">
                 <h2>Incidents with bystanders</h2>
-                <div>
+                <div class="loading-pie">
                     <canvas id="pie-chart-bystanders"></canvas>
                 </div>
             </section>
             <section v-show="barBystandersReady">
                 <h2>Best bystanders</h2>
-                <div>
+                <div class="loading-bars">
                     <canvas id="bar-chart-bystanders"></canvas>
                 </div>
             </section>
             <section v-show="doughnutValidationReady">
                 <h2>Frequency validation</h2>
-                <div>
+                <div class="loading-pie">
                     <canvas id="doughnut-chart-validation"></canvas>
                 </div>
             </section>

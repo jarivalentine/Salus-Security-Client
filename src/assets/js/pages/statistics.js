@@ -18,6 +18,9 @@ createApp({
     },
     methods: {
         async frequencyOfTypes(){
+            const element = document.querySelector(".loading-bars");
+            element.style.backgroundImage = 'none';
+
             const allIncidents = await getAllIncidents();
             const countedTypes = {};
             allIncidents.map(index => {
@@ -50,6 +53,9 @@ createApp({
             });
         },
         async percentageOfBystanders(){
+            const element = document.querySelector(".loading-pie");
+            element.style.backgroundImage = 'none';
+
             const allIncidents = await getAllIncidents();
             const incidentsWithBystanders = [];
             const total = allIncidents.length;
@@ -83,6 +89,9 @@ createApp({
             });
         },
         async bestBystanders(){
+            const element = document.querySelector(".loading-bars");
+            element.style.backgroundImage = 'none';
+            
             const dataObject = {};
             const amountOfHelpedIncidents = [];
             const users = await getAllUsers();
@@ -93,6 +102,7 @@ createApp({
             }
             amountOfHelpedIncidents.sort();
             this.displayBarChartBystanders(this.sortObjectByValue(dataObject), amountOfHelpedIncidents);
+
         },
 
         sortObjectByValue(obj){
@@ -124,6 +134,9 @@ createApp({
         },
 
         async validationFrequency(){
+            const element = document.querySelector(".loading-pie");
+            element.style.backgroundImage = 'none';
+
             const allIncidents = await getAllIncidents();
             let totalConfirmedIncidents = 0;
             let totalDeclinedIncidents = 0;
@@ -141,7 +154,8 @@ createApp({
                 }
             });
 
-            this.displayValidationDoughnutChart([totalConfirmedIncidents, totalDeclinedIncidents, totalActiveIncidents],["CONFIRMED", "DECLINED", "ACTIVE"]);
+            this.displayValidationDoughnutChart([totalConfirmedIncidents, totalDeclinedIncidents, totalActiveIncidents],["CONFIRMED", "DECLINED", "ACTIVE"]);            
+
         },
 
         displayValidationDoughnutChart(listOfFrequency, listOfStates) {
@@ -160,6 +174,8 @@ createApp({
         },
 
         toggleTypes() {
+            const element = document.querySelector(".loading-stats");
+            element.style.display = "none";
             this.pieReady = false;
             this.barTypesReady = true;
             this.barBystandersReady = false;
@@ -167,6 +183,8 @@ createApp({
         },
 
         togglePie() {
+            const element = document.querySelector(".loading-stats");
+            element.style.display = "none";
             this.pieReady = true;
             this.barTypesReady = false;
             this.barBystandersReady = false;
@@ -174,6 +192,8 @@ createApp({
         },
 
         toggleBystanders() {
+            const element = document.querySelector(".loading-stats");
+            element.style.display = "none";
             this.pieReady = false;
             this.barTypesReady = false;
             this.barBystandersReady = true;
@@ -181,6 +201,8 @@ createApp({
         },
 
         toggleValidationDoughnut() {
+            const element = document.querySelector(".loading-stats");
+            element.style.display = "none";
             this.pieReady = false;
             this.barTypesReady = false;
             this.barBystandersReady = false;
@@ -195,6 +217,7 @@ createApp({
         }
     },
     async mounted() {
+        const element = document.querySelector(".loading-stats");
         await applyLockedMechanism('div.statistics');
         await this.percentageOfBystanders();
         await this.frequencyOfTypes();
@@ -202,6 +225,7 @@ createApp({
         await this.validationFrequency();
         this.toggleTypes();
         this.canvasStyle();
+        element.style.display = "none";
     },
     components: {
         headerComponent,

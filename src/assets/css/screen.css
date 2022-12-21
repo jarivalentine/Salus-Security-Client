@@ -1003,6 +1003,27 @@ nav ul .doorlock-nav:hover {
   background-color: black;
   color: white;
 }
+.statistics .loading-stats {
+  background-image: url(../loading-icons/LoadingBars.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  width: 815px;
+  height: 419px;
+}
+.statistics .loading-bars {
+  background-image: url(../loading-icons/LoadingBars.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  width: 815px;
+  height: 419px;
+}
+.statistics .loading-pie {
+  background-image: url(../loading-icons/LoadingPie.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  width: 815px;
+  height: 419px;
+}
 .statistics section {
   background-color: #F9F9F9;
   border-radius: 1.5rem;
