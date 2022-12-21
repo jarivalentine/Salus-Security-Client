@@ -60,7 +60,6 @@ header aside h2 {
 header aside button {
   background-color: #F0E25D;
   padding: 0.4rem;
-  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
@@ -365,7 +364,6 @@ nav ul .doorlock-nav:hover {
 .home > article ul li a {
   background-color: #F0E25D;
   padding: 0.4rem;
-  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
@@ -518,7 +516,6 @@ nav ul .doorlock-nav:hover {
 .maps #title-fullscreen-container button {
   background-color: #F0E25D;
   padding: 0.4rem;
-  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
@@ -594,7 +591,6 @@ nav ul .doorlock-nav:hover {
 .maps #container .popup a {
   background-color: #F0E25D;
   padding: 0.4rem;
-  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
@@ -739,7 +735,6 @@ nav ul .doorlock-nav:hover {
 .flag button {
   background-color: #F0E25D;
   padding: 0.4rem;
-  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
@@ -946,7 +941,6 @@ nav ul .doorlock-nav:hover {
 .settings button {
   background-color: #F0E25D;
   padding: 0.4rem;
-  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
@@ -969,7 +963,6 @@ nav ul .doorlock-nav:hover {
 .statistics ul li {
   background-color: #F0E25D;
   padding: 0.4rem;
-  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
@@ -1011,7 +1004,6 @@ nav ul .doorlock-nav:hover {
 .route button {
   background-color: #F0E25D;
   padding: 0.4rem;
-  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;

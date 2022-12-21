@@ -54,17 +54,14 @@ createApp({
             const incidentsWithBystanders = [];
             const total = allIncidents.length;
             let amount = 0;
-
-            allIncidents.forEach(async incident => {
-                incidentsWithBystanders.push({"incident": await getAllBystandersFromIncident(incident.id)});
-            });
-
+            for (let i = 0; i < total; i++) {
+                incidentsWithBystanders.push({"incident": await getAllBystandersFromIncident(allIncidents[i].id)});
+            }
             incidentsWithBystanders.forEach(index => {
                 if (index.incident.length !== 0) {
                     amount += 1;
                 }
             });
-
             const fraction = parseFloat((amount/total).toFixed(2))*100;
             this.displayPieChartBystanders(fraction);
         },
@@ -129,7 +126,7 @@ createApp({
             let totalDeclinedIncidents = 0;
             let totalActiveIncidents = 0;
 
-            allIncidents.map(incident => { //sonar doesn't approve of one-liners (Common Sonar L)
+            allIncidents.map(incident => { //sonar doesn't approve of one-liners (Common Sonar L 🤓 🤡 💀 )
                 if (incident.state === "CONFIRMED"){
                     totalConfirmedIncidents += 1;
                 }
