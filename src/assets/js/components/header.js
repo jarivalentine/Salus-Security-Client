@@ -68,20 +68,24 @@ export default {
         
     },
     template: `
-      <header>
-          <div>
-                <div id="menu" @click="toggleMenu">
-                  <p>{{ firstname }}</p>
-                  <p class="tag">{{ tag }}</p>
-                </div>
-                <ul :class="{ hidden: !isActive }">
-                  <li><a class="non-poc-menu" href="#">Profile</a></li>
-                  <li><a class="poc-menu" href="./history.html">History</a></li>
-                  <li><a class="non-poc-menu" href="#">Give feedback</a></li>
-                  <li><a class="non-poc-menu" href="#">Report a bug</a></li>
-                </ul>
-              </div>
-          <a href="./settings.html"></a>
-      </header>
+    <header>
+        <div>
+            <div id="menu" @click="toggleMenu">
+                <p>{{ firstname }}</p>
+                <p class="tag">{{ tag }}</p>
+            </div>
+            <ul :class="{ hidden: !isActive }">
+                <li><a class="non-poc-menu" href="#">Profile</a></li>
+                <li><a class="poc-menu" href="./history.html">History</a></li>
+                <li><a class="non-poc-menu" href="#">Give feedback</a></li>
+                <li><a class="non-poc-menu" href="#">Report a bug</a></li>
+            </ul>
+        </div>
+        <div class="active">
+            <h2>Pending Incident currently being recorded</h2>
+            <button>View Status</button>
+        </div>
+        <a href="./settings.html"></a>
+    </header>
     `
 };

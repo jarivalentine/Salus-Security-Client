@@ -49,6 +49,29 @@ header {
         width: 4.25rem;
     }
 
+    .active {
+        width: 50%;
+        height: calc(100% - 1rem);
+        background-color: constraints.$blue;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: space-around;
+
+        h2 {
+            font-size: 1.25rem;
+            font-family: constraints.$default-font;
+            color: white;
+            height: 100%;
+            line-height: 3.5rem;
+        }
+
+        button {
+            @include constraints.button;
+            align-self: center;
+            border: none;
+        }
+    }
+
     ul {
         background-color: constraints.$gray;
         position: relative;
