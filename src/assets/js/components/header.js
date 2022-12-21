@@ -81,10 +81,10 @@ export default {
                 <li><a class="non-poc-menu" href="#">Report a bug</a></li>
             </ul>
         </div>
-        <div class="active">
+        <aside>
             <h2>Pending Incident currently being recorded</h2>
             <button>View Status</button>
-        </div>
+        </aside>
         <a href="./settings.html"></a>
     </header>
     `

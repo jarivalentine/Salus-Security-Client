@@ -42,7 +42,7 @@ header > a {
   height: 4.25rem;
   width: 4.25rem;
 }
-header .active {
+header aside {
   width: 50%;
   height: calc(100% - 1rem);
   background-color: #5B37DB;
@@ -50,14 +50,14 @@ header .active {
   display: flex;
   justify-content: space-around;
 }
-header .active h2 {
+header aside h2 {
   font-size: 1.25rem;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: white;
   height: 100%;
   line-height: 3.5rem;
 }
-header .active button {
+header aside button {
   background-color: #F0E25D;
   font-size: 1rem;
   padding: 0.4rem;
