@@ -4,14 +4,15 @@ export default {
             firstname: null,
             tag: null,
             isActive: false,
-            colors: ["purple", "red", "orange", "blue", "legendary"],
-            currentColorClass: "purple",
+            colors: ["purple", "red", "orange", "lightgreen", "blue", "legendary"],
+            currentColorClass: "red",
+            activeIncident: "active-incident",
             tags: {
                 0: { tag: "Bad Savior", colorClass: "red" },
                 1: { tag: "Noob Savior", colorClass: "orange" },
                 2: { tag: "Noob Savior", colorClass: "orange" },
-                3: { tag: "Great Savior", colorClass: "blue" },
-                4: { tag: "Great Savior", colorClass: "blue" },
+                3: { tag: "Good Savior", colorClass: "lightgreen" },
+                4: { tag: "Good Savior", colorClass: "lightgreen" },
                 5: { tag: "Great Savior", colorClass: "blue" },
                 6: { tag: "Great Savior", colorClass: "blue" },
                 7: { tag: "Heroic Savior", colorClass: "purple" },
@@ -40,16 +41,16 @@ export default {
             if (!getAssistUserAmount){
                 localStorage.setItem("assists-user-amount", JSON.stringify(await getAllHelpedIncidentsFromUser(localStorage.getItem("userId"))));
             }
-
             const assists = JSON.parse(getAssistUserAmount);
-            const tag = document.querySelector("#menu .tag");
             this.checkInBetweenInterval(assists);
-            this.changeTagColor(tag);
         },
         checkInBetweenInterval(assists){
             const tagData = this.tags[assists.length] || this.tags[9];
             this.tag = tagData.tag;
             this.currentColorClass = tagData.colorClass;
+
+            const tag = document.querySelector("#menu .tag");
+            this.changeTagColor(tag);
         },
         changeTagColor(tag){
             this.colors.forEach(color => {
@@ -58,7 +59,7 @@ export default {
             tag.classList.add(this.currentColorClass);
         },
         viewStatus() {
-            localStorage.setItem("incident",  localStorage.getItem("active-incident"));
+            localStorage.setItem("incident",  localStorage.getItem(this.activeIncident));
             window.location.href = "./flag.html";
         },
         async showIfActive() {
@@ -66,12 +67,19 @@ export default {
             incidentsByUser.forEach(incident => {
                 if (incident.state === "ACTIVE") {
                     document.querySelector("aside").classList.remove("hidden");
-                    localStorage.setItem("active-incident", JSON.stringify(incident));
+                    localStorage.setItem(this.activeIncident, JSON.stringify(incident));
                 }
             });
             if (window.location.href.includes("flag")) {
                 document.querySelector("aside").classList.add("hidden");
             }
+        },
+
+        async stopRecording(){
+            const incidentId = JSON.parse(localStorage.getItem(this.activeIncident)).id;
+            await validateIncident(incidentId, localStorage.getItem("userId"));
+            localStorage.removeItem(this.activeIncident);
+            window.location.href = 'index.html';
         },
     },
     async mounted() {
@@ -87,9 +95,10 @@ export default {
         await this.changeName();
         await this.getTagName();
         this.changePicture();
-        this.showIfActive();
+        await this.showIfActive();
         //loader1.style.display = 'none';
         loader2.style.display = 'none';
+        await this.showIfActive();
     },
     template: `
     <header>
@@ -108,8 +117,9 @@ export default {
             </ul>
         </div>
         <aside class="hidden">
-            <h2>Active Incident currently being recorded</h2>
+            <h2>Your last incident is still recording</h2>
             <button @click="viewStatus">View Status</button>
+            <button @click="stopRecording">Stop Recording</button>
         </aside>
         <a href="./settings.html"></a>
     </header>

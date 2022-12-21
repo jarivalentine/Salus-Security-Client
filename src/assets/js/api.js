@@ -72,8 +72,12 @@ async function getIncident(incidentId) {
     return get(`${URL}/api/incidents/${incidentId}`);
 }
 
+async function getAllIncidentsActive() {
+    return get(`${URL}/api/incidents?active=true`);
+}
+
 async function getAllIncidents() {
-    return get(`${URL}/api/incidents`);
+    return get(`${URL}/api/incidents?active=false`);
 }
 
 async function getAllIncidentsFromUser(userId) {
@@ -144,6 +148,7 @@ async function login(userId){ // console log function: change user
     }
     localStorage.setItem("userId", userId);
     console.log(valid);
+    localStorage.removeItem("assists-user-amount");
 }
 
 async function validUserId(userId) {

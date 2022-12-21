@@ -60,17 +60,14 @@ createApp({
             const incidentsWithBystanders = [];
             const total = allIncidents.length;
             let amount = 0;
-
-            allIncidents.forEach(async incident => {
-                incidentsWithBystanders.push({"incident": await getAllBystandersFromIncident(incident.id)});
-            });
-
+            for (let i = 0; i < total; i++) {
+                incidentsWithBystanders.push({"incident": await getAllBystandersFromIncident(allIncidents[i].id)});
+            }
             incidentsWithBystanders.forEach(index => {
                 if (index.incident.length !== 0) {
                     amount += 1;
                 }
             });
-
             const fraction = parseFloat((amount/total).toFixed(2))*100;
             this.displayPieChartBystanders(fraction);
         },
@@ -91,24 +88,29 @@ createApp({
         async bestBystanders(){
             const element = document.querySelector(".loading-bars");
             element.style.backgroundImage = 'none';
-            
-            const dataObject = {};
+            let dataObject = {};
             const amountOfHelpedIncidents = [];
+            const usersInOrder = [];
             const users = await getAllUsers();
             for (const user of users) {
                 const helpedIncidents = await getAllHelpedIncidentsFromUser(user.id);
                 dataObject[(`${user.firstname} ${user.lastname}`)] = helpedIncidents.length;
-                amountOfHelpedIncidents.push(helpedIncidents.length);
             }
-            amountOfHelpedIncidents.sort();
-            this.displayBarChartBystanders(this.sortObjectByValue(dataObject), amountOfHelpedIncidents);
 
+            dataObject = this.sortObjectByValue(dataObject);
+
+            for (const key in dataObject) {
+                if (dataObject.hasOwnProperty(key)) {
+                    usersInOrder.push(key);
+                    amountOfHelpedIncidents.push(dataObject[key]);
+                }
+            }
+            this.displayBarChartBystanders(usersInOrder, amountOfHelpedIncidents);
         },
 
         sortObjectByValue(obj){
-            return Object.keys(obj).sort(function(a, b) {
-                return obj[a] - obj[b];
-            });
+            const entries = Object.entries(obj).sort(([, a], [, b]) => b - a);
+            return Object.fromEntries(entries);
         },
         displayBarChartBystanders(listOfBystanders, amountOfHelpedIncidents) {
             const ctx = document.querySelector("#bar-chart-bystanders").getContext('2d');
@@ -142,7 +144,7 @@ createApp({
             let totalDeclinedIncidents = 0;
             let totalActiveIncidents = 0;
 
-            allIncidents.map(incident => { //sonar doesn't approve of one-liners (Common Sonar L)
+            allIncidents.map(incident => { //sonar doesn't approve of one-liners (Common Sonar L 🤓 🤡 💀 )
                 if (incident.state === "CONFIRMED"){
                     totalConfirmedIncidents += 1;
                 }
@@ -181,7 +183,6 @@ createApp({
             this.barBystandersReady = false;
             this.doughnutValidationReady = false;
         },
-
         togglePie() {
             const element = document.querySelector(".loading-stats");
             element.style.display = "none";
@@ -200,7 +201,7 @@ createApp({
             this.doughnutValidationReady = false;
         },
 
-        toggleValidationDoughnut() {
+        async toggleValidationDoughnut() {
             const element = document.querySelector(".loading-stats");
             element.style.display = "none";
             this.pieReady = false;
@@ -214,16 +215,16 @@ createApp({
             allCanvases.forEach(canvas => {
                 canvas.style.display = 'inline-block';
             });
-        }
+        },
     },
     async mounted() {
         const element = document.querySelector(".loading-stats");
         await applyLockedMechanism('div.statistics');
-        await this.percentageOfBystanders();
+        await this.toggleTypes();
         await this.frequencyOfTypes();
+        await this.percentageOfBystanders();
         await this.bestBystanders();
         await this.validationFrequency();
-        this.toggleTypes();
         this.canvasStyle();
         element.style.display = "none";
     },
