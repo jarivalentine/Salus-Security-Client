@@ -6,6 +6,18 @@ export default {
             isActive: false,
             colors: ["purple", "red", "orange", "blue", "legendary"],
             currentColorClass: "purple",
+            tags: {
+                0: { tag: "Bad Savior", colorClass: "red" },
+                1: { tag: "Noob Savior", colorClass: "orange" },
+                2: { tag: "Noob Savior", colorClass: "orange" },
+                3: { tag: "Great Savior", colorClass: "blue" },
+                4: { tag: "Great Savior", colorClass: "blue" },
+                5: { tag: "Great Savior", colorClass: "blue" },
+                6: { tag: "Great Savior", colorClass: "blue" },
+                7: { tag: "Heroic Savior", colorClass: "purple" },
+                8: { tag: "Heroic Savior", colorClass: "purple" },
+                9: { tag: "Legendary Savior", colorClass: "legendary" }
+            }
         };
     },
     methods: {
@@ -35,26 +47,9 @@ export default {
             this.changeTagColor(tag);
         },
         checkInBetweenInterval(assists){
-            if(assists.length === 0){
-                this.tag = "Bad Savior";
-                this.currentColorClass = "red";
-            }
-            if(1 <= assists.length && assists.length <= 2){
-                this.tag = "Noob Savior";
-                this.currentColorClass = "orange";
-            }
-            if(3 <= assists.length && assists.length <= 6){
-                this.tag = "Great Savior";
-                this.currentColorClass = "blue";
-            }
-            if(7 <= assists.length && assists.length <= 8){
-                this.tag = "Heroic Savior";
-                this.currentColorClass = "purple";
-            }
-            if(assists.length >= 9){
-                this.tag = "Legendary Savior";
-                this.currentColorClass = "legendary";
-            }
+            const tagData = this.tags[assists.length] || this.tags[9];
+            this.tag = tagData.tag;
+            this.currentColorClass = tagData.colorClass;
         },
         changeTagColor(tag){
             this.colors.forEach(color => {
