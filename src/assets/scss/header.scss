@@ -67,6 +67,7 @@ header {
 
         button {
             @include constraints.button;
+            font-size: 1rem;
             align-self: center;
             border: none;
         }

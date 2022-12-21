@@ -57,11 +57,13 @@
 
         ul {
             @include constraints.box;
+            padding: 1rem;
             overflow: scroll;
             height: calc(100% - 3rem); // minus font height and margin bottom 
 
             li {
                 @include constraints.list-item;
+                padding: 0.75rem 0;
             }
         }
     }

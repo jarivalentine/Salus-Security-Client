@@ -60,9 +60,11 @@ header aside h2 {
 header aside button {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
   align-self: center;
   border: none;
 }
@@ -193,6 +195,7 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
 }
 .home div article > div .switch {
   display: inline-block;
@@ -287,12 +290,14 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
 }
 .home > article ul li {
   display: flex;
   justify-content: space-between;
   border-bottom: 0.0625rem solid black;
   margin-bottom: 0.25rem;
+  padding: 0.75rem 0;
 }
 .home > article ul li div:first-of-type {
   width: auto;
@@ -347,9 +352,11 @@ nav ul .doorlock-nav:hover {
 .home > article ul li a {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
 }
 
 .history article {
@@ -401,6 +408,7 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
   overflow: scroll;
   height: calc(100% - 3rem);
 }
@@ -409,6 +417,7 @@ nav ul .doorlock-nav:hover {
   justify-content: space-between;
   border-bottom: 0.0625rem solid black;
   margin-bottom: 0.25rem;
+  padding: 0.75rem 0;
 }
 .history article ul li div:first-of-type {
   width: auto;
@@ -492,9 +501,11 @@ nav ul .doorlock-nav:hover {
 .maps #title-fullscreen-container button {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -562,9 +573,11 @@ nav ul .doorlock-nav:hover {
 .maps #container .popup a {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
 }
 .maps #container .error {
   font-size: 1.5rem;
@@ -634,6 +647,7 @@ nav ul .doorlock-nav:hover {
   justify-content: space-between;
   border-bottom: 0.0625rem solid black;
   margin-bottom: 0.25rem;
+  padding: 0.75rem 0;
 }
 .flag .container li div:first-of-type {
   width: auto;
@@ -693,15 +707,18 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
   margin-bottom: 0;
   overflow: scroll;
 }
 .flag button {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
   cursor: pointer;
   border: none;
 }
@@ -722,6 +739,7 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
   height: calc(100% - 4rem);
 }
 .settings .subscription section h3, .settings .notifications > div h3 {
@@ -899,6 +917,7 @@ nav ul .doorlock-nav:hover {
 .settings button {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
@@ -917,9 +936,11 @@ nav ul .doorlock-nav:hover {
 .statistics ul li {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
   width: fit-content;
   display: inline-block;
   margin-right: 1rem;
@@ -933,6 +954,7 @@ nav ul .doorlock-nav:hover {
   border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 1rem;
   height: calc(100% - 3rem);
 }
 .statistics section div {
@@ -952,9 +974,11 @@ nav ul .doorlock-nav:hover {
 .route h1 + a {
   background-color: #F0E25D;
   padding: 0.4rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   color: black;
+  font-size: 1rem;
   margin-left: 1rem;
   cursor: pointer;
 }
