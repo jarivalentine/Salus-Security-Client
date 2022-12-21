@@ -969,6 +969,14 @@ nav ul .doorlock-nav:hover {
   color: black;
 }
 
+.loading-settings {
+  background-image: url(../loading-icons/LoadingGear.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  width: 912px;
+  height: 563px;
+}
+
 .statistics ul {
   margin-bottom: 1rem;
 }
