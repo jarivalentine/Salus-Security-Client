@@ -6,6 +6,8 @@ export default {
             isActive: false,
             colors: ["purple", "red", "orange", "blue", "legendary"],
             currentColorClass: "purple",
+            display: ["block", "none"],
+            currentDisplayClass:"none"
         };
     },
     methods: {
@@ -27,6 +29,7 @@ export default {
             const user = await getOneUser(localStorage.getItem("userId"));
             const assists = await getAllHelpedIncidentsFromUser(user.id);
             const tag = document.querySelector("#menu .tag");
+
             if(assists.length === 0){
                 this.tag = 'Bad Savior';
                 this.currentColorClass = "red";
@@ -62,25 +65,32 @@ export default {
                 this.isActive = false;
             }
         });
+        //const loader1 = document.querySelector('.loading-profile')
+        const loader2 = document.querySelector('.loading-tags')
+        //loader1.style.display = 'block';
+        loader2.style.display = 'block';        
         await this.changeName();
         await this.getTagName();
         this.changePicture();
         
+        //loader1.style.display = 'none';
+        loader2.style.display = 'none';
     },
     template: `
       <header>
-          <div>
+            <div>
                 <div id="menu" @click="toggleMenu">
-                  <p>{{ firstname }}</p>
-                  <p class="tag">{{ tag }}</p>
+                    <p>{{ firstname }}</p>
+                    <p class="loading-tags"></p>
+                    <p class="tag">{{ tag }}</p>
                 </div>
                 <ul :class="{ hidden: !isActive }">
-                  <li><a class="non-poc-menu" href="#">Profile</a></li>
-                  <li><a class="poc-menu" href="./history.html">History</a></li>
-                  <li><a class="non-poc-menu" href="#">Give feedback</a></li>
-                  <li><a class="non-poc-menu" href="#">Report a bug</a></li>
+                    <li><a class="non-poc-menu" href="#">Profile</a></li>
+                    <li><a class="poc-menu" href="./history.html">History</a></li>
+                    <li><a class="non-poc-menu" href="#">Give feedback</a></li>
+                    <li><a class="non-poc-menu" href="#">Report a bug</a></li>
                 </ul>
-              </div>
+            </div>
           <a href="./settings.html"></a>
       </header>
     `

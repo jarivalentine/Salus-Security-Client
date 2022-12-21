@@ -27,12 +27,22 @@ header .non-poc-menu {
 header .hidden {
   display: none;
 }
+header .loading-profile {
+  width: 63px;
+  height: 63px;
+  background: url(../loading-icons/LoadingProfile.svg);
+}
 header p {
   font-family: "Lexend", Arial, Helvetica, sans-serif;
   font-size: 2rem;
 }
 header p:first-child {
   margin-bottom: 0.25rem;
+}
+header .loading-tags {
+  background-image: url(../loading-icons/LoadingTag.svg);
+  width: 120px;
+  height: 60px;
 }
 header > a {
   background-image: url("../img/svg-wrench.svg");
@@ -818,7 +828,6 @@ nav ul .doorlock-nav:hover {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
   color: white;
-  background-color: #5B37DB;
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
@@ -1034,7 +1043,6 @@ body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
   color: white;
-  background-color: #5B37DB;
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   width: fit-content;
