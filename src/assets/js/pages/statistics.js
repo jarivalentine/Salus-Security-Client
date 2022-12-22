@@ -18,7 +18,7 @@ createApp({
     },
     methods: {
         async frequencyOfTypes(){
-            this.displayNoneLoadingStats();
+            const element = document.querySelector(".loading-bars");
 
             const allIncidents = await getAllIncidents();
             const countedTypes = {};
@@ -27,8 +27,8 @@ createApp({
             });
             this.displayBarChartTypes(Object.keys(countedTypes), Object.values(countedTypes));
             this.allIncidentsLength = allIncidents.length;
+            
             element.style.backgroundImage = 'none';
-
         },
 
         displayBarChartTypes(types, amount){
@@ -54,7 +54,7 @@ createApp({
             });
         },
         async percentageOfBystanders(){
-            this.displayNoneLoadingStats();
+            const element = document.querySelector(".loading-pie");
 
             const allIncidents = await getAllIncidents();
             const incidentsWithBystanders = [];
@@ -87,7 +87,7 @@ createApp({
             });
         },
         async bestBystanders(){
-            this.displayNoneLoadingStats();
+            const element = document.querySelector(".loading-bars2");
             let dataObject = {};
             const amountOfHelpedIncidents = [];
             const usersInOrder = [];
@@ -107,6 +107,7 @@ createApp({
             }
             
             this.displayBarChartBystanders(usersInOrder, amountOfHelpedIncidents);
+            element.style.backgroundImage = 'none';
         },
 
         sortObjectByValue(obj){
@@ -137,7 +138,7 @@ createApp({
         },
 
         async validationFrequency(){
-            this.displayNoneLoadingStats();
+            const element = document.querySelector(".loading-pie2");
 
             const allIncidents = await getAllIncidents();
             let totalConfirmedIncidents = 0;
@@ -157,6 +158,7 @@ createApp({
             });
 
             this.displayValidationDoughnutChart([totalConfirmedIncidents, totalDeclinedIncidents, totalActiveIncidents],["CONFIRMED", "DECLINED", "ACTIVE"]);
+            element.style.backgroundImage = "none";
         },
 
         displayValidationDoughnutChart(listOfFrequency, listOfStates) {
@@ -198,8 +200,7 @@ createApp({
         },
 
         async toggleValidationDoughnut() {
-            const element = document.querySelector(".loading-stats");
-            element.style.display = "none";
+            this.displayNoneLoadingStats();
             this.pieReady = false;
             this.barTypesReady = false;
             this.barBystandersReady = false;

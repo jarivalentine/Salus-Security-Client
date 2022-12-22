@@ -93,18 +93,16 @@ export default {
         await this.changeName();
         await this.getTagName();
         this.changePicture();
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         this.showIfActive();
         //loader1.style.display = 'none';
         loader2.style.display = 'none';
-=======
+
         await this.showIfActive();
->>>>>>> f1e15599947c79d9bd1f302c8236804e2e7822a4
-=======
+
         await this.showIfActive();
         loader2.style.display = 'none';
->>>>>>> ee1952843f5724f685c58f5efdf276ab8cdf68ac
+
     },
     template: `
     <header>
