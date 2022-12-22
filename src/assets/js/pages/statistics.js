@@ -18,8 +18,8 @@ createApp({
     },
     methods: {
         async frequencyOfTypes(){
-            const element = document.querySelector(".loading-bars");
-            
+            this.displayNoneLoadingStats();
+
             const allIncidents = await getAllIncidents();
             const countedTypes = {};
             allIncidents.map(index => {
@@ -54,7 +54,7 @@ createApp({
             });
         },
         async percentageOfBystanders(){
-            const element = document.querySelector(".loading-pie");
+            this.displayNoneLoadingStats();
 
             const allIncidents = await getAllIncidents();
             const incidentsWithBystanders = [];
@@ -87,6 +87,7 @@ createApp({
             });
         },
         async bestBystanders(){
+            this.displayNoneLoadingStats();
             let dataObject = {};
             const amountOfHelpedIncidents = [];
             const usersInOrder = [];
@@ -136,8 +137,7 @@ createApp({
         },
 
         async validationFrequency(){
-            const element = document.querySelector(".loading-pie2");
-            
+            this.displayNoneLoadingStats();
 
             const allIncidents = await getAllIncidents();
             let totalConfirmedIncidents = 0;
@@ -156,8 +156,7 @@ createApp({
                 }
             });
 
-            this.displayValidationDoughnutChart([totalConfirmedIncidents, totalDeclinedIncidents, totalActiveIncidents],["CONFIRMED", "DECLINED", "ACTIVE"]);            
-            element.style.backgroundImage = 'none';
+            this.displayValidationDoughnutChart([totalConfirmedIncidents, totalDeclinedIncidents, totalActiveIncidents],["CONFIRMED", "DECLINED", "ACTIVE"]);
         },
 
         displayValidationDoughnutChart(listOfFrequency, listOfStates) {
@@ -175,27 +174,23 @@ createApp({
             });
         },
 
-        async toggleTypes() {
-            const element = document.querySelector(".loading-stats");
-            element.style.display = "none";
+        toggleTypes() {
+            this.displayNoneLoadingStats();
             this.pieReady = false;
             this.barTypesReady = true;
             this.barBystandersReady = false;
             this.doughnutValidationReady = false;
         },
-
-        async togglePie() {
-            const element = document.querySelector(".loading-stats");
-            element.style.display = "none";
+        togglePie() {
+            this.displayNoneLoadingStats();
             this.pieReady = true;
             this.barTypesReady = false;
             this.barBystandersReady = false;
             this.doughnutValidationReady = false;
         },
 
-        async toggleBystanders() {
-            const element = document.querySelector(".loading-stats");
-            element.style.display = "none";
+        toggleBystanders() {
+            this.displayNoneLoadingStats();
             this.pieReady = false;
             this.barTypesReady = false;
             this.barBystandersReady = true;
@@ -209,6 +204,11 @@ createApp({
             this.barTypesReady = false;
             this.barBystandersReady = false;
             this.doughnutValidationReady = true;
+        },
+
+        displayNoneLoadingStats(){
+            const element = document.querySelector(".loading-stats");
+            element.style.display = "none";
         },
 
         canvasStyle() {

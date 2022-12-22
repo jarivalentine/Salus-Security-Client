@@ -88,13 +88,12 @@ export default {
                 this.isActive = false;
             }
         });
-        //const loader1 = document.querySelector('.loading-profile')
-        const loader2 = document.querySelector('.loading-tags')
-        //loader1.style.display = 'block';
-        loader2.style.display = 'block';        
+        const loader2 = document.querySelector('#menu .loading-tags');
+        loader2.style.display = 'block';
         await this.changeName();
         await this.getTagName();
         this.changePicture();
+<<<<<<< HEAD
 <<<<<<< HEAD
         this.showIfActive();
         //loader1.style.display = 'none';
@@ -102,6 +101,10 @@ export default {
 =======
         await this.showIfActive();
 >>>>>>> f1e15599947c79d9bd1f302c8236804e2e7822a4
+=======
+        await this.showIfActive();
+        loader2.style.display = 'none';
+>>>>>>> ee1952843f5724f685c58f5efdf276ab8cdf68ac
     },
     template: `
     <header>
@@ -109,7 +112,7 @@ export default {
             <div class="loading-profile" style="width:63px; height:63px; display:none"></div>
             <div id="menu" @click="toggleMenu">
                 <p>{{ firstname }}</p>
-                    <p class="loading-tags"></p>
+                <p class="loading-tags"></p>
                 <p class="tag">{{ tag }}</p>
             </div>
             <ul :class="{ hidden: !isActive }">
