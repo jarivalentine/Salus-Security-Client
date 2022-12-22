@@ -23,26 +23,26 @@
         margin-bottom: 1rem;
     }
 
-    .loading-stats{
+    .loading-stats {
         background-image: url(../loading-icons/LoadingBars.svg);
         background-repeat: no-repeat;
         background-position: 50%;
         width: 815px; 
         height: 419px;
     }
-    .loading-bars{
+    .loading-bars, .loading-bars2 {
         background-image: url(../loading-icons/LoadingBars.svg);
         background-repeat: no-repeat;
         background-position: 50%;
         width: 815px; 
-        height: 419px;
+        height: 319px;
     }
-    .loading-pie{
+    .loading-pie, .loading-pie2 {
         background-image: url(../loading-icons/LoadingPie.svg);
         background-repeat: no-repeat;
         background-position: 50%;
         width: 815px; 
-        height: 419px;
+        height: 319px;
     }
     section {
 
