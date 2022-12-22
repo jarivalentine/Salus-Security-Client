@@ -1002,22 +1002,18 @@ nav ul .doorlock-nav:hover {
   background-image: url(../loading-icons/LoadingBars.svg);
   background-repeat: no-repeat;
   background-position: 50%;
-  width: 815px;
-  height: 419px;
 }
 .statistics .loading-bars, .statistics .loading-bars2 {
   background-image: url(../loading-icons/LoadingBars.svg);
   background-repeat: no-repeat;
   background-position: 50%;
-  width: 815px;
-  height: 319px;
+  width: 100%;
 }
 .statistics .loading-pie, .statistics .loading-pie2 {
   background-image: url(../loading-icons/LoadingPie.svg);
   background-repeat: no-repeat;
   background-position: 50%;
-  width: 815px;
-  height: 319px;
+  width: 100%;
 }
 .statistics section {
   background-color: #F9F9F9;

@@ -220,12 +220,12 @@ createApp({
     async mounted() {
         const element = document.querySelector(".loading-stats");
         await applyLockedMechanism('div.statistics');
+        this.canvasStyle();
         await this.toggleTypes();
         await this.frequencyOfTypes();
         await this.percentageOfBystanders();
         await this.bestBystanders();
         await this.validationFrequency();
-        this.canvasStyle();
         element.style.display = "none";
     },
     components: {
