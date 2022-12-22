@@ -90,7 +90,7 @@ createApp({
     async mounted() {
         await applyLockedMechanism('div.maps');
         if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition((location) => getAllIncidents().then(incidents => this.loadMap(incidents, location)), this.locationDenied);
+            navigator.geolocation.getCurrentPosition((location) => getAllIncidentsActive().then(incidents => this.loadMap(incidents, location)), this.locationDenied);
         }
         document.querySelector('body').addEventListener('click', (e) => {
             const $popup = document.querySelector('.popup');

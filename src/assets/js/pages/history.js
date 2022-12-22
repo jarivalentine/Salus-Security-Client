@@ -45,7 +45,7 @@ createApp({
         },
 
         async getTypesFromIncidents(){
-            const allIncidents = await getAllIncidents();
+            const allIncidents = await getAllIncidentsActive();
             allIncidents.map(incident => {
                 if (!this.incidentTypes.includes(incident.type)){
                     this.incidentTypes.push(incident.type);
