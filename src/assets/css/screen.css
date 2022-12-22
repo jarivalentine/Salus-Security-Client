@@ -41,8 +41,9 @@ header p:first-child {
 }
 header .loading-tags {
   background-image: url(../loading-icons/LoadingTag.svg);
-  width: 120px;
-  height: 60px;
+  width: 7.5rem;
+  height: 3.75rem;
+  background-repeat: no-repeat;
 }
 header > a {
   background-image: url("../img/svg-wrench.svg");
@@ -969,8 +970,8 @@ nav ul .doorlock-nav:hover {
   background-image: url(../loading-icons/LoadingGear2.svg);
   background-repeat: no-repeat;
   background-position: 50%;
-  width: 912px;
-  height: 563px;
+  width: 57rem;
+  height: 35.2rem;
 }
 
 .statistics ul {

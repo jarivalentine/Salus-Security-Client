@@ -93,8 +93,8 @@ export default {
         await this.changeName();
         await this.getTagName();
         this.changePicture();
-        await this.showIfActive();
         loader2.style.display = 'none';
+        await this.showIfActive();
     },
     template: `
     <header>
