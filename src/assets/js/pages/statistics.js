@@ -27,7 +27,6 @@ createApp({
             });
             this.displayBarChartTypes(Object.keys(countedTypes), Object.values(countedTypes));
             this.allIncidentsLength = allIncidents.length;
-            
             element.style.backgroundImage = 'none';
         },
 
@@ -105,7 +104,6 @@ createApp({
                     amountOfHelpedIncidents.push(dataObject[key]);
                 }
             }
-            
             this.displayBarChartBystanders(usersInOrder, amountOfHelpedIncidents);
             element.style.backgroundImage = 'none';
         },
