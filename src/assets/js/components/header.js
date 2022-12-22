@@ -88,6 +88,8 @@ export default {
                 this.isActive = false;
             }
         });
+        //const loader1 = document.querySelector('#menu .loading-profile');
+        //loader1.style.display = 'block';
         const loader2 = document.querySelector('#menu .loading-tags');
         loader2.style.display = 'block';
         await this.changeName();
@@ -96,7 +98,6 @@ export default {
 
         this.showIfActive();
         //loader1.style.display = 'none';
-        loader2.style.display = 'none';
 
         await this.showIfActive();
 
