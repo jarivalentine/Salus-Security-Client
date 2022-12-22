@@ -9,7 +9,8 @@ createApp({
             map: null,
             loaded: false,
             myLocation: null,
-            routeLayer: null
+            routeLayer: null,
+            aggressor: false,
         };
     },
     methods: {
@@ -89,6 +90,9 @@ createApp({
         async userIsAggressor(userId){
             const allAggressors = await getAllAggressorsFromIncident(JSON.parse(localStorage.getItem("incident")).id);
             const user = await getOneUser(userId);
+            if (!allAggressors.includes(user)){
+                this.aggressor = !this.aggressor;
+            }
             return !allAggressors.includes(user);
         }
     },
