@@ -31,6 +31,13 @@ header {
         display: none;
     }
 
+    
+    .loading-profile {
+        width:63px; 
+        height:63px;
+        background: url(../loading-icons/LoadingProfile.svg);
+    }
+    
     p {
         font-family: constraints.$header-font;
         font-size: 2rem;
@@ -38,6 +45,13 @@ header {
         &:first-child {
             margin-bottom: 0.25rem;
         }
+    }
+
+    .loading-tags {
+        background-image: url(../loading-icons/LoadingTag.svg);
+        width: 7.5rem;
+        height: 3.75rem;
+        background-repeat: no-repeat;
     }
 
     > a {
@@ -50,7 +64,7 @@ header {
     }
 
     aside {
-        width: 50%;
+        width: 55%;
         height: calc(100% - 1rem);
         background-color: constraints.$blue;
         border-radius: 1rem;

@@ -149,6 +149,9 @@ async function login(userId){ // console log function: change user
     localStorage.setItem("userId", userId);
     console.log(valid);
     localStorage.removeItem("assists-user-amount");
+    localStorage.removeItem("active-incident");
+    localStorage.removeItem("incident");
+    window.location.href = "./index.html";
 }
 
 async function validUserId(userId) {

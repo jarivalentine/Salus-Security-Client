@@ -88,9 +88,12 @@ export default {
                 this.isActive = false;
             }
         });
+        const loader2 = document.querySelector('#menu .loading-tags');
+        loader2.style.display = 'block';
         await this.changeName();
         await this.getTagName();
         this.changePicture();
+        loader2.style.display = 'none';
         await this.showIfActive();
     },
     template: `
@@ -98,6 +101,7 @@ export default {
         <div>
             <div id="menu" @click="toggleMenu">
                 <p>{{ firstname }}</p>
+                <p class="loading-tags"></p>
                 <p class="tag">{{ tag }}</p>
             </div>
             <ul :class="{ hidden: !isActive }">

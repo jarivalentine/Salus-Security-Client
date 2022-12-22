@@ -30,8 +30,11 @@ createApp({
         }
     },
     async mounted() {
+        const element = document.querySelector(".loading-settings");
+
         await this.checkUserForSubscription();
         this.subscriptionCheckReady = true;
+        element.style.display = "none";
     },
     components: {
         headerComponent,

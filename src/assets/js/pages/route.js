@@ -9,7 +9,8 @@ createApp({
             map: null,
             loaded: false,
             myLocation: null,
-            routeLayer: null
+            routeLayer: null,
+            aggressor: false,
         };
     },
     methods: {
@@ -84,10 +85,19 @@ createApp({
             const userId = localStorage.getItem('userId');
             await helpIncident(userId, incidentId);
             window.location.href = 'flag.html';
+        },
+
+        async userIsAggressor(userId){
+            const allAggressors = await getAllAggressorsFromIncident(JSON.parse(localStorage.getItem("incident")).id);
+            const user = await getOneUser(userId);
+            if (!allAggressors.includes(user)){
+                this.aggressor = !this.aggressor;
+            }
+            return !allAggressors.includes(user);
         }
     },
     async mounted() {
-        if (localStorage.getItem("active-incident")) {
+        if (localStorage.getItem("active-incident") || await this.userIsAggressor(localStorage.getItem("userId"))) {
             document.querySelector(".route button").setAttribute("disabled", "disabled");
         }
         if ("geolocation" in navigator) {
