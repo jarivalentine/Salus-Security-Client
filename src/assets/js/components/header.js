@@ -47,7 +47,7 @@ export default {
             this.checkInBetweenInterval(assists);
         },
         checkInBetweenInterval(assists){
-            if (assists.length > 20) {
+            if (assists.length >= 20) {
                 this.tag = "Legendary Savior";
             }
 

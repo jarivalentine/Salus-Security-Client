@@ -92,11 +92,12 @@
                     > p {
                         @include constraints.tag;
                         height: fit-content;
+                        background-color: constraints.$blue;
                     }
 
                     div p {
                         @include constraints.label;
-                        margin-bottom: 0.5rem
+                        margin-bottom: 0.5rem;
                     }
                 }
 

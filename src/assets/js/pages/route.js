@@ -90,11 +90,13 @@ createApp({
 
         async userIsAggressor(userId){
             const allAggressors = await getAllAggressorsFromIncident(JSON.parse(localStorage.getItem("incident")).id);
-            const user = await getOneUser(userId);
-            if (!allAggressors.includes(user)){
-                this.aggressor = !this.aggressor;
+            console.log(allAggressors);
+            for (const user of allAggressors) {
+                if (user.id === userId) {
+                    this.aggressor = !this.aggressor;
+                }
             }
-            return !allAggressors.includes(user);
+            return this.aggressor;
         },
         async activeIncident(){
             if (localStorage.getItem("active-incident")){
