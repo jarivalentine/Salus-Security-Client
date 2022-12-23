@@ -51,6 +51,7 @@ createApp({
                     this.incidentTypes.push(incident.type);
                 }
             });
+            this.incidentTypes.sort();
         }
     },
     async mounted() {
