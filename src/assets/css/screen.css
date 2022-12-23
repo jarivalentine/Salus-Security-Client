@@ -760,18 +760,26 @@ nav ul .doorlock-nav:hover {
   color: black;
 }
 
-.settings {
+.settings .loading-settings {
+  background-image: url(../loading-icons/LoadingGear2.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.settings > .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 1rem;
   grid-template-areas: "notifications ." "subscription subscription";
 }
-.settings h2 {
+.settings > .grid-container h2 {
   font-family: "Lexend", Arial, Helvetica, sans-serif;
   margin-bottom: 1rem;
 }
-.settings .subscription section, .settings .notifications > div {
+.settings > .grid-container .subscription section, .settings > .grid-container .notifications > div {
   background-color: #F9F9F9;
   border-radius: 1.5rem;
   box-sizing: border-box;
@@ -779,21 +787,21 @@ nav ul .doorlock-nav:hover {
   padding: 1rem;
   height: calc(100% - 4rem);
 }
-.settings .subscription section h3, .settings .notifications > div h3 {
+.settings > .grid-container .subscription section h3, .settings > .grid-container .notifications > div h3 {
   font-size: 1.15rem;
   font-family: "Lexend", Arial, Helvetica, sans-serif;
 }
-.settings .notifications {
+.settings > .grid-container .notifications {
   grid-area: notifications;
 }
-.settings .notifications ul {
+.settings > .grid-container .notifications ul {
   margin-top: 0.5rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-.settings .notifications ul li {
+.settings > .grid-container .notifications ul li {
   display: flex;
   justify-content: space-between;
   border-bottom: 0.0625rem solid black;
@@ -801,28 +809,28 @@ nav ul .doorlock-nav:hover {
   padding: 0.25rem;
   font-size: 1.25rem;
 }
-.settings .notifications ul li div:first-of-type {
+.settings > .grid-container .notifications ul li div:first-of-type {
   width: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
 }
-.settings .notifications ul li div:last-of-type {
+.settings > .grid-container .notifications ul li div:last-of-type {
   display: flex;
   align-items: baseline;
 }
-.settings .notifications ul li:last-child {
+.settings > .grid-container .notifications ul li:last-child {
   border-bottom: none;
 }
-.settings .notifications ul li h3, .settings .notifications ul li p {
+.settings > .grid-container .notifications ul li h3, .settings > .grid-container .notifications ul li p {
   display: inline;
 }
-.settings .notifications ul li h3 {
+.settings > .grid-container .notifications ul li h3 {
   font-size: 1.3rem;
   font-weight: bold;
   margin-right: 1rem;
 }
-.settings .notifications ul li em {
+.settings > .grid-container .notifications ul li em {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 0.85rem;
   color: white;
@@ -833,7 +841,7 @@ nav ul .doorlock-nav:hover {
   margin: 0.25rem 0.5rem 0.25rem 0;
   font-style: normal;
 }
-.settings .notifications ul li p {
+.settings > .grid-container .notifications ul li p {
   font-size: 1.2rem;
   margin-right: 1rem;
   padding-left: 1.65rem;
@@ -842,19 +850,19 @@ nav ul .doorlock-nav:hover {
   background-size: 1.2rem;
   opacity: 0.5;
 }
-.settings .notifications ul li a {
+.settings > .grid-container .notifications ul li a {
   text-align: center;
 }
-.settings .notifications ul li .switch {
+.settings > .grid-container .notifications ul li .switch {
   display: inline-block;
   height: 1.8rem;
   position: relative;
   width: 3.25rem;
 }
-.settings .notifications ul li .switch input {
+.settings > .grid-container .notifications ul li .switch input {
   display: none;
 }
-.settings .notifications ul li .slider {
+.settings > .grid-container .notifications ul li .slider {
   background-color: #ccc;
   bottom: 0;
   cursor: pointer;
@@ -864,7 +872,7 @@ nav ul .doorlock-nav:hover {
   top: 0;
   transition: 0.4s;
 }
-.settings .notifications ul li .slider:before {
+.settings > .grid-container .notifications ul li .slider:before {
   background-color: #fff;
   bottom: 0.25rem;
   content: "";
@@ -874,19 +882,19 @@ nav ul .doorlock-nav:hover {
   transition: 0.4s;
   width: 1.35rem;
 }
-.settings .notifications ul li input:checked + .slider {
+.settings > .grid-container .notifications ul li input:checked + .slider {
   background-color: #F0E25D;
 }
-.settings .notifications ul li input:checked + .slider:before {
+.settings > .grid-container .notifications ul li input:checked + .slider:before {
   transform: translateX(1.45rem);
 }
-.settings .notifications ul li .slider.round {
+.settings > .grid-container .notifications ul li .slider.round {
   border-radius: 1.35rem;
 }
-.settings .notifications ul li .slider.round:before {
+.settings > .grid-container .notifications ul li .slider.round:before {
   border-radius: 50%;
 }
-.settings .notifications ul li .question {
+.settings > .grid-container .notifications ul li .question {
   background-image: url("../img/svg-question.svg");
   background-repeat: no-repeat;
   background-size: 1.25rem;
@@ -896,29 +904,29 @@ nav ul .doorlock-nav:hover {
   height: 1.25rem;
   padding-right: 0.5rem;
 }
-.settings .notifications ul li .question:hover {
+.settings > .grid-container .notifications ul li .question:hover {
   cursor: pointer;
 }
-.settings .subscription {
+.settings > .grid-container .subscription {
   grid-area: subscription;
 }
-.settings .subscription > div {
+.settings > .grid-container .subscription > div {
   display: flex;
   gap: 2rem;
   height: 100%;
 }
-.settings .subscription > div section {
+.settings > .grid-container .subscription > div section {
   width: 50%;
   height: calc(100% - 3rem);
 }
-.settings .subscription > div section > div {
+.settings > .grid-container .subscription > div section > div {
   display: flex;
   justify-content: space-between;
 }
-.settings .subscription > div section > div h3 {
+.settings > .grid-container .subscription > div section > div h3 {
   margin-bottom: 0.5rem;
 }
-.settings .subscription > div section > div > p {
+.settings > .grid-container .subscription > div section > div > p {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
   color: white;
@@ -927,7 +935,7 @@ nav ul .doorlock-nav:hover {
   width: fit-content;
   height: fit-content;
 }
-.settings .subscription > div section > div div p {
+.settings > .grid-container .subscription > div section > div div p {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 0.85rem;
   color: white;
@@ -937,20 +945,20 @@ nav ul .doorlock-nav:hover {
   width: fit-content;
   margin-bottom: 0.5rem;
 }
-.settings .subscription > div section ul li {
+.settings > .grid-container .subscription > div section ul li {
   background-repeat: no-repeat;
   background-size: 1.5rem;
   background-position: left center;
   padding: 0.5rem 0 0.5rem 2rem;
   font-size: 1rem;
 }
-.settings .subscription > div section ul .cross {
+.settings > .grid-container .subscription > div section ul .cross {
   background-image: url("../img/svg-cross.svg");
 }
-.settings .subscription > div section ul .check {
+.settings > .grid-container .subscription > div section ul .check {
   background-image: url("../img/svg-checkmark.svg");
 }
-.settings button {
+.settings > .grid-container button {
   background-color: #F0E25D;
   padding: 0.4rem;
   border-radius: 0.5rem;
@@ -961,17 +969,9 @@ nav ul .doorlock-nav:hover {
   border: none;
   cursor: pointer;
 }
-.settings button:disabled {
+.settings > .grid-container button:disabled {
   background-color: #898989;
   color: black;
-}
-
-.loading-settings {
-  background-image: url(../loading-icons/LoadingGear2.svg);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  width: 57rem;
-  height: 35.2rem;
 }
 
 .statistics ul {

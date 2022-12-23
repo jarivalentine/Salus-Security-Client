@@ -1,6 +1,16 @@
 @use '../constraints';
 
 .settings {
+    .loading-settings{
+        background-image: url(../loading-icons/LoadingGear2.svg); //half sized
+        background-repeat: no-repeat;
+        background-position: 50%;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.settings > .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -119,12 +129,4 @@
         border: none;
         cursor: pointer;
     }
-}
-.loading-settings{
-    background-image: url(../loading-icons/LoadingGear2.svg); //half sized
-    background-repeat: no-repeat;
-    background-position: 50%;
-    width: 57rem;
-    height: 35.2rem;
-    
 }

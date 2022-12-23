@@ -15,75 +15,77 @@
     <header-component></header-component>
     <main>
         <nav-component></nav-component>
-        <div class="loading-settings"></div>
-        <div v-show="subscriptionCheckReady" class="settings">
-            <article class="notifications">
-                <h2>Notifications</h2>
-                <div>
-                    <ul>
-                        <li>Flag notifications
-                            <div class="container">
-                                <label class="switch" for="checkbox1">
-                                  <input type="checkbox" id="checkbox1" checked/>
-                                  <span class="slider round"></span>
-                                </label>
-                            </div>
-                        </li>
-                        <li><div>"In Your Area" notification<span class="question"></span></div>
-                            <div class="container">
-                                <label class="switch" for="checkbox2">
-                                  <input type="checkbox" id="checkbox2" checked/>
-                                  <span class="slider round"></span>
-                                </label>
-                            </div>
-                        </li>
-                        <li>From Salus Security
-                            <div class="container">
-                                <label class="switch" for="checkbox3">
-                                  <input type="checkbox" id="checkbox3" checked/>
-                                  <span class="slider round"></span>
-                                </label>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </article>
+        <div class="settings">
+            <div class="loading-settings"></div>
+            <div class="grid-container" v-show="subscriptionCheckReady">
+                <article class="notifications">
+                    <h2>Notifications</h2>
+                    <div>
+                        <ul>
+                            <li>Flag notifications
+                                <div class="container">
+                                    <label class="switch" for="checkbox1">
+                                        <input type="checkbox" id="checkbox1" checked/>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li><div>"In Your Area" notification<span class="question"></span></div>
+                                <div class="container">
+                                    <label class="switch" for="checkbox2">
+                                        <input type="checkbox" id="checkbox2" checked/>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>From Salus Security
+                                <div class="container">
+                                    <label class="switch" for="checkbox3">
+                                        <input type="checkbox" id="checkbox3" checked/>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
 
-            <article class="subscription">
-                <h2>Subscriptions</h2>
-                <div>
-                    <section class="basic">
-                        <div>
+                <article class="subscription">
+                    <h2>Subscriptions</h2>
+                    <div>
+                        <section class="basic">
                             <div>
-                                <h3>Basic plan</h3>
-                                <p>M 0.00 / Month</p>
+                                <div>
+                                    <h3>Basic plan</h3>
+                                    <p>M 0.00 / Month</p>
+                                </div>
+                                <button v-if="premium" @click="unSubscribeUser()">Unsubscribe</button>
+                                <p v-else>Current plan</p>
                             </div>
-                            <button v-if="premium" @click="unSubscribeUser()">Unsubscribe</button>
-                            <p v-else>Current plan</p>
-                        </div>
-                        <ul>
-                            <li class="check">Flag Incidents</li>
-                            <li class="cross">View History</li>
-                            <li class="cross">Maps, Statistics, Doorlock</li>
-                        </ul>
-                    </section>
-                    <section class="premium">
-                        <div>
+                            <ul>
+                                <li class="check">Flag Incidents</li>
+                                <li class="cross">View History</li>
+                                <li class="cross">Maps, Statistics, Doorlock</li>
+                            </ul>
+                        </section>
+                        <section class="premium">
                             <div>
-                                <h3>Premium plan </h3>
-                                <p>M 3.99 / Month</p>
+                                <div>
+                                    <h3>Premium plan </h3>
+                                    <p>M 3.99 / Month</p>
+                                </div>
+                                <button v-if="basic" @click="subscribeUser()">Subscribe</button>
+                                <p v-else>current plan</p>
                             </div>
-                            <button v-if="basic" @click="subscribeUser()">Subscribe</button>
-                            <p v-else>current plan</p>
-                        </div>
-                        <ul>
-                            <li class="check">Flag Incidents</li>
-                            <li class="check">View History</li>
-                            <li class="check">Maps, Statistics, Doorlock</li>
-                        </ul>
-                    </section>
-                </div>
-            </article>
+                            <ul>
+                                <li class="check">Flag Incidents</li>
+                                <li class="check">View History</li>
+                                <li class="check">Maps, Statistics, Doorlock</li>
+                            </ul>
+                        </section>
+                    </div>
+                </article>
+            </div>
         </div>
     </main>
 </div>
