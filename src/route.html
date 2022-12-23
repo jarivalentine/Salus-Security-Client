@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Route</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
     <script src="https://cdn.jsdelivr.net/npm/ol@v7.1.0/dist/ol.js"></script>
@@ -21,7 +22,8 @@
             <div>
                 <h1>Route</h1>
                 <button @click="helpIncident()">Help incident</button>
-                <p v-if="aggressor">You are one of the aggressors of this incident, you cannot help.</p>
+                <p v-if="aggressor">You cannot help, you're an aggressors.</p>
+                <p v-else-if="reporter">You cannot help, you're the reporter.</p>
             </div>
             <div id="container">
                 <p v-if="showError" class="error">Share your location to view the map</p>

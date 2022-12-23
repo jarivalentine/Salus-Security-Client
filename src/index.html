@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/screen.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -63,15 +64,17 @@
                             <em class="label" v-for="label in incident.labels">{{label}}</em>
                         </div>
                         <div>
-                            <p>{{calculateDates(incident)["hours"]}}h {{calculateDates(incident)["minutes"]}}m {{calculateDates(incident)["seconds"]}}s ago</p>
-                            <p> {{calculateDistance(incident)}} km away</p>
-                            <a @click="storeIncident(incident)" href="./route.html">View Route</a>
+                            <p class="icons-home">{{calculateDates(incident)["hours"]}}h {{calculateDates(incident)["minutes"]}}m {{calculateDates(incident)["seconds"]}}s ago</p>
+                            <p class="icons-home"> {{calculateDistance(incident)}} km away</p>
+                            <a  class="route-home" @click="storeIncident(incident)" href="./route.html">View Route</a>
                         </div>
                     </li>
                 </ul>
 
                 <ul v-else>
-                    <li> There are no active incident at this moment! </li>
+                    <li>
+                        <h3> There are no active incident at this moment! </h3>
+                    </li>
                 </ul>
             </article>
         </div>

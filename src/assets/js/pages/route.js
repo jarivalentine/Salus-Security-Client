@@ -11,6 +11,7 @@ createApp({
             myLocation: null,
             routeLayer: null,
             aggressor: false,
+            reporter: false,
         };
     },
     methods: {
@@ -94,10 +95,16 @@ createApp({
                 this.aggressor = !this.aggressor;
             }
             return !allAggressors.includes(user);
+        },
+        async activeIncident(){
+            if (localStorage.getItem("active-incident")){
+                this.reporter = !this.reporter;
+            }
+            return localStorage.getItem("active-incident");
         }
     },
     async mounted() {
-        if (localStorage.getItem("active-incident") || await this.userIsAggressor(localStorage.getItem("userId"))) {
+        if (await this.activeIncident() || await this.userIsAggressor(localStorage.getItem("userId"))) {
             document.querySelector(".route button").setAttribute("disabled", "disabled");
         }
         if ("geolocation" in navigator) {

@@ -30,8 +30,7 @@ createApp({
         }
     },
     async mounted() {
-        const element = document.querySelector(".loading-settings");
-
+        const element = document.querySelector(".settings .loading-settings");
         await this.checkUserForSubscription();
         this.subscriptionCheckReady = true;
         element.style.display = "none";

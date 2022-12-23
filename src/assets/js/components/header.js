@@ -5,19 +5,21 @@ export default {
             tag: null,
             isActive: false,
             colors: ["purple", "red", "orange", "lightgreen", "blue", "legendary"],
-            currentColorClass: "red",
             activeIncident: "active-incident",
             tags: {
-                0: { tag: "Bad Savior", colorClass: "red" },
-                1: { tag: "Noob Savior", colorClass: "orange" },
-                2: { tag: "Noob Savior", colorClass: "orange" },
-                3: { tag: "Good Savior", colorClass: "lightgreen" },
-                4: { tag: "Good Savior", colorClass: "lightgreen" },
-                5: { tag: "Great Savior", colorClass: "blue" },
-                6: { tag: "Great Savior", colorClass: "blue" },
-                7: { tag: "Heroic Savior", colorClass: "purple" },
-                8: { tag: "Heroic Savior", colorClass: "purple" },
-                9: { tag: "Legendary Savior", colorClass: "legendary" }
+                "Bad Savior": [0, 1, 2, 3],
+                "Noob Savior": [4, 5, 6, 7],
+                "Good Savior": [8, 9, 10, 11],
+                "Great Savior": [12, 13, 14, 15],
+                "Heroic Savior": [16, 17, 18, 19],
+            },
+            tagsColors: {
+                "Bad Savior": "red",
+                "Noob Savior": "orange",
+                "Good Savior": "lightgreen",
+                "Great Savior": "blue",
+                "Heroic Savior": "purple",
+                "Legendary Savior": "legendary"
             }
         };
     },
@@ -45,10 +47,15 @@ export default {
             this.checkInBetweenInterval(assists);
         },
         checkInBetweenInterval(assists){
-            const tagData = this.tags[assists.length] || this.tags[9];
-            this.tag = tagData.tag;
-            this.currentColorClass = tagData.colorClass;
+            if (assists.length > 20) {
+                this.tag = "Legendary Savior";
+            }
 
+            for (const key in this.tags) {
+                if (this.tags[key].includes(assists.length)) {
+                    this.tag = key;
+                }
+            }
             const tag = document.querySelector("#menu .tag");
             this.changeTagColor(tag);
         },
@@ -56,7 +63,7 @@ export default {
             this.colors.forEach(color => {
                tag.classList.remove(color);
             });
-            tag.classList.add(this.currentColorClass);
+            tag.classList.add(this.tagsColors[this.tag]);
         },
         viewStatus() {
             localStorage.setItem("incident",  localStorage.getItem(this.activeIncident));
