@@ -934,6 +934,7 @@ nav ul .doorlock-nav:hover {
   border-radius: 0.5rem;
   width: fit-content;
   height: fit-content;
+  background-color: #5B37DB;
 }
 .settings > .grid-container .subscription > div section > div div p {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
