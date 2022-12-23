@@ -5,7 +5,6 @@ export default {
             tag: null,
             isActive: false,
             colors: ["purple", "red", "orange", "lightgreen", "blue", "legendary"],
-            currentColorClass: "red",
             activeIncident: "active-incident",
             tags: {
                 "Bad Savior": [0, 1, 2, 3],

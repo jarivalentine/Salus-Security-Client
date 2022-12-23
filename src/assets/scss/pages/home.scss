@@ -15,7 +15,7 @@
                 @include constraints.list-item;
                 padding: 0.75rem 0;
 
-                p {
+                .icons-home {
                     &:first-of-type {
                         background-image: url('../img/svg-cronometer.svg');
                     }
@@ -25,7 +25,7 @@
                     }
                 }
 
-                a {
+                .route-home {
                     @include constraints.button;
                     font-size: 1rem;
                 }
